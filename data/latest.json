@@ -1,5 +1,6 @@
 {
-  "timestamp": "2026-05-01T02:25:58.392323+00:00",
+  "timestamp": "2026-05-01T03:09:30.462803+00:00",
+  "portfolio_equity": 97718.34,
   "events_analyzed": 10,
   "tickers_analyzed": 45,
   "total_signals": 265,
@@ -12,21 +13,21 @@
       "entry": 154.33,
       "target": 178.25,
       "stop": 146.61,
-      "conviction": 6,
-      "convergence_score": 13,
+      "conviction": 7,
+      "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 31,
       "remaining_move_pct": 15.5,
       "instrument": "shares",
       "timeframe_days": [
         3,
         180
       ],
-      "confidence_score": 48,
-      "confidence_grade": "",
-      "flags": [
-        "SINGLE SOURCE -- only one type of signal, may be noise"
-      ]
+      "confidence_score": 58,
+      "confidence_grade": "HIGH",
+      "flags": []
     },
     {
       "ticker": "CVX",
@@ -36,21 +37,21 @@
       "entry": 193.31,
       "target": 231.01,
       "stop": 183.64,
-      "conviction": 6,
-      "convergence_score": 13,
+      "conviction": 7,
+      "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 25,
       "remaining_move_pct": 19.5,
       "instrument": "shares",
       "timeframe_days": [
         5,
         180
       ],
-      "confidence_score": 48,
-      "confidence_grade": "",
-      "flags": [
-        "SINGLE SOURCE -- only one type of signal, may be noise"
-      ]
+      "confidence_score": 58,
+      "confidence_grade": "HIGH",
+      "flags": []
     },
     {
       "ticker": "CAT",
@@ -60,21 +61,21 @@
       "entry": 890.11,
       "target": 1068.13,
       "stop": 845.6,
-      "conviction": 6,
-      "convergence_score": 13,
+      "conviction": 7,
+      "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 5,
       "remaining_move_pct": -20.0,
       "instrument": "shares",
       "timeframe_days": [
         180,
         180
       ],
-      "confidence_score": 46,
-      "confidence_grade": "",
-      "flags": [
-        "SINGLE SOURCE -- only one type of signal, may be noise"
-      ]
+      "confidence_score": 56,
+      "confidence_grade": "HIGH",
+      "flags": []
     },
     {
       "ticker": "RTX",
@@ -84,21 +85,21 @@
       "entry": 176.07,
       "target": 191.92,
       "stop": 167.27,
-      "conviction": 6,
-      "convergence_score": 13,
+      "conviction": 7,
+      "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 27,
       "remaining_move_pct": 9.0,
       "instrument": "options_or_shares",
       "timeframe_days": [
         7,
         90
       ],
-      "confidence_score": 46,
-      "confidence_grade": "",
-      "flags": [
-        "SINGLE SOURCE -- only one type of signal, may be noise"
-      ]
+      "confidence_score": 56,
+      "confidence_grade": "HIGH",
+      "flags": []
     },
     {
       "ticker": "LMT",
@@ -108,21 +109,21 @@
       "entry": 517.97,
       "target": 590.49,
       "stop": 492.07,
-      "conviction": 6,
-      "convergence_score": 13,
+      "conviction": 7,
+      "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 9,
       "remaining_move_pct": 14.0,
       "instrument": "options_or_shares",
       "timeframe_days": [
         7,
         90
       ],
-      "confidence_score": 46,
-      "confidence_grade": "",
-      "flags": [
-        "SINGLE SOURCE -- only one type of signal, may be noise"
-      ]
+      "confidence_score": 56,
+      "confidence_grade": "HIGH",
+      "flags": []
     }
   ],
   "risks": [
@@ -134,11 +135,16 @@
       "entry": 271.35,
       "target": 237.43,
       "stop": 284.92,
-      "conviction": 7,
-      "convergence_score": 23,
+      "conviction": 8,
+      "convergence_score": 43,
       "timing_phase": "CONTRARIAN",
+      "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 18,
       "remaining_move_pct": -12.5,
-      "confidence_score": 0
+      "confidence_score": 61,
+      "confidence_grade": "HIGH",
+      "flags": []
     },
     {
       "ticker": "NKE",
@@ -148,11 +154,16 @@
       "entry": 44.36,
       "target": 38.37,
       "stop": 46.58,
-      "conviction": 6,
-      "convergence_score": 13,
+      "conviction": 7,
+      "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
+      "position_size": "half",
+      "dollar_amount": 4885.92,
+      "shares": 110,
       "remaining_move_pct": -13.5,
-      "confidence_score": 0
+      "confidence_score": 56,
+      "confidence_grade": "HIGH",
+      "flags": []
     }
   ],
   "events": [
@@ -265,18 +276,6 @@
       ]
     },
     {
-      "headline": "US sanctions DR Congo\u2019s former president over war in east - Anadolu Ajans\u0131",
-      "event_type": "sanctions",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "RTX",
-        "LMT"
-      ]
-    },
-    {
       "headline": "How the US-Israeli war is collapsing the sanctions regime on Iran - Al Jazeera",
       "event_type": "sanctions",
       "source": "google_geopolitics",
@@ -286,6 +285,18 @@
         "SLB",
         "USO",
         "RTX"
+      ]
+    },
+    {
+      "headline": "US sanctions DR Congo\u2019s former president over war in east - Anadolu Ajans\u0131",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
       ]
     },
     {
