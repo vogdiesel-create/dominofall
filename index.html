@@ -221,6 +221,22 @@
             margin-right: 4px;
         }
 
+        /* Portfolio table */
+        .portfolio-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .portfolio-table th {
+            text-align: left; padding: 8px 10px; color: var(--muted); font-size: 11px;
+            text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border);
+        }
+        .portfolio-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+        .portfolio-table tr:hover td { background: rgba(99,102,241,0.05); }
+        .portfolio-table .ticker-col { font-weight: 700; font-size: 14px; }
+        .pnl-positive { color: var(--green); }
+        .pnl-negative { color: var(--red); }
+        .portfolio-stat {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 6px; padding: 14px; flex: 1; min-width: 140px;
+        }
+
         #loading { text-align: center; padding: 60px; color: var(--muted); }
     </style>
 </head>
@@ -252,6 +268,12 @@
         </div>
 
         <div id="loading">Loading analysis...</div>
+
+        <section id="portfolio-section" style="display:none;">
+            <h2>Current Holdings</h2>
+            <div id="portfolio-summary" style="display:flex; gap:16px; margin-bottom:16px; flex-wrap:wrap;"></div>
+            <div id="portfolio-table"></div>
+        </section>
 
         <section id="opportunities-section" style="display:none;">
             <h2>Top Opportunities</h2>
@@ -324,6 +346,38 @@
             const totalTheses = (data.opportunities || []).length + (data.risks || []).length;
             document.getElementById('stat-theses').textContent = totalTheses;
 
+            // Portfolio
+            const pf = data.portfolio;
+            if (pf && pf.positions && pf.positions.length > 0) {
+                document.getElementById('portfolio-section').style.display = 'block';
+                const pnlClass = pf.total_pnl >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const pnlPct = pf.equity > 0 ? ((pf.total_pnl / (pf.equity - pf.total_pnl)) * 100).toFixed(1) : '0.0';
+                document.getElementById('portfolio-summary').innerHTML = `
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Equity</div>
+                        <div class="stat-value">$${pf.equity.toLocaleString()}</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Deployed</div>
+                        <div class="stat-value">$${pf.total_deployed.toLocaleString()}</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Cash</div>
+                        <div class="stat-value">$${pf.cash.toLocaleString()}</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Total P&L</div>
+                        <div class="stat-value ${pnlClass}">${pf.total_pnl >= 0 ? '+' : ''}$${pf.total_pnl.toLocaleString()} (${pnlPct}%)</div>
+                    </div>`;
+                document.getElementById('portfolio-table').innerHTML = `
+                    <table class="portfolio-table">
+                        <thead><tr>
+                            <th>Ticker</th><th>Shares</th><th>Avg Cost</th><th>Price</th><th>Value</th><th>P&L</th>
+                        </tr></thead>
+                        <tbody>${pf.positions.map(renderPosition).join('')}</tbody>
+                    </table>`;
+            }
+
             // Opportunities
             const opps = data.opportunities || [];
             if (opps.length > 0) {
@@ -360,6 +414,8 @@
             let levelsHtml = '';
             if (t.entry) {
                 const targetColor = dir === 'bullish' ? 'var(--green)' : 'var(--red)';
+                const dollarAmt = t.dollar_amount ? '$' + t.dollar_amount.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}) : '--';
+                const sharesAmt = t.shares ? t.shares + ' shares' : '';
                 levelsHtml = `
                 <div class="price-levels">
                     <div class="price-level">
@@ -373,6 +429,11 @@
                     <div class="price-level">
                         <span class="price-label">STOP</span>
                         <span class="price-value" style="color:var(--red)">${t.stop ? '$' + t.stop.toFixed(2) : '--'}</span>
+                    </div>
+                    <div class="price-level">
+                        <span class="price-label">REC. SIZE</span>
+                        <span class="price-value" style="color:var(--accent)">${dollarAmt}</span>
+                        ${sharesAmt ? '<span class="price-label" style="margin-top:2px">' + sharesAmt + '</span>' : ''}
                     </div>
                 </div>`;
             }
@@ -413,6 +474,18 @@
                 <div style="font-size:11px; color:var(--muted); margin-top:4px;">Confidence: ${confidence}/100${t.confidence_grade ? ' (' + t.confidence_grade + ')' : ''}</div>
                 ${flagsHtml}
             </div>`;
+        }
+
+        function renderPosition(p) {
+            const pnlClass = p.pnl >= 0 ? 'pnl-positive' : 'pnl-negative';
+            return `<tr>
+                <td class="ticker-col">${p.ticker}</td>
+                <td>${p.shares}</td>
+                <td>$${p.avg_cost.toFixed(2)}</td>
+                <td>$${p.current_price.toFixed(2)}</td>
+                <td>$${p.market_value.toLocaleString()}</td>
+                <td class="${pnlClass}">${p.pnl >= 0 ? '+' : ''}$${p.pnl.toFixed(0)} (${p.pnl_pct >= 0 ? '+' : ''}${p.pnl_pct}%)</td>
+            </tr>`;
         }
 
         function renderEvent(e) {

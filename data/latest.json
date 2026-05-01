@@ -1,6 +1,121 @@
 {
-  "timestamp": "2026-05-01T03:09:30.462803+00:00",
-  "portfolio_equity": 97718.34,
+  "timestamp": "2026-05-01T03:38:02.584074+00:00",
+  "portfolio": {
+    "equity": 97713.41,
+    "cash": -321.75,
+    "total_deployed": 98035.16,
+    "total_pnl": 351.91,
+    "positions": [
+      {
+        "ticker": "CAT",
+        "shares": 9,
+        "avg_cost": 831.9,
+        "current_price": 892.15,
+        "market_value": 8677.61,
+        "pnl": 586.07,
+        "pnl_pct": 7.2
+      },
+      {
+        "ticker": "XOM",
+        "shares": 55,
+        "avg_cost": 150.66,
+        "current_price": 155.38,
+        "market_value": 8594.4,
+        "pnl": 261.07,
+        "pnl_pct": 3.1
+      },
+      {
+        "ticker": "EOG",
+        "shares": 61,
+        "avg_cost": 135.18,
+        "current_price": 139.0,
+        "market_value": 8568.94,
+        "pnl": 235.61,
+        "pnl_pct": 2.8
+      },
+      {
+        "ticker": "REGN",
+        "shares": 11,
+        "avg_cost": 754.49,
+        "current_price": 765.0,
+        "market_value": 8449.43,
+        "pnl": 116.1,
+        "pnl_pct": 1.4
+      },
+      {
+        "ticker": "LMT",
+        "shares": 16,
+        "avg_cost": 517.58,
+        "current_price": 519.18,
+        "market_value": 8359.09,
+        "pnl": 25.76,
+        "pnl_pct": 0.3
+      },
+      {
+        "ticker": "CVX",
+        "shares": 42,
+        "avg_cost": 187.28,
+        "current_price": 195.0,
+        "market_value": 8304.26,
+        "pnl": 328.86,
+        "pnl_pct": 4.1
+      },
+      {
+        "ticker": "SLB",
+        "shares": 148,
+        "avg_cost": 56.18,
+        "current_price": 55.9,
+        "market_value": 8291.8,
+        "pnl": -41.53,
+        "pnl_pct": -0.5
+      },
+      {
+        "ticker": "AMAT",
+        "shares": 20,
+        "avg_cost": 412.09,
+        "current_price": 394.49,
+        "market_value": 8223.97,
+        "pnl": -366.88,
+        "pnl_pct": -4.3
+      },
+      {
+        "ticker": "JNJ",
+        "shares": 35,
+        "avg_cost": 226.9,
+        "current_price": 226.73,
+        "market_value": 8047.54,
+        "pnl": -6.1,
+        "pnl_pct": -0.1
+      },
+      {
+        "ticker": "MRK",
+        "shares": 72,
+        "avg_cost": 112.11,
+        "current_price": 110.01,
+        "market_value": 8007.72,
+        "pnl": -152.86,
+        "pnl_pct": -1.9
+      },
+      {
+        "ticker": "LRCX",
+        "shares": 31,
+        "avg_cost": 265.18,
+        "current_price": 243.79,
+        "market_value": 7793.96,
+        "pnl": -683.96,
+        "pnl_pct": -8.1
+      },
+      {
+        "ticker": "ADI",
+        "shares": 16,
+        "avg_cost": 399.0,
+        "current_price": 401.98,
+        "market_value": 6716.44,
+        "pnl": 49.77,
+        "pnl_pct": 0.7
+      }
+    ]
+  },
   "events_analyzed": 10,
   "tickers_analyzed": 45,
   "total_signals": 265,
@@ -17,7 +132,7 @@
       "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 31,
       "remaining_move_pct": 15.5,
       "instrument": "shares",
@@ -41,7 +156,7 @@
       "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 25,
       "remaining_move_pct": 19.5,
       "instrument": "shares",
@@ -65,7 +180,7 @@
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 5,
       "remaining_move_pct": -20.0,
       "instrument": "shares",
@@ -89,7 +204,7 @@
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 27,
       "remaining_move_pct": 9.0,
       "instrument": "options_or_shares",
@@ -113,7 +228,7 @@
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 9,
       "remaining_move_pct": 14.0,
       "instrument": "options_or_shares",
@@ -139,7 +254,7 @@
       "convergence_score": 43,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 18,
       "remaining_move_pct": -12.5,
       "confidence_score": 61,
@@ -158,7 +273,7 @@
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.92,
+      "dollar_amount": 4885.67,
       "shares": 110,
       "remaining_move_pct": -13.5,
       "confidence_score": 56,
@@ -300,18 +415,6 @@
       ]
     },
     {
-      "headline": "Israel rejects Ukraine stolen grain after EU sanctions warning - EUobserver",
-      "event_type": "sanctions",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "RTX",
-        "LMT"
-      ]
-    },
-    {
       "headline": "Iran\u2019s currency falls to new low as US blockade, sanctions impact trade - Al Jazeera",
       "event_type": "sanctions",
       "source": "google_geopolitics",
@@ -397,6 +500,18 @@
     },
     {
       "headline": "European Central Bank keeps rates on hold in the face of inflation threat",
+      "event_type": "central_bank",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "JPM",
+        "GS",
+        "V",
+        "MA",
+        "BRK-B"
+      ]
+    },
+    {
+      "headline": "Bank of England faces the 'most difficult combination,' says governor Bailey as energy prices soar",
       "event_type": "central_bank",
       "source": "cnbc_politics",
       "affected_tickers": [
