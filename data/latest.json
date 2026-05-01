@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-01T01:01:32.050008+00:00",
+  "timestamp": "2026-05-01T02:25:58.392323+00:00",
   "events_analyzed": 10,
   "tickers_analyzed": 45,
   "total_signals": 265,
@@ -7,75 +7,152 @@
     {
       "ticker": "XOM",
       "direction": "BULLISH",
-      "convergence_score": 7,
+      "thesis": "central_bank -> commodity_supply_disruption -> impacts XOM. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Currently 7% priced in (moved +1.2% vs expected +16.7%). Timing: EARLY.",
+      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts XOM.",
+      "entry": 154.33,
+      "target": 178.25,
+      "stop": 146.61,
+      "conviction": 6,
+      "convergence_score": 13,
       "timing_phase": "EARLY",
       "position_size": "half",
       "remaining_move_pct": 15.5,
-      "confidence_score": 7,
-      "thesis": "XOM shows BULLISH signal convergence across 0 independent categories. Timing: EARLY. Estimated remaining move: +15.5%.",
-      "causal_chain": ""
+      "instrument": "shares",
+      "timeframe_days": [
+        3,
+        180
+      ],
+      "confidence_score": 48,
+      "confidence_grade": "",
+      "flags": [
+        "SINGLE SOURCE -- only one type of signal, may be noise"
+      ]
     },
     {
       "ticker": "CVX",
       "direction": "BULLISH",
-      "convergence_score": 7,
+      "thesis": "central_bank -> commodity_supply_disruption -> impacts CVX. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Currently 12% priced in (moved +2.5% vs expected +22.0%). Timing: EARLY.",
+      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts CVX.",
+      "entry": 193.31,
+      "target": 231.01,
+      "stop": 183.64,
+      "conviction": 6,
+      "convergence_score": 13,
       "timing_phase": "EARLY",
       "position_size": "half",
       "remaining_move_pct": 19.5,
-      "confidence_score": 7,
-      "thesis": "CVX shows BULLISH signal convergence across 0 independent categories. Timing: EARLY. Estimated remaining move: +19.5%.",
-      "causal_chain": ""
+      "instrument": "shares",
+      "timeframe_days": [
+        5,
+        180
+      ],
+      "confidence_score": 48,
+      "confidence_grade": "",
+      "flags": [
+        "SINGLE SOURCE -- only one type of signal, may be noise"
+      ]
     },
     {
       "ticker": "CAT",
       "direction": "BULLISH",
-      "convergence_score": 7,
+      "thesis": "regulation -> commodity_supply_disruption -> impacts CAT. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed CAT -20% over 180 days. Stock moved +12.8% against expected direction -- contrarian opportunity if thesis holds.",
+      "causal_chain": "regulation -> commodity_supply_disruption -> impacts CAT.",
+      "entry": 890.11,
+      "target": 1068.13,
+      "stop": 845.6,
+      "conviction": 6,
+      "convergence_score": 13,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
       "remaining_move_pct": -20.0,
-      "confidence_score": 7,
-      "thesis": "CAT shows BULLISH signal convergence across 0 independent categories. Timing: CONTRARIAN. Estimated remaining move: -20.0%.",
-      "causal_chain": ""
+      "instrument": "shares",
+      "timeframe_days": [
+        180,
+        180
+      ],
+      "confidence_score": 46,
+      "confidence_grade": "",
+      "flags": [
+        "SINGLE SOURCE -- only one type of signal, may be noise"
+      ]
     },
     {
       "ticker": "RTX",
       "direction": "BULLISH",
-      "convergence_score": 7,
+      "thesis": "central_bank -> commodity_supply_disruption -> impacts RTX. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Stock moved -12.7% against expected direction -- contrarian opportunity if thesis holds.",
+      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts RTX.",
+      "entry": 176.07,
+      "target": 191.92,
+      "stop": 167.27,
+      "conviction": 6,
+      "convergence_score": 13,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
       "remaining_move_pct": 9.0,
-      "confidence_score": 7,
-      "thesis": "RTX shows BULLISH signal convergence across 0 independent categories. Timing: CONTRARIAN. Estimated remaining move: +9.0%.",
-      "causal_chain": ""
+      "instrument": "options_or_shares",
+      "timeframe_days": [
+        7,
+        90
+      ],
+      "confidence_score": 46,
+      "confidence_grade": "",
+      "flags": [
+        "SINGLE SOURCE -- only one type of signal, may be noise"
+      ]
     },
     {
       "ticker": "LMT",
       "direction": "BULLISH",
-      "convergence_score": 7,
+      "thesis": "central_bank -> commodity_supply_disruption -> impacts LMT. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Stock moved -15.6% against expected direction -- contrarian opportunity if thesis holds.",
+      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts LMT.",
+      "entry": 517.97,
+      "target": 590.49,
+      "stop": 492.07,
+      "conviction": 6,
+      "convergence_score": 13,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
       "remaining_move_pct": 14.0,
-      "confidence_score": 7,
-      "thesis": "LMT shows BULLISH signal convergence across 0 independent categories. Timing: CONTRARIAN. Estimated remaining move: +14.0%.",
-      "causal_chain": ""
+      "instrument": "options_or_shares",
+      "timeframe_days": [
+        7,
+        90
+      ],
+      "confidence_score": 46,
+      "confidence_grade": "",
+      "flags": [
+        "SINGLE SOURCE -- only one type of signal, may be noise"
+      ]
     }
   ],
   "risks": [
     {
       "ticker": "AAPL",
       "direction": "BEARISH",
-      "convergence_score": 17,
+      "thesis": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed AAPL -10% over 90 days. Stock moved +4.2% against expected direction -- contrarian opportunity if thesis holds.",
+      "causal_chain": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL.",
+      "entry": 271.35,
+      "target": 237.43,
+      "stop": 284.92,
+      "conviction": 7,
+      "convergence_score": 23,
       "timing_phase": "CONTRARIAN",
-      "confidence_score": 17,
-      "thesis": "AAPL faces BEARISH pressure from 0 signal categories."
+      "remaining_move_pct": -12.5,
+      "confidence_score": 0
     },
     {
       "ticker": "NKE",
       "direction": "BEARISH",
-      "convergence_score": 7,
+      "thesis": "regulation -> commodity_supply_disruption -> impacts NKE. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed NKE -15% over 90 days. Stock moved +4.1% against expected direction -- contrarian opportunity if thesis holds.",
+      "causal_chain": "regulation -> commodity_supply_disruption -> impacts NKE.",
+      "entry": 44.36,
+      "target": 38.37,
+      "stop": 46.58,
+      "conviction": 6,
+      "convergence_score": 13,
       "timing_phase": "CONTRARIAN",
-      "confidence_score": 7,
-      "thesis": "NKE faces BEARISH pressure from 0 signal categories."
+      "remaining_move_pct": -13.5,
+      "confidence_score": 0
     }
   ],
   "events": [
@@ -188,6 +265,18 @@
       ]
     },
     {
+      "headline": "US sanctions DR Congo\u2019s former president over war in east - Anadolu Ajans\u0131",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
       "headline": "How the US-Israeli war is collapsing the sanctions regime on Iran - Al Jazeera",
       "event_type": "sanctions",
       "source": "google_geopolitics",
@@ -225,6 +314,18 @@
     },
     {
       "headline": "\u2018Will not call it war\u2019: Trump says about Iran; claims of settling India-Pak war through tariff | World News - Hindustan Times",
+      "event_type": "tariff",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "CAT"
+      ]
+    },
+    {
+      "headline": "\u2018Not a war\u2019: Trump on Iran; again claims he stopped India-Pakistan war with tariff threats - India.Com",
       "event_type": "tariff",
       "source": "google_geopolitics",
       "affected_tickers": [
@@ -285,30 +386,6 @@
     },
     {
       "headline": "European Central Bank keeps rates on hold in the face of inflation threat",
-      "event_type": "central_bank",
-      "source": "cnbc_politics",
-      "affected_tickers": [
-        "JPM",
-        "GS",
-        "V",
-        "MA",
-        "BRK-B"
-      ]
-    },
-    {
-      "headline": "Bank of England faces the 'most difficult combination,' says governor Bailey as energy prices soar",
-      "event_type": "central_bank",
-      "source": "cnbc_politics",
-      "affected_tickers": [
-        "JPM",
-        "GS",
-        "V",
-        "MA",
-        "BRK-B"
-      ]
-    },
-    {
-      "headline": "European markets rebound as oil prices fall; BOE and ECB hold rates",
       "event_type": "central_bank",
       "source": "cnbc_politics",
       "affected_tickers": [

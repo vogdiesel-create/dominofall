@@ -193,6 +193,34 @@
         }
         .empty-state p { font-size: 14px; }
 
+        /* Price levels */
+        .price-levels {
+            display: flex;
+            gap: 16px;
+            margin: 14px 0;
+            padding: 12px;
+            background: rgba(99,102,241,0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .price-level { flex: 1; text-align: center; }
+        .price-label { display: block; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .price-value { display: block; font-size: 18px; font-weight: 700; margin-top: 2px; }
+
+        /* Flags */
+        .flag-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: rgba(245,158,11,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(245,158,11,0.2);
+            margin-right: 4px;
+        }
+
         #loading { text-align: center; padding: 60px; color: var(--muted); }
     </style>
 </head>
@@ -263,7 +291,6 @@
 
         <footer>
             <p>Dominofall analyzes publicly available data. This is not financial advice.</p>
-            <p style="margin-top:8px;">Built by <a href="#">Braxton Vog</a></p>
         </footer>
     </div>
 
@@ -329,6 +356,40 @@
                 chainHtml = `<div class="causal-chain">${t.causal_chain}</div>`;
             }
 
+            // Entry / Target / Stop
+            let levelsHtml = '';
+            if (t.entry) {
+                const targetColor = dir === 'bullish' ? 'var(--green)' : 'var(--red)';
+                levelsHtml = `
+                <div class="price-levels">
+                    <div class="price-level">
+                        <span class="price-label">ENTRY</span>
+                        <span class="price-value">$${t.entry.toFixed(2)}</span>
+                    </div>
+                    <div class="price-level">
+                        <span class="price-label">TARGET</span>
+                        <span class="price-value" style="color:${targetColor}">${t.target ? '$' + t.target.toFixed(2) : '--'}</span>
+                    </div>
+                    <div class="price-level">
+                        <span class="price-label">STOP</span>
+                        <span class="price-value" style="color:var(--red)">${t.stop ? '$' + t.stop.toFixed(2) : '--'}</span>
+                    </div>
+                </div>`;
+            }
+
+            // Flags
+            let flagsHtml = '';
+            if (t.flags && t.flags.length > 0) {
+                flagsHtml = `<div style="margin-top:8px;">${t.flags.map(f => `<span class="flag-badge">${f}</span>`).join(' ')}</div>`;
+            }
+
+            // Timeframe
+            let tfHtml = '';
+            if (t.timeframe_days) {
+                const tf = Array.isArray(t.timeframe_days) ? `${t.timeframe_days[0]}-${t.timeframe_days[1]} days` : `${t.timeframe_days} days`;
+                tfHtml = `<div class="meta-item">Timeframe: <strong>${tf}</strong></div>`;
+            }
+
             return `
             <div class="thesis-card">
                 <div class="thesis-header">
@@ -337,16 +398,20 @@
                 </div>
                 ${chainHtml}
                 <div class="thesis-body">${t.thesis || 'Analysis in progress...'}</div>
+                ${levelsHtml}
                 <div class="thesis-meta">
-                    <div class="meta-item">Convergence: <strong>${t.convergence_score || '--'}</strong></div>
+                    <div class="meta-item">Conviction: <strong>${t.conviction || '--'}/10</strong></div>
                     <div class="meta-item">Timing: <strong>${t.timing_phase || '--'}</strong></div>
-                    <div class="meta-item">Position: <strong>${t.position_size || '--'}</strong></div>
+                    <div class="meta-item">Size: <strong>${(t.position_size || '--').replace('_', ' ')}</strong></div>
+                    <div class="meta-item">Instrument: <strong>${t.instrument || 'shares'}</strong></div>
                     <div class="meta-item">Est. Move: <strong>${t.remaining_move_pct ? (t.remaining_move_pct > 0 ? '+' : '') + t.remaining_move_pct.toFixed(1) + '%' : '--'}</strong></div>
+                    ${tfHtml}
                 </div>
                 <div class="confidence-bar">
                     <div class="confidence-fill" style="width:${confidence}%; background:${confColor}"></div>
                 </div>
-                <div style="font-size:11px; color:var(--muted); margin-top:4px;">Confidence: ${confidence}/100</div>
+                <div style="font-size:11px; color:var(--muted); margin-top:4px;">Confidence: ${confidence}/100${t.confidence_grade ? ' (' + t.confidence_grade + ')' : ''}</div>
+                ${flagsHtml}
             </div>`;
         }
 
