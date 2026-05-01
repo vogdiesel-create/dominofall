@@ -1,37 +1,19 @@
 {
-  "timestamp": "2026-05-01T03:38:02.584074+00:00",
+  "timestamp": "2026-05-01T20:37:08.695448+00:00",
   "portfolio": {
-    "equity": 97031.4,
+    "equity": 97057.97,
     "cash": 29570.15,
-    "total_deployed": 67461.25,
-    "total_pnl": 1066.09,
+    "total_deployed": 67487.82,
+    "total_pnl": 1092.66,
     "positions": [
-      {
-        "ticker": "ADI",
-        "shares": 16,
-        "avg_cost": 399.0,
-        "current_price": 397.03,
-        "market_value": 6633.73,
-        "pnl": -32.94,
-        "pnl_pct": -0.5
-      },
       {
         "ticker": "CAT",
         "shares": 9,
         "avg_cost": 831.9,
-        "current_price": 888.5,
-        "market_value": 8642.11,
-        "pnl": 550.57,
-        "pnl_pct": 6.8
-      },
-      {
-        "ticker": "CVX",
-        "shares": 42,
-        "avg_cost": 187.28,
-        "current_price": 190.48,
-        "market_value": 8111.77,
-        "pnl": 136.37,
-        "pnl_pct": 1.7
+        "current_price": 890.01,
+        "market_value": 8656.79,
+        "pnl": 565.26,
+        "pnl_pct": 7.0
       },
       {
         "ticker": "EOG",
@@ -43,31 +25,13 @@
         "pnl_pct": 2.8
       },
       {
-        "ticker": "JNJ",
-        "shares": 35,
-        "avg_cost": 226.9,
-        "current_price": 227.22,
-        "market_value": 8064.93,
-        "pnl": 11.29,
-        "pnl_pct": 0.1
-      },
-      {
-        "ticker": "LMT",
-        "shares": 16,
-        "avg_cost": 517.58,
-        "current_price": 514.0,
-        "market_value": 8275.69,
-        "pnl": -57.64,
-        "pnl_pct": -0.7
-      },
-      {
-        "ticker": "RTX",
-        "shares": 13,
-        "avg_cost": 174.97,
-        "current_price": 173.99,
-        "market_value": 2261.87,
-        "pnl": -12.74,
-        "pnl_pct": -0.6
+        "ticker": "XOM",
+        "shares": 55,
+        "avg_cost": 150.66,
+        "current_price": 152.86,
+        "market_value": 8455.02,
+        "pnl": 121.69,
+        "pnl_pct": 1.5
       },
       {
         "ticker": "SLB",
@@ -79,39 +43,76 @@
         "pnl_pct": 1.3
       },
       {
-        "ticker": "XOM",
-        "shares": 55,
-        "avg_cost": 150.66,
-        "current_price": 152.99,
-        "market_value": 8462.21,
-        "pnl": 128.88,
-        "pnl_pct": 1.5
+        "ticker": "LMT",
+        "shares": 16,
+        "avg_cost": 517.58,
+        "current_price": 514.84,
+        "market_value": 8289.23,
+        "pnl": -44.1,
+        "pnl_pct": -0.5
+      },
+      {
+        "ticker": "CVX",
+        "shares": 42,
+        "avg_cost": 187.28,
+        "current_price": 190.61,
+        "market_value": 8117.3,
+        "pnl": 141.91,
+        "pnl_pct": 1.8
+      },
+      {
+        "ticker": "JNJ",
+        "shares": 35,
+        "avg_cost": 226.9,
+        "current_price": 227.22,
+        "market_value": 8064.93,
+        "pnl": 11.29,
+        "pnl_pct": 0.1
+      },
+      {
+        "ticker": "ADI",
+        "shares": 16,
+        "avg_cost": 399.0,
+        "current_price": 397.03,
+        "market_value": 6633.73,
+        "pnl": -32.94,
+        "pnl_pct": -0.5
+      },
+      {
+        "ticker": "RTX",
+        "shares": 13,
+        "avg_cost": 174.97,
+        "current_price": 173.99,
+        "market_value": 2261.87,
+        "pnl": -12.74,
+        "pnl_pct": -0.6
       }
     ]
   },
   "events_analyzed": 10,
-  "tickers_analyzed": 45,
-  "total_signals": 265,
+  "tickers_analyzed": 52,
+  "total_signals": 314,
   "opportunities": [
     {
       "ticker": "XOM",
       "direction": "BULLISH",
-      "thesis": "central_bank -> commodity_supply_disruption -> impacts XOM. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Currently 7% priced in (moved +1.2% vs expected +16.7%). Timing: EARLY.",
-      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts XOM.",
-      "entry": 154.33,
-      "target": 178.25,
-      "stop": 146.61,
-      "conviction": 7,
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts XOM. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed XOM +15% over 90 days. Currently 1% priced in (moved +0.1% vs expected +9.0%). Timing: EARLY.",
+      "causal_chain": "sanctions -> commodity_supply_disruption -> impacts XOM.",
+      "current_price": 152.75,
+      "entry": 152.75,
+      "target": 166.34,
+      "stop": 145.11,
+      "conviction": 8,
       "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "half",
-      "dollar_amount": 4885.67,
+      "dollar_amount": 4852.9,
       "shares": 31,
-      "remaining_move_pct": 15.5,
-      "instrument": "shares",
+      "remaining_move_pct": 8.9,
+      "instrument": "options_or_shares",
       "timeframe_days": [
-        3,
-        180
+        5,
+        90
       ],
       "confidence_score": 58,
       "confidence_grade": "HIGH",
@@ -120,22 +121,23 @@
     {
       "ticker": "CVX",
       "direction": "BULLISH",
-      "thesis": "central_bank -> commodity_supply_disruption -> impacts CVX. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Currently 12% priced in (moved +2.5% vs expected +22.0%). Timing: EARLY.",
-      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts CVX.",
-      "entry": 193.31,
-      "target": 231.01,
-      "stop": 183.64,
-      "conviction": 7,
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts CVX. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed CVX +22% over 90 days. Currently 0% priced in (moved -0.6% vs expected +13.0%). Timing: EARLY.",
+      "causal_chain": "sanctions -> commodity_supply_disruption -> impacts CVX.",
+      "current_price": 190.63,
+      "entry": 190.63,
+      "target": 215.41,
+      "stop": 181.1,
+      "conviction": 8,
       "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "half",
-      "dollar_amount": 4885.67,
+      "dollar_amount": 4852.9,
       "shares": 25,
-      "remaining_move_pct": 19.5,
-      "instrument": "shares",
+      "remaining_move_pct": 13.0,
+      "instrument": "options_or_shares",
       "timeframe_days": [
         5,
-        180
+        90
       ],
       "confidence_score": 58,
       "confidence_grade": "HIGH",
@@ -144,16 +146,17 @@
     {
       "ticker": "CAT",
       "direction": "BULLISH",
-      "thesis": "regulation -> commodity_supply_disruption -> impacts CAT. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed CAT -20% over 180 days. Stock moved +12.8% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "regulation -> commodity_supply_disruption -> impacts CAT. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed CAT -20% over 180 days. Stock moved +12.6% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "regulation -> commodity_supply_disruption -> impacts CAT.",
-      "entry": 890.11,
-      "target": 1068.13,
-      "stop": 845.6,
+      "current_price": 889.67,
+      "entry": 889.67,
+      "target": 1067.6,
+      "stop": 845.19,
       "conviction": 7,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.67,
+      "dollar_amount": 4852.9,
       "shares": 5,
       "remaining_move_pct": -20.0,
       "instrument": "shares",
@@ -168,46 +171,23 @@
     {
       "ticker": "RTX",
       "direction": "BULLISH",
-      "thesis": "central_bank -> commodity_supply_disruption -> impacts RTX. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Stock moved -12.7% against expected direction -- contrarian opportunity if thesis holds.",
-      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts RTX.",
-      "entry": 176.07,
-      "target": 191.92,
-      "stop": 167.27,
-      "conviction": 7,
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts RTX. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed RTX +8% over 60 days. Stock moved -13.6% against expected direction -- contrarian opportunity if thesis holds.",
+      "causal_chain": "sanctions -> commodity_supply_disruption -> impacts RTX.",
+      "current_price": 173.99,
+      "entry": 173.99,
+      "target": 185.3,
+      "stop": 165.29,
+      "conviction": 8,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.67,
+      "dollar_amount": 4852.9,
       "shares": 27,
-      "remaining_move_pct": 9.0,
-      "instrument": "options_or_shares",
+      "remaining_move_pct": 6.5,
+      "instrument": "shares",
       "timeframe_days": [
         7,
-        90
-      ],
-      "confidence_score": 56,
-      "confidence_grade": "HIGH",
-      "flags": []
-    },
-    {
-      "ticker": "LMT",
-      "direction": "BULLISH",
-      "thesis": "central_bank -> commodity_supply_disruption -> impacts LMT. Closest analog: Silicon Valley Bank collapse triggers banking crisis (2023-03-10, 28% match). Stock moved -15.6% against expected direction -- contrarian opportunity if thesis holds.",
-      "causal_chain": "central_bank -> commodity_supply_disruption -> impacts LMT.",
-      "entry": 517.97,
-      "target": 590.49,
-      "stop": 492.07,
-      "conviction": 7,
-      "convergence_score": 33,
-      "timing_phase": "CONTRARIAN",
-      "position_size": "half",
-      "dollar_amount": 4885.67,
-      "shares": 9,
-      "remaining_move_pct": 14.0,
-      "instrument": "options_or_shares",
-      "timeframe_days": [
-        7,
-        90
+        60
       ],
       "confidence_score": 56,
       "confidence_grade": "HIGH",
@@ -218,17 +198,18 @@
     {
       "ticker": "AAPL",
       "direction": "BEARISH",
-      "thesis": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed AAPL -10% over 90 days. Stock moved +4.2% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed AAPL -10% over 90 days. Stock moved +8.1% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL.",
-      "entry": 271.35,
-      "target": 237.43,
-      "stop": 284.92,
+      "current_price": 280.14,
+      "entry": 280.14,
+      "target": 245.12,
+      "stop": 294.15,
       "conviction": 8,
       "convergence_score": 43,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.67,
-      "shares": 18,
+      "dollar_amount": 4852.9,
+      "shares": 17,
       "remaining_move_pct": -12.5,
       "confidence_score": 61,
       "confidence_grade": "HIGH",
@@ -237,17 +218,18 @@
     {
       "ticker": "NKE",
       "direction": "BEARISH",
-      "thesis": "regulation -> commodity_supply_disruption -> impacts NKE. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed NKE -15% over 90 days. Stock moved +4.1% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "regulation -> commodity_supply_disruption -> impacts NKE. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed NKE -15% over 90 days. Stock moved +3.5% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "regulation -> commodity_supply_disruption -> impacts NKE.",
-      "entry": 44.36,
-      "target": 38.37,
-      "stop": 46.58,
+      "current_price": 44.4,
+      "entry": 44.4,
+      "target": 38.41,
+      "stop": 46.62,
       "conviction": 7,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4885.67,
-      "shares": 110,
+      "dollar_amount": 4852.9,
+      "shares": 109,
       "remaining_move_pct": -13.5,
       "confidence_score": 56,
       "confidence_grade": "HIGH",
@@ -280,43 +262,19 @@
       ]
     },
     {
-      "headline": "Bank of England keeps rates on hold at 3.75% as Iran war shakes outlook",
-      "event_type": "central_bank",
-      "source": "cnbc_politics",
+      "headline": "US Sanctions Iran Exchanges, China Terminal on Oil Purchases - Bloomberg.com",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
       "affected_tickers": [
         "XOM",
         "CVX",
         "SLB",
         "USO",
-        "JPM"
+        "MP"
       ]
     },
     {
-      "headline": "ECB and BoE warn of rate rises as they grapple with Middle East shock",
-      "event_type": "central_bank",
-      "source": "ft_world",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "USO",
-        "JPM"
-      ]
-    },
-    {
-      "headline": "BoE cannot shield households from Iran energy crisis, Bailey says ",
-      "event_type": "central_bank",
-      "source": "ft_world",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "USO",
-        "JPM"
-      ]
-    },
-    {
-      "headline": "FDA proposes excluding Novo, Lilly weight loss drugs from bulk compounding list in win for the companies",
+      "headline": "AstraZeneca stock falls after FDA panel votes against new cancer drug",
       "event_type": "regulation",
       "source": "cnbc_politics",
       "affected_tickers": [
@@ -328,15 +286,39 @@
       ]
     },
     {
-      "headline": "Bolsonaro\u2019s prison time likely to be curbed as Brazil lawmakers block Lula veto",
-      "event_type": "regulation",
-      "source": "ft_world",
+      "headline": "Trump announces 25 percent tariffs on European Union cars, trucks",
+      "event_type": "trade_deal",
+      "source": "aljazeera",
       "affected_tickers": [
-        "AAPL",
-        "MSFT",
-        "NVDA",
-        "GOOGL",
-        "AMZN"
+        "CAT",
+        "GE",
+        "COST",
+        "WMT",
+        "NKE"
+      ]
+    },
+    {
+      "headline": "EU trade deal with South America\u2019s Mercosur bloc takes provisional effect",
+      "event_type": "trade_deal",
+      "source": "aljazeera",
+      "affected_tickers": [
+        "CAT",
+        "GE",
+        "COST",
+        "WMT",
+        "NKE"
+      ]
+    },
+    {
+      "headline": "Trump says he's raising EU auto tariffs to 25% without clarifying how",
+      "event_type": "trade_deal",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "CAT",
+        "GE",
+        "COST",
+        "WMT",
+        "NKE"
       ]
     },
     {
@@ -352,27 +334,63 @@
       ]
     },
     {
-      "headline": "Treasury Issues More Sanctions on Iranian Oil Exports",
+      "headline": "Donald Trump threatens 25% tariff on EU cars, trucks; says Europe violated trade deal - Business Today",
+      "event_type": "trade_deal",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "CAT",
+        "GE",
+        "COST",
+        "WMT",
+        "NKE"
+      ]
+    },
+    {
+      "headline": "US imposes sanctions on DR Congo ex-President Kabila alleging rebel support",
       "event_type": "sanctions",
+      "source": "bbc_world",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "Israel Said to Have Helped Defend Emirates in Iran War With Iron Dome",
+      "event_type": "tariff",
       "source": "nyt_world",
       "affected_tickers": [
         "XOM",
         "CVX",
         "SLB",
         "USO",
-        "RTX"
+        "CAT"
       ]
     },
     {
-      "headline": "How the US-Israeli war is collapsing the sanctions regime on Iran - Al Jazeera",
+      "headline": "Photos: Cuba holds May Day celebrations amid US threats",
       "event_type": "sanctions",
-      "source": "google_geopolitics",
+      "source": "aljazeera",
       "affected_tickers": [
         "XOM",
         "CVX",
         "SLB",
-        "USO",
-        "RTX"
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "Pentagon tech chief says Anthropic is still blacklisted, but Mythos is a separate issue",
+      "event_type": "sanctions",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
       ]
     },
     {
@@ -388,7 +406,7 @@
       ]
     },
     {
-      "headline": "Iran\u2019s currency falls to new low as US blockade, sanctions impact trade - Al Jazeera",
+      "headline": "War, latest news. Wsj: Iran proposes nuclear talks in exchange for easing sanctions - Il Sole 24 ORE",
       "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
@@ -400,43 +418,19 @@
       ]
     },
     {
-      "headline": "\u2018Will not call it war\u2019: Trump says about Iran; claims of settling India-Pak war through tariff | World News - Hindustan Times",
-      "event_type": "tariff",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "USO",
-        "CAT"
-      ]
-    },
-    {
-      "headline": "\u2018Not a war\u2019: Trump on Iran; again claims he stopped India-Pakistan war with tariff threats - India.Com",
-      "event_type": "tariff",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "USO",
-        "CAT"
-      ]
-    },
-    {
-      "headline": "DRC WAR: U.S. Sanctions Joseph Kabila - ChimpReports",
+      "headline": "Zelenskyy claims Russia lost around $7 billion in 2026 due to sanctions imposed due to war - lokmattimes.com",
       "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
         "XOM",
         "CVX",
         "SLB",
-        "RTX",
-        "LMT"
+        "USO",
+        "RTX"
       ]
     },
     {
-      "headline": "UN sanctions RSF leader\u2019s brother, others over Sudan war - Radio Tamazuj",
+      "headline": "DRC WAR: U.S. Sanctions Joseph Kabila - ChimpReports",
       "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
@@ -460,7 +454,7 @@
       ]
     },
     {
-      "headline": "Rising Fuel Prices Force Policymakers to Weigh Excruciating Choices",
+      "headline": "Why Countries Are Stocking Up on Gold",
       "event_type": "central_bank",
       "source": "nyt_world",
       "affected_tickers": [
@@ -472,21 +466,9 @@
       ]
     },
     {
-      "headline": "European Central Bank keeps rates on hold in the face of inflation threat",
+      "headline": "Where in the World Is All That Gold Stored?",
       "event_type": "central_bank",
-      "source": "cnbc_politics",
-      "affected_tickers": [
-        "JPM",
-        "GS",
-        "V",
-        "MA",
-        "BRK-B"
-      ]
-    },
-    {
-      "headline": "Bank of England faces the 'most difficult combination,' says governor Bailey as energy prices soar",
-      "event_type": "central_bank",
-      "source": "cnbc_politics",
+      "source": "nyt_world",
       "affected_tickers": [
         "JPM",
         "GS",
@@ -495,6 +477,5 @@
         "BRK-B"
       ]
     }
-  ],
-  "last_refresh": "2026-05-01T20:30:02.220116+00:00"
+  ]
 }
