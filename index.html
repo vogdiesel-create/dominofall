@@ -420,8 +420,32 @@
             let levelsHtml = '';
             if (t.entry) {
                 const targetColor = dir === 'bullish' ? 'var(--green)' : 'var(--red)';
-                const dollarAmt = t.dollar_amount ? '$' + t.dollar_amount.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}) : '--';
-                const sharesAmt = t.shares ? t.shares + ' shares' : '';
+                // Check if we actually hold this stock
+                const pf = data.portfolio;
+                const holding = pf && pf.positions ? pf.positions.find(p => p.ticker === t.ticker) : null;
+
+                let holdingHtml = '';
+                if (holding) {
+                    const pnlColor = holding.pnl >= 0 ? 'var(--green)' : 'var(--red)';
+                    const pnlSign = holding.pnl >= 0 ? '+' : '';
+                    holdingHtml = `
+                    <div class="price-level" style="border-left:2px solid var(--green);padding-left:8px">
+                        <span class="price-label">HOLDING</span>
+                        <span class="price-value" style="color:var(--green)">$${holding.market_value.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})}</span>
+                        <span class="price-label" style="margin-top:2px">${holding.shares} shares @ $${holding.avg_cost.toFixed(2)}</span>
+                        <span class="price-label" style="margin-top:2px;color:${pnlColor}">${pnlSign}$${holding.pnl.toFixed(0)} (${pnlSign}${holding.pnl_pct.toFixed(1)}%)</span>
+                    </div>`;
+                } else {
+                    const dollarAmt = t.dollar_amount ? '$' + t.dollar_amount.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}) : '--';
+                    const sharesAmt = t.shares ? t.shares + ' shares' : '';
+                    holdingHtml = `
+                    <div class="price-level">
+                        <span class="price-label">REC. SIZE</span>
+                        <span class="price-value" style="color:var(--accent)">${dollarAmt}</span>
+                        ${sharesAmt ? '<span class="price-label" style="margin-top:2px">' + sharesAmt + '</span>' : ''}
+                    </div>`;
+                }
+
                 levelsHtml = `
                 <div class="price-levels">
                     <div class="price-level">
@@ -436,11 +460,7 @@
                         <span class="price-label">STOP</span>
                         <span class="price-value" style="color:var(--red)">${t.stop ? '$' + t.stop.toFixed(2) : '--'}</span>
                     </div>
-                    <div class="price-level">
-                        <span class="price-label">REC. SIZE</span>
-                        <span class="price-value" style="color:var(--accent)">${dollarAmt}</span>
-                        ${sharesAmt ? '<span class="price-label" style="margin-top:2px">' + sharesAmt + '</span>' : ''}
-                    </div>
+                    ${holdingHtml}
                 </div>`;
             }
 
