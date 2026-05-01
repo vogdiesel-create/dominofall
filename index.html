@@ -275,6 +275,12 @@
             <div id="portfolio-table"></div>
         </section>
 
+        <section id="equity-section" style="display:none;">
+            <h2>Performance</h2>
+            <canvas id="equity-chart" width="920" height="200" style="width:100%; max-height:200px; background:var(--surface); border:1px solid var(--border); border-radius:6px;"></canvas>
+            <div id="equity-stats" style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;"></div>
+        </section>
+
         <section id="opportunities-section" style="display:none;">
             <h2>Top Opportunities</h2>
             <div id="opportunities"></div>
@@ -499,6 +505,96 @@
         }
 
         loadData();
+
+        // Load equity history chart
+        async function loadEquityChart() {
+            try {
+                const resp = await fetch('data/equity_history.json');
+                if (!resp.ok) return;
+                const history = await resp.json();
+                if (history.length < 1) return;
+
+                document.getElementById('equity-section').style.display = 'block';
+
+                const canvas = document.getElementById('equity-chart');
+                const ctx = canvas.getContext('2d');
+                const W = canvas.width;
+                const H = canvas.height;
+                const pad = { top: 20, right: 20, bottom: 30, left: 60 };
+
+                const values = history.map(h => h.equity);
+                const minV = Math.min(...values) * 0.998;
+                const maxV = Math.max(...values) * 1.002;
+                const startVal = 100000;
+
+                ctx.clearRect(0, 0, W, H);
+
+                // Draw baseline at 100K
+                const baseY = pad.top + (1 - (startVal - minV) / (maxV - minV)) * (H - pad.top - pad.bottom);
+                ctx.strokeStyle = '#333';
+                ctx.setLineDash([4, 4]);
+                ctx.beginPath();
+                ctx.moveTo(pad.left, baseY);
+                ctx.lineTo(W - pad.right, baseY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Draw equity line
+                const chartW = W - pad.left - pad.right;
+                const chartH = H - pad.top - pad.bottom;
+
+                ctx.strokeStyle = values[values.length - 1] >= startVal ? '#22c55e' : '#ef4444';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                for (let i = 0; i < values.length; i++) {
+                    const x = pad.left + (i / Math.max(1, values.length - 1)) * chartW;
+                    const y = pad.top + (1 - (values[i] - minV) / (maxV - minV)) * chartH;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Y-axis labels
+                ctx.fillStyle = '#888';
+                ctx.font = '11px monospace';
+                ctx.textAlign = 'right';
+                for (let i = 0; i <= 4; i++) {
+                    const v = minV + (maxV - minV) * (i / 4);
+                    const y = pad.top + (1 - i / 4) * chartH;
+                    ctx.fillText('$' + Math.round(v).toLocaleString(), pad.left - 5, y + 4);
+                }
+
+                // X-axis labels
+                ctx.textAlign = 'center';
+                const step = Math.max(1, Math.floor(history.length / 6));
+                for (let i = 0; i < history.length; i += step) {
+                    const x = pad.left + (i / Math.max(1, history.length - 1)) * chartW;
+                    ctx.fillText(history[i].date.slice(5), x, H - 5);
+                }
+
+                // Stats
+                const latest = values[values.length - 1];
+                const totalReturn = ((latest - startVal) / startVal * 100).toFixed(1);
+                const retClass = latest >= startVal ? 'pnl-positive' : 'pnl-negative';
+                document.getElementById('equity-stats').innerHTML = `
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Starting Capital</div>
+                        <div class="stat-value">$100,000</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Current Equity</div>
+                        <div class="stat-value">$${latest.toLocaleString()}</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Total Return</div>
+                        <div class="stat-value ${retClass}">${totalReturn}%</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="stat-label">Days Tracked</div>
+                        <div class="stat-value">${history.length}</div>
+                    </div>`;
+            } catch (e) {}
+        }
+        loadEquityChart();
     </script>
 </body>
 </html>
