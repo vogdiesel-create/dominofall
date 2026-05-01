@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominofall - Cause-and-Effect Stock Analysis</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #1e1e2e;
+            --text: #e0e0e8;
+            --muted: #8888a0;
+            --accent: #6366f1;
+            --green: #22c55e;
+            --red: #ef4444;
+            --gold: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 32px 0;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .logo span { color: var(--accent); }
+        .tagline {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .updated {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* Summary bar */
+        .summary-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 14px;
+        }
+        .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .stat-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+
+        /* Sections */
+        section { padding: 32px 0; border-bottom: 1px solid var(--border); }
+        h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* Thesis cards */
+        .thesis-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .thesis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .ticker {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .direction-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .bullish { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+        .bearish { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+
+        .thesis-body { font-size: 14px; color: var(--text); margin-bottom: 16px; }
+        .causal-chain {
+            font-size: 13px;
+            color: var(--muted);
+            padding: 12px;
+            background: rgba(99,102,241,0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 12px;
+        }
+        .causal-chain .arrow { color: var(--accent); }
+
+        .thesis-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+            font-size: 12px;
+        }
+        .meta-item { color: var(--muted); }
+        .meta-item strong { color: var(--text); }
+
+        /* Events */
+        .event-list { list-style: none; }
+        .event-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+        .event-item:last-child { border-bottom: none; }
+        .event-type {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: rgba(99,102,241,0.1);
+            color: var(--accent);
+            margin-right: 8px;
+        }
+        .event-tickers { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+        /* Confidence meter */
+        .confidence-bar {
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .confidence-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* How it works */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 20px 0;
+            font-size: 13px;
+        }
+        .flow-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 8px 14px;
+        }
+        .flow-arrow { color: var(--accent); font-weight: bold; }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--muted);
+        }
+        .empty-state p { font-size: 14px; }
+
+        #loading { text-align: center; padding: 60px; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">domino<span>fall</span></div>
+            <div class="tagline">Cause-and-effect stock analysis. Not predictions -- reasoning.</div>
+            <div class="updated" id="last-updated"></div>
+        </header>
+
+        <div class="summary-bar" id="summary-bar">
+            <div class="stat-card">
+                <div class="stat-label">Events Analyzed</div>
+                <div class="stat-value" id="stat-events">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tickers Scanned</div>
+                <div class="stat-value" id="stat-tickers">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Signals Found</div>
+                <div class="stat-value" id="stat-signals">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Theses</div>
+                <div class="stat-value" id="stat-theses">--</div>
+            </div>
+        </div>
+
+        <div id="loading">Loading analysis...</div>
+
+        <section id="opportunities-section" style="display:none;">
+            <h2>Top Opportunities</h2>
+            <div id="opportunities"></div>
+        </section>
+
+        <section id="risks-section" style="display:none;">
+            <h2>Key Risks</h2>
+            <div id="risks"></div>
+        </section>
+
+        <section id="events-section" style="display:none;">
+            <h2>Events Driving Markets</h2>
+            <ul class="event-list" id="events"></ul>
+        </section>
+
+        <section>
+            <h2>How Dominofall Works</h2>
+            <div class="flow-diagram">
+                <div class="flow-step">News / Geopolitics</div>
+                <div class="flow-arrow">-></div>
+                <div class="flow-step">Causal Chain Mapping</div>
+                <div class="flow-arrow">-></div>
+                <div class="flow-step">Historical Analogy</div>
+                <div class="flow-arrow">-></div>
+                <div class="flow-step">Priced-In Detection</div>
+                <div class="flow-arrow">-></div>
+                <div class="flow-step">Signal Convergence</div>
+                <div class="flow-arrow">-></div>
+                <div class="flow-step">Thesis</div>
+            </div>
+            <div style="text-align:center; color:var(--muted); font-size:13px; max-width:600px; margin:0 auto;">
+                Every thesis traces a complete cause-and-effect chain backed by historical precedent.
+                No gut feel. No "analyst consensus says buy." Just structured reasoning from event to price impact.
+            </div>
+        </section>
+
+        <footer>
+            <p>Dominofall analyzes publicly available data. This is not financial advice.</p>
+            <p style="margin-top:8px;">Built by <a href="#">Braxton Vog</a></p>
+        </footer>
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                const resp = await fetch('data/latest.json');
+                if (!resp.ok) throw new Error('No data yet');
+                const data = await resp.json();
+                render(data);
+            } catch (e) {
+                document.getElementById('loading').innerHTML =
+                    '<p style="color:var(--muted)">Analysis runs daily at market close. Check back soon.</p>';
+            }
+        }
+
+        function render(data) {
+            document.getElementById('loading').style.display = 'none';
+
+            // Update timestamp
+            if (data.timestamp) {
+                const d = new Date(data.timestamp);
+                document.getElementById('last-updated').textContent =
+                    'Last updated: ' + d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+            }
+
+            // Summary stats
+            document.getElementById('stat-events').textContent = data.events_analyzed || 0;
+            document.getElementById('stat-tickers').textContent = data.tickers_analyzed || 0;
+            document.getElementById('stat-signals').textContent = data.total_signals || 0;
+            const totalTheses = (data.opportunities || []).length + (data.risks || []).length;
+            document.getElementById('stat-theses').textContent = totalTheses;
+
+            // Opportunities
+            const opps = data.opportunities || [];
+            if (opps.length > 0) {
+                document.getElementById('opportunities-section').style.display = 'block';
+                document.getElementById('opportunities').innerHTML = opps.map(renderThesis).join('');
+            }
+
+            // Risks
+            const risks = data.risks || [];
+            if (risks.length > 0) {
+                document.getElementById('risks-section').style.display = 'block';
+                document.getElementById('risks').innerHTML = risks.map(renderThesis).join('');
+            }
+
+            // Events
+            const events = data.events || [];
+            if (events.length > 0) {
+                document.getElementById('events-section').style.display = 'block';
+                document.getElementById('events').innerHTML = events.slice(0, 15).map(renderEvent).join('');
+            }
+        }
+
+        function renderThesis(t) {
+            const dir = t.direction === 'BULLISH' ? 'bullish' : 'bearish';
+            const confidence = t.confidence_score || 0;
+            const confColor = confidence >= 60 ? 'var(--green)' : confidence >= 40 ? 'var(--gold)' : 'var(--red)';
+
+            let chainHtml = '';
+            if (t.causal_chain) {
+                chainHtml = `<div class="causal-chain">${t.causal_chain}</div>`;
+            }
+
+            return `
+            <div class="thesis-card">
+                <div class="thesis-header">
+                    <span class="ticker">${t.ticker}</span>
+                    <span class="direction-badge ${dir}">${t.direction}</span>
+                </div>
+                ${chainHtml}
+                <div class="thesis-body">${t.thesis || 'Analysis in progress...'}</div>
+                <div class="thesis-meta">
+                    <div class="meta-item">Convergence: <strong>${t.convergence_score || '--'}</strong></div>
+                    <div class="meta-item">Timing: <strong>${t.timing_phase || '--'}</strong></div>
+                    <div class="meta-item">Position: <strong>${t.position_size || '--'}</strong></div>
+                    <div class="meta-item">Est. Move: <strong>${t.remaining_move_pct ? (t.remaining_move_pct > 0 ? '+' : '') + t.remaining_move_pct.toFixed(1) + '%' : '--'}</strong></div>
+                </div>
+                <div class="confidence-bar">
+                    <div class="confidence-fill" style="width:${confidence}%; background:${confColor}"></div>
+                </div>
+                <div style="font-size:11px; color:var(--muted); margin-top:4px;">Confidence: ${confidence}/100</div>
+            </div>`;
+        }
+
+        function renderEvent(e) {
+            const tickers = (e.affected_tickers || []).slice(0, 5).join(', ');
+            return `
+            <li class="event-item">
+                <span class="event-type">${e.event_type || 'event'}</span>
+                ${e.headline}
+                ${tickers ? `<div class="event-tickers">Affects: ${tickers}</div>` : ''}
+            </li>`;
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

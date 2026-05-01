@@ -1,0 +1,323 @@
+{
+  "timestamp": "2026-05-01T00:57:13.126530+00:00",
+  "events_analyzed": 10,
+  "tickers_analyzed": 45,
+  "total_signals": 265,
+  "opportunities": [
+    {
+      "ticker": "XOM",
+      "direction": "BULLISH",
+      "convergence_score": 7,
+      "timing_phase": "EARLY",
+      "position_size": "half",
+      "remaining_move_pct": 15.5,
+      "confidence_score": 7,
+      "thesis": "XOM shows BULLISH signal convergence across 0 independent categories. Timing: EARLY. Estimated remaining move: +15.5%.",
+      "causal_chain": "other:  -> commodity: "
+    },
+    {
+      "ticker": "CVX",
+      "direction": "BULLISH",
+      "convergence_score": 7,
+      "timing_phase": "EARLY",
+      "position_size": "half",
+      "remaining_move_pct": 19.5,
+      "confidence_score": 7,
+      "thesis": "CVX shows BULLISH signal convergence across 0 independent categories. Timing: EARLY. Estimated remaining move: +19.5%.",
+      "causal_chain": "other:  -> commodity: "
+    },
+    {
+      "ticker": "CAT",
+      "direction": "BULLISH",
+      "convergence_score": 7,
+      "timing_phase": "CONTRARIAN",
+      "position_size": "half",
+      "remaining_move_pct": -20.0,
+      "confidence_score": 7,
+      "thesis": "CAT shows BULLISH signal convergence across 0 independent categories. Timing: CONTRARIAN. Estimated remaining move: -20.0%.",
+      "causal_chain": "other:  -> commodity: "
+    },
+    {
+      "ticker": "RTX",
+      "direction": "BULLISH",
+      "convergence_score": 7,
+      "timing_phase": "CONTRARIAN",
+      "position_size": "half",
+      "remaining_move_pct": 9.0,
+      "confidence_score": 7,
+      "thesis": "RTX shows BULLISH signal convergence across 0 independent categories. Timing: CONTRARIAN. Estimated remaining move: +9.0%.",
+      "causal_chain": "other:  -> commodity: "
+    },
+    {
+      "ticker": "LMT",
+      "direction": "BULLISH",
+      "convergence_score": 7,
+      "timing_phase": "CONTRARIAN",
+      "position_size": "half",
+      "remaining_move_pct": 14.0,
+      "confidence_score": 7,
+      "thesis": "LMT shows BULLISH signal convergence across 0 independent categories. Timing: CONTRARIAN. Estimated remaining move: +14.0%.",
+      "causal_chain": "other:  -> commodity: "
+    }
+  ],
+  "risks": [
+    {
+      "ticker": "AAPL",
+      "direction": "BEARISH",
+      "convergence_score": 17,
+      "timing_phase": "CONTRARIAN",
+      "confidence_score": 17,
+      "thesis": "AAPL faces BEARISH pressure from 0 signal categories."
+    },
+    {
+      "ticker": "NKE",
+      "direction": "BEARISH",
+      "convergence_score": 7,
+      "timing_phase": "CONTRARIAN",
+      "confidence_score": 7,
+      "thesis": "NKE faces BEARISH pressure from 0 signal categories."
+    }
+  ],
+  "events": [
+    {
+      "headline": "Why is China banning drone sales in Beijing?",
+      "event_type": "regulation",
+      "source": "bbc_world",
+      "affected_tickers": [
+        "MP",
+        "ADM",
+        "DE",
+        "MOS",
+        "AAPL"
+      ]
+    },
+    {
+      "headline": "Beyond Brute Force: The US-China Trade War and the New Rules of Economic Power - The London School of Economics and Political Science",
+      "event_type": "regulation",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "MP",
+        "ADM",
+        "DE",
+        "MOS",
+        "AAPL"
+      ]
+    },
+    {
+      "headline": "Bank of England keeps rates on hold at 3.75% as Iran war shakes outlook",
+      "event_type": "central_bank",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "JPM"
+      ]
+    },
+    {
+      "headline": "ECB and BoE warn of rate rises as they grapple with Middle East shock",
+      "event_type": "central_bank",
+      "source": "ft_world",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "JPM"
+      ]
+    },
+    {
+      "headline": "BoE cannot shield households from Iran energy crisis, Bailey says ",
+      "event_type": "central_bank",
+      "source": "ft_world",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "JPM"
+      ]
+    },
+    {
+      "headline": "FDA proposes excluding Novo, Lilly weight loss drugs from bulk compounding list in win for the companies",
+      "event_type": "regulation",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "GOOGL",
+        "AMZN"
+      ]
+    },
+    {
+      "headline": "Bolsonaro\u2019s prison time likely to be curbed as Brazil lawmakers block Lula veto",
+      "event_type": "regulation",
+      "source": "ft_world",
+      "affected_tickers": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "GOOGL",
+        "AMZN"
+      ]
+    },
+    {
+      "headline": "North American trade deal at risk as U.S., Canada exchange barbs - Axios",
+      "event_type": "trade_deal",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "CAT",
+        "GE",
+        "COST",
+        "WMT",
+        "NKE"
+      ]
+    },
+    {
+      "headline": "Treasury Issues More Sanctions on Iranian Oil Exports",
+      "event_type": "sanctions",
+      "source": "nyt_world",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "RTX"
+      ]
+    },
+    {
+      "headline": "How the US-Israeli war is collapsing the sanctions regime on Iran - Al Jazeera",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "RTX"
+      ]
+    },
+    {
+      "headline": "Israel rejects Ukraine stolen grain after EU sanctions warning - EUobserver",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "Iran\u2019s currency falls to new low as US blockade, sanctions impact trade - Al Jazeera",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "RTX"
+      ]
+    },
+    {
+      "headline": "\u2018Will not call it war\u2019: Trump says about Iran; claims of settling India-Pak war through tariff | World News - Hindustan Times",
+      "event_type": "tariff",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "CAT"
+      ]
+    },
+    {
+      "headline": "DRC WAR: U.S. Sanctions Joseph Kabila - ChimpReports",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "UN sanctions RSF leader\u2019s brother, others over Sudan war - Radio Tamazuj",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "Indians lost $2.5bn to digital fraud in 2025 - now its central bank is fighting back",
+      "event_type": "central_bank",
+      "source": "bbc_world",
+      "affected_tickers": [
+        "JPM",
+        "GS",
+        "V",
+        "MA",
+        "BRK-B"
+      ]
+    },
+    {
+      "headline": "Rising Fuel Prices Force Policymakers to Weigh Excruciating Choices",
+      "event_type": "central_bank",
+      "source": "nyt_world",
+      "affected_tickers": [
+        "JPM",
+        "GS",
+        "V",
+        "MA",
+        "BRK-B"
+      ]
+    },
+    {
+      "headline": "European Central Bank keeps rates on hold in the face of inflation threat",
+      "event_type": "central_bank",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "JPM",
+        "GS",
+        "V",
+        "MA",
+        "BRK-B"
+      ]
+    },
+    {
+      "headline": "Bank of England faces the 'most difficult combination,' says governor Bailey as energy prices soar",
+      "event_type": "central_bank",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "JPM",
+        "GS",
+        "V",
+        "MA",
+        "BRK-B"
+      ]
+    },
+    {
+      "headline": "European markets rebound as oil prices fall; BOE and ECB hold rates",
+      "event_type": "central_bank",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "JPM",
+        "GS",
+        "V",
+        "MA",
+        "BRK-B"
+      ]
+    }
+  ]
+}
