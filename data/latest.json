@@ -1,38 +1,20 @@
 {
-  "timestamp": "2026-05-04T20:38:24.804555+00:00",
-  "last_refresh": "2026-05-05T20:30:02.613036+00:00",
+  "timestamp": "2026-05-05T20:37:31.446433+00:00",
+  "last_refresh": "2026-05-05T20:37:31.446437+00:00",
   "portfolio": {
-    "equity": 97356.81,
+    "equity": 97384.93,
     "cash": 20476.99,
-    "total_deployed": 76879.82,
-    "total_pnl": 1391.52,
+    "total_deployed": 76907.94,
+    "total_pnl": 1419.65,
     "positions": [
-      {
-        "ticker": "ADI",
-        "shares": 16,
-        "avg_cost": 399.0,
-        "current_price": 405.85,
-        "market_value": 6781.1,
-        "pnl": 114.43,
-        "pnl_pct": 1.7
-      },
       {
         "ticker": "CAT",
         "shares": 9,
         "avg_cost": 831.9,
-        "current_price": 905.0,
-        "market_value": 8802.6,
-        "pnl": 711.06,
-        "pnl_pct": 8.8
-      },
-      {
-        "ticker": "CVX",
-        "shares": 42,
-        "avg_cost": 187.28,
-        "current_price": 192.7,
-        "market_value": 8206.31,
-        "pnl": 230.92,
-        "pnl_pct": 2.9
+        "current_price": 906.4,
+        "market_value": 8816.21,
+        "pnl": 724.68,
+        "pnl_pct": 9.0
       },
       {
         "ticker": "EOG",
@@ -44,49 +26,13 @@
         "pnl_pct": 4.2
       },
       {
-        "ticker": "GLD",
-        "shares": 11,
-        "avg_cost": 419.07,
-        "current_price": 418.69,
-        "market_value": 4605.59,
-        "pnl": -4.18,
-        "pnl_pct": -0.1
-      },
-      {
-        "ticker": "JNJ",
-        "shares": 35,
-        "avg_cost": 226.9,
-        "current_price": 226.0,
-        "market_value": 8021.63,
-        "pnl": -32.01,
-        "pnl_pct": -0.4
-      },
-      {
-        "ticker": "LMT",
-        "shares": 16,
-        "avg_cost": 517.58,
-        "current_price": 509.08,
-        "market_value": 8196.48,
-        "pnl": -136.85,
-        "pnl_pct": -1.6
-      },
-      {
-        "ticker": "NOC",
-        "shares": 8,
-        "avg_cost": 560.42,
-        "current_price": 558.6,
-        "market_value": 4468.8,
-        "pnl": -14.56,
-        "pnl_pct": -0.3
-      },
-      {
-        "ticker": "RTX",
-        "shares": 13,
-        "avg_cost": 174.97,
-        "current_price": 172.1,
-        "market_value": 2237.28,
-        "pnl": -37.33,
-        "pnl_pct": -1.6
+        "ticker": "XOM",
+        "shares": 55,
+        "avg_cost": 150.66,
+        "current_price": 155.0,
+        "market_value": 8573.38,
+        "pnl": 240.05,
+        "pnl_pct": 2.9
       },
       {
         "ticker": "SLB",
@@ -98,61 +44,115 @@
         "pnl_pct": -0.3
       },
       {
-        "ticker": "XOM",
-        "shares": 55,
-        "avg_cost": 150.66,
-        "current_price": 154.98,
-        "market_value": 8572.28,
-        "pnl": 238.95,
+        "ticker": "CVX",
+        "shares": 42,
+        "avg_cost": 187.28,
+        "current_price": 192.7,
+        "market_value": 8206.31,
+        "pnl": 230.92,
         "pnl_pct": 2.9
+      },
+      {
+        "ticker": "LMT",
+        "shares": 16,
+        "avg_cost": 517.58,
+        "current_price": 509.08,
+        "market_value": 8196.48,
+        "pnl": -136.85,
+        "pnl_pct": -1.6
+      },
+      {
+        "ticker": "JNJ",
+        "shares": 35,
+        "avg_cost": 226.9,
+        "current_price": 226.0,
+        "market_value": 8021.63,
+        "pnl": -32.01,
+        "pnl_pct": -0.4
+      },
+      {
+        "ticker": "ADI",
+        "shares": 16,
+        "avg_cost": 399.0,
+        "current_price": 406.1,
+        "market_value": 6785.28,
+        "pnl": 118.61,
+        "pnl_pct": 1.8
+      },
+      {
+        "ticker": "GLD",
+        "shares": 11,
+        "avg_cost": 419.07,
+        "current_price": 418.51,
+        "market_value": 4603.61,
+        "pnl": -6.16,
+        "pnl_pct": -0.1
+      },
+      {
+        "ticker": "NOC",
+        "shares": 8,
+        "avg_cost": 560.42,
+        "current_price": 560.0,
+        "market_value": 4480.0,
+        "pnl": -3.36,
+        "pnl_pct": -0.1
+      },
+      {
+        "ticker": "RTX",
+        "shares": 13,
+        "avg_cost": 174.97,
+        "current_price": 172.1,
+        "market_value": 2237.28,
+        "pnl": -37.33,
+        "pnl_pct": -1.6
       }
     ]
   },
   "events_analyzed": 10,
   "tickers_analyzed": 52,
-  "total_signals": 356,
+  "total_signals": 333,
   "opportunities": [
     {
       "ticker": "XOM",
       "direction": "BULLISH",
-      "thesis": "sanctions -> commodity_supply_disruption -> impacts XOM. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed XOM +15% over 90 days. Currently 18% priced in (moved +3.0% vs expected +16.2%). Timing: EARLY.",
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts XOM. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed XOM +15% over 90 days. Currently 24% priced in (moved +3.9% vs expected +16.2%). Timing: ON_TIME.",
       "causal_chain": "sanctions -> commodity_supply_disruption -> impacts XOM.",
-      "current_price": 153.69,
-      "entry": 153.69,
-      "target": 173.98,
-      "stop": 146.01,
-      "conviction": 8,
+      "current_price": 154.88,
+      "entry": 154.88,
+      "target": 173.93,
+      "stop": 147.14,
+      "conviction": 7,
       "convergence_score": 33,
-      "timing_phase": "EARLY",
+      "timing_phase": "ON_TIME",
       "position_size": "half",
-      "dollar_amount": 4843.23,
+      "dollar_amount": 4869.25,
       "shares": 31,
-      "remaining_move_pct": 13.2,
+      "remaining_move_pct": 12.3,
       "instrument": "shares",
       "timeframe_days": [
         3,
         180
       ],
-      "confidence_score": 58,
-      "confidence_grade": "HIGH",
+      "confidence_score": 50,
+      "confidence_grade": "MODERATE",
       "flags": []
     },
     {
       "ticker": "CVX",
       "direction": "BULLISH",
-      "thesis": "sanctions -> commodity_supply_disruption -> impacts CVX. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed CVX +22% over 90 days. Currently 13% priced in (moved +2.8% vs expected +22.0%). Timing: EARLY.",
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts CVX. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed CVX +22% over 90 days. Currently 19% priced in (moved +4.2% vs expected +22.0%). Timing: EARLY.",
       "causal_chain": "sanctions -> commodity_supply_disruption -> impacts CVX.",
-      "current_price": 192.28,
-      "entry": 192.28,
-      "target": 229.2,
-      "stop": 182.67,
+      "current_price": 192.64,
+      "entry": 192.64,
+      "target": 226.93,
+      "stop": 183.01,
       "conviction": 8,
       "convergence_score": 33,
       "timing_phase": "EARLY",
       "position_size": "three_quarter",
-      "dollar_amount": 7264.84,
+      "dollar_amount": 7303.87,
       "shares": 37,
-      "remaining_move_pct": 19.2,
+      "remaining_move_pct": 17.8,
       "instrument": "shares",
       "timeframe_days": [
         5,
@@ -165,17 +165,17 @@
     {
       "ticker": "CAT",
       "direction": "BULLISH",
-      "thesis": "regulation -> commodity_supply_disruption -> impacts CAT. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed CAT -20% over 180 days. Stock moved +10.3% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "regulation -> commodity_supply_disruption -> impacts CAT. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed CAT -20% over 180 days. Stock moved +17.7% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "regulation -> commodity_supply_disruption -> impacts CAT.",
-      "current_price": 874.78,
-      "entry": 874.78,
-      "target": 1049.74,
-      "stop": 831.04,
+      "current_price": 904.59,
+      "entry": 904.59,
+      "target": 1085.51,
+      "stop": 859.36,
       "conviction": 7,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4843.23,
+      "dollar_amount": 4869.25,
       "shares": 5,
       "remaining_move_pct": -20.0,
       "instrument": "shares",
@@ -190,17 +190,17 @@
     {
       "ticker": "RTX",
       "direction": "BULLISH",
-      "thesis": "sanctions -> commodity_supply_disruption -> impacts RTX. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed RTX +8% over 60 days. Stock moved -14.8% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts RTX. Historical analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match) showed RTX +8% over 60 days. Stock moved -12.9% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "sanctions -> commodity_supply_disruption -> impacts RTX.",
-      "current_price": 172.9,
-      "entry": 172.9,
-      "target": 188.12,
-      "stop": 164.25,
+      "current_price": 172.87,
+      "entry": 172.87,
+      "target": 188.08,
+      "stop": 164.23,
       "conviction": 8,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4843.23,
+      "dollar_amount": 4869.25,
       "shares": 28,
       "remaining_move_pct": 8.8,
       "instrument": "options_or_shares",
@@ -215,17 +215,17 @@
     {
       "ticker": "LMT",
       "direction": "BULLISH",
-      "thesis": "sanctions -> commodity_supply_disruption -> impacts LMT. Closest analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match). Stock moved -15.3% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts LMT. Closest analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match). Stock moved -16.7% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "sanctions -> commodity_supply_disruption -> impacts LMT.",
-      "current_price": 518.15,
-      "entry": 518.15,
-      "target": 590.69,
-      "stop": 492.24,
+      "current_price": 508.93,
+      "entry": 508.93,
+      "target": 580.18,
+      "stop": 483.48,
       "conviction": 8,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4843.23,
+      "dollar_amount": 4869.25,
       "shares": 9,
       "remaining_move_pct": 14.0,
       "instrument": "options_or_shares",
@@ -240,17 +240,17 @@
     {
       "ticker": "NOC",
       "direction": "BULLISH",
-      "thesis": "sanctions -> commodity_supply_disruption -> impacts NOC. Closest analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match). Stock moved -16.6% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "sanctions -> commodity_supply_disruption -> impacts NOC. Closest analog: US withdraws from Iran nuclear deal, reimposing sanctions (2018-05-08, 67% match). Stock moved -17.7% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "sanctions -> commodity_supply_disruption -> impacts NOC.",
-      "current_price": 567.0,
-      "entry": 567.0,
-      "target": 691.74,
-      "stop": 538.65,
+      "current_price": 558.6,
+      "entry": 558.6,
+      "target": 681.49,
+      "stop": 530.67,
       "conviction": 7,
       "convergence_score": 33,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4843.23,
+      "dollar_amount": 4869.25,
       "shares": 8,
       "remaining_move_pct": 22.0,
       "instrument": "options_or_shares",
@@ -261,48 +261,23 @@
       "confidence_score": 56,
       "confidence_grade": "HIGH",
       "flags": []
-    },
-    {
-      "ticker": "GLD",
-      "direction": "BULLISH",
-      "thesis": "tariff -> commodity_supply_disruption -> impacts GLD. Closest analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 38% match). Stock moved -6.8% against expected direction -- contrarian opportunity if thesis holds.",
-      "causal_chain": "tariff -> commodity_supply_disruption -> impacts GLD.",
-      "current_price": 414.71,
-      "entry": 414.71,
-      "target": 449.13,
-      "stop": 393.97,
-      "conviction": 7,
-      "convergence_score": 33,
-      "timing_phase": "CONTRARIAN",
-      "position_size": "half",
-      "dollar_amount": 4843.23,
-      "shares": 11,
-      "remaining_move_pct": 8.3,
-      "instrument": "options_or_shares",
-      "timeframe_days": [
-        7,
-        30
-      ],
-      "confidence_score": 56,
-      "confidence_grade": "HIGH",
-      "flags": []
     }
   ],
   "risks": [
     {
       "ticker": "AAPL",
       "direction": "BEARISH",
-      "thesis": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed AAPL -10% over 90 days. Stock moved +7.0% against expected direction -- contrarian opportunity if thesis holds.",
+      "thesis": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed AAPL -10% over 90 days. Stock moved +6.7% against expected direction -- contrarian opportunity if thesis holds.",
       "causal_chain": "regulation -> commodity_supply_disruption -> earnings_miss -> impacts AAPL.",
-      "current_price": 276.83,
-      "entry": 276.83,
-      "target": 242.23,
-      "stop": 290.67,
+      "current_price": 284.18,
+      "entry": 284.18,
+      "target": 248.66,
+      "stop": 298.39,
       "conviction": 8,
       "convergence_score": 43,
       "timing_phase": "CONTRARIAN",
       "position_size": "half",
-      "dollar_amount": 4843.23,
+      "dollar_amount": 4869.25,
       "shares": 17,
       "remaining_move_pct": -12.5,
       "confidence_score": 61,
@@ -312,21 +287,21 @@
     {
       "ticker": "NKE",
       "direction": "BEARISH",
-      "thesis": "regulation -> commodity_supply_disruption -> impacts NKE. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed NKE -15% over 90 days. Currently 19% priced in (moved -2.5% vs expected -13.5%). Timing: EARLY.",
+      "thesis": "regulation -> commodity_supply_disruption -> impacts NKE. Historical analog: Trump imposes tariffs on $50B of Chinese goods (2018-03-22, 40% match) showed NKE -15% over 90 days. Currently 39% priced in (moved -5.2% vs expected -13.5%). Timing: ON_TIME.",
       "causal_chain": "regulation -> commodity_supply_disruption -> impacts NKE.",
-      "current_price": 43.09,
-      "entry": 43.09,
-      "target": 38.35,
-      "stop": 45.24,
-      "conviction": 7,
+      "current_price": 43.06,
+      "entry": 43.06,
+      "target": 39.49,
+      "stop": 45.21,
+      "conviction": 6,
       "convergence_score": 33,
-      "timing_phase": "EARLY",
+      "timing_phase": "ON_TIME",
       "position_size": "half",
-      "dollar_amount": 4843.23,
-      "shares": 112,
-      "remaining_move_pct": -11.0,
-      "confidence_score": 58,
-      "confidence_grade": "HIGH",
+      "dollar_amount": 4869.25,
+      "shares": 113,
+      "remaining_move_pct": -8.3,
+      "confidence_score": 50,
+      "confidence_grade": "MODERATE",
       "flags": []
     }
   ],
@@ -368,7 +343,7 @@
       ]
     },
     {
-      "headline": "Trump tests China trade war truce with threat of Iran sanctions - The Globe and Mail",
+      "headline": "A summit amid the US-Iran war... The US applies maximum pressure on China, while China targets US sanctions power - \uacbd\ud5a5\uc2e0\ubb38",
       "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
@@ -380,7 +355,43 @@
       ]
     },
     {
-      "headline": "EU to water down anti-deforestation rules by exempting leather imports",
+      "headline": "Central banks risk a recession by raising rates to tackle Iran oil shock, strategist warns",
+      "event_type": "central_bank",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "JPM"
+      ]
+    },
+    {
+      "headline": "Hegseth says 'the ceasefire is not over' after U.S., Iran exchange fire",
+      "event_type": "regulation",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "AAPL"
+      ]
+    },
+    {
+      "headline": "SEC advances Trump-backed proposal to end mandatory quarterly earnings reports",
+      "event_type": "regulation",
+      "source": "cnbc_politics",
+      "affected_tickers": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "GOOGL",
+        "AMZN"
+      ]
+    },
+    {
+      "headline": "SEC moves to scrap quarterly reporting requirement",
       "event_type": "regulation",
       "source": "ft_world",
       "affected_tickers": [
@@ -392,9 +403,9 @@
       ]
     },
     {
-      "headline": "Canada\u2019s beef producers say Mercosur trade deal will devastate industry",
+      "headline": "US plans to hike tariffs on EU cars to 25% will hit luxury market the most",
       "event_type": "trade_deal",
-      "source": "ft_world",
+      "source": "aljazeera",
       "affected_tickers": [
         "CAT",
         "GE",
@@ -404,21 +415,33 @@
       ]
     },
     {
-      "headline": "Trump tests China trade war truce with threat of Iran sanctions - The Globe and Mail",
+      "headline": "DRC protest in support of US sanctions against former president",
+      "event_type": "sanctions",
+      "source": "aljazeera",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "Fragile US-Iran ceasefire on even shakier ground after latest strikes",
       "event_type": "tariff",
-      "source": "google_geopolitics",
+      "source": "ft_world",
       "affected_tickers": [
         "XOM",
         "CVX",
         "SLB",
         "USO",
-        "MP"
+        "CAT"
       ]
     },
     {
-      "headline": "Israel Said to Have Helped Defend Emirates in Iran War With Iron Dome",
+      "headline": "You had a miserable 2025 because of tariff inflation. The Iran war will be even worse, top economist says - Fortune",
       "event_type": "tariff",
-      "source": "nyt_world",
+      "source": "google_geopolitics",
       "affected_tickers": [
         "XOM",
         "CVX",
@@ -440,19 +463,7 @@
       ]
     },
     {
-      "headline": "Geopolitics Weekly (Iran War, US-EU Tariffs, Mali Insurgency) - Geopolitical Monitor",
-      "event_type": "tariff",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "XOM",
-        "CVX",
-        "SLB",
-        "USO",
-        "CAT"
-      ]
-    },
-    {
-      "headline": "Strait of Hormuz: US threatens shipping firms with sanctions if they pay Iran tolls - BBC",
+      "headline": "Senate Democrats demand reinstatement of sanctions on Russian oil - The Hill",
       "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
@@ -464,111 +475,75 @@
       ]
     },
     {
-      "headline": "Warsh's take on Fed independence is met with confusion and some concern",
-      "event_type": "central_bank",
-      "source": "cnbc_politics",
-      "affected_tickers": [
-        "JPM",
-        "GS",
-        "V",
-        "MA",
-        "BRK-B"
-      ]
-    },
-    {
-      "headline": "Trump\u2019s trade war risks undermining his hopes of hefty US interest rate cuts | Graeme Wearden - The Guardian",
-      "event_type": "central_bank",
+      "headline": "Zelensky announces new sanctions against Russia over recruitment of migrants for war in Ukraine - Ukrinform - Ukrainian National News Agency",
+      "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
-        "JPM",
-        "GS",
-        "V",
-        "MA",
-        "BRK-B"
-      ]
-    },
-    {
-      "headline": "Trump\u2019s Trade War With China Catches the World in Its Crossfire - The New York Times",
-      "event_type": "conflict",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
         "RTX"
       ]
     },
     {
-      "headline": "Trump\u2019s Trade War With China Is Backfiring Spectacularly - Yahoo Finance",
-      "event_type": "conflict",
+      "headline": "Proposed UN resolution threatens Iran with sanctions if it doesn't allow freedom of navigation - Audacy",
+      "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
         "RTX"
       ]
     },
     {
-      "headline": "Trump's trade war with China in 2025 - Reuters",
-      "event_type": "conflict",
+      "headline": "'Cannon fodder': UK sanctions networks funneling migrants into Putin's war - TVP World",
+      "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "UK sanctions networks suspected of human trafficking in Ukraine war - The Independent",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "RTX",
+        "LMT"
+      ]
+    },
+    {
+      "headline": "UK sanctions Russian individuals, entities responsible for exploiting migrants in its war effort - The Kyiv Independent",
+      "event_type": "sanctions",
+      "source": "google_geopolitics",
+      "affected_tickers": [
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
         "RTX"
       ]
     },
     {
-      "headline": "Negotiating a win-win end to the lose-lose US-China trade war over technology and critical minerals - Peterson Institute for International Economics",
-      "event_type": "tariff",
+      "headline": "UK imposes sanctions on networks recruiting migrants for Russia\u2019s war - RBC-Ukraine",
+      "event_type": "sanctions",
       "source": "google_geopolitics",
       "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
-        "CAT"
-      ]
-    },
-    {
-      "headline": "Op-ed: China won the 2025 battle in Trump's trade war. Here's what comes next - CNBC",
-      "event_type": "tariff",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
-        "CAT"
-      ]
-    },
-    {
-      "headline": "U.S. and China Agree to Temporarily Slash Tariffs in Bid to Defuse Trade War - The New York Times",
-      "event_type": "tariff",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
-        "CAT"
-      ]
-    },
-    {
-      "headline": "Beyond Brute Force: The US-China Trade War and the New Rules of Economic Power - The London School of Economics and Political Science",
-      "event_type": "tariff",
-      "source": "google_geopolitics",
-      "affected_tickers": [
-        "MP",
-        "ADM",
-        "DE",
-        "MOS",
-        "CAT"
+        "XOM",
+        "CVX",
+        "SLB",
+        "USO",
+        "RTX"
       ]
     }
   ]
