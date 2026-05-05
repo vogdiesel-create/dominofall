@@ -1,109 +1,109 @@
 {
   "timestamp": "2026-05-04T20:38:24.804555+00:00",
-  "last_refresh": "2026-05-05T18:45:02.514176+00:00",
+  "last_refresh": "2026-05-05T19:00:02.281587+00:00",
   "portfolio": {
-    "equity": 97379.87,
+    "equity": 97390.97,
     "cash": 20476.99,
-    "total_deployed": 76902.35,
-    "total_pnl": 1414.05,
+    "total_deployed": 76913.49,
+    "total_pnl": 1425.2,
     "positions": [
       {
         "ticker": "ADI",
         "shares": 16,
         "avg_cost": 399.0,
-        "current_price": 405.05,
-        "market_value": 6767.77,
-        "pnl": 101.1,
+        "current_price": 405.03,
+        "market_value": 6767.4,
+        "pnl": 100.73,
         "pnl_pct": 1.5
       },
       {
         "ticker": "CAT",
         "shares": 9,
         "avg_cost": 831.9,
-        "current_price": 899.46,
-        "market_value": 8748.66,
-        "pnl": 657.13,
+        "current_price": 899.59,
+        "market_value": 8749.98,
+        "pnl": 658.44,
         "pnl_pct": 8.1
       },
       {
         "ticker": "CVX",
         "shares": 42,
         "avg_cost": 187.28,
-        "current_price": 193.22,
-        "market_value": 8228.24,
-        "pnl": 252.85,
-        "pnl_pct": 3.2
+        "current_price": 193.12,
+        "market_value": 8224.19,
+        "pnl": 248.8,
+        "pnl_pct": 3.1
       },
       {
         "ticker": "EOG",
         "shares": 61,
         "avg_cost": 135.18,
-        "current_price": 142.63,
-        "market_value": 8792.71,
-        "pnl": 459.38,
-        "pnl_pct": 5.5
+        "current_price": 142.34,
+        "market_value": 8774.84,
+        "pnl": 441.51,
+        "pnl_pct": 5.3
       },
       {
         "ticker": "GLD",
         "shares": 11,
         "avg_cost": 419.07,
-        "current_price": 418.84,
-        "market_value": 4607.24,
-        "pnl": -2.53,
+        "current_price": 418.78,
+        "market_value": 4606.58,
+        "pnl": -3.19,
         "pnl_pct": -0.1
       },
       {
         "ticker": "JNJ",
         "shares": 35,
         "avg_cost": 226.9,
-        "current_price": 225.99,
-        "market_value": 8021.27,
-        "pnl": -32.36,
-        "pnl_pct": -0.4
+        "current_price": 226.25,
+        "market_value": 8030.5,
+        "pnl": -23.14,
+        "pnl_pct": -0.3
       },
       {
         "ticker": "LMT",
         "shares": 16,
         "avg_cost": 517.58,
-        "current_price": 507.63,
-        "market_value": 8173.21,
-        "pnl": -160.12,
-        "pnl_pct": -1.9
+        "current_price": 508.48,
+        "market_value": 8186.81,
+        "pnl": -146.52,
+        "pnl_pct": -1.8
       },
       {
         "ticker": "NOC",
         "shares": 8,
         "avg_cost": 560.42,
-        "current_price": 554.18,
-        "market_value": 4433.44,
-        "pnl": -49.92,
-        "pnl_pct": -1.1
+        "current_price": 554.89,
+        "market_value": 4439.16,
+        "pnl": -44.2,
+        "pnl_pct": -1.0
       },
       {
         "ticker": "RTX",
         "shares": 13,
         "avg_cost": 174.97,
-        "current_price": 172.05,
-        "market_value": 2236.65,
-        "pnl": -37.96,
-        "pnl_pct": -1.7
+        "current_price": 172.29,
+        "market_value": 2239.84,
+        "pnl": -34.77,
+        "pnl_pct": -1.5
       },
       {
         "ticker": "SLB",
         "shares": 148,
         "avg_cost": 56.18,
-        "current_price": 56.16,
-        "market_value": 8331.11,
-        "pnl": -2.22,
-        "pnl_pct": -0.0
+        "current_price": 56.2,
+        "market_value": 8336.3,
+        "pnl": 2.97,
+        "pnl_pct": 0.0
       },
       {
         "ticker": "XOM",
         "shares": 55,
         "avg_cost": 150.66,
-        "current_price": 154.79,
-        "market_value": 8562.05,
-        "pnl": 228.72,
+        "current_price": 154.72,
+        "market_value": 8557.9,
+        "pnl": 224.57,
         "pnl_pct": 2.7
       }
     ]
