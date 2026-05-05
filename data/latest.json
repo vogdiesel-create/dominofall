@@ -1,11 +1,11 @@
 {
   "timestamp": "2026-05-04T20:38:24.804555+00:00",
-  "last_refresh": "2026-05-05T20:00:01.992754+00:00",
+  "last_refresh": "2026-05-05T20:15:02.274806+00:00",
   "portfolio": {
-    "equity": 97318.44,
+    "equity": 97360.68,
     "cash": 20476.99,
-    "total_deployed": 76841.45,
-    "total_pnl": 1353.15,
+    "total_deployed": 76883.69,
+    "total_pnl": 1395.39,
     "positions": [
       {
         "ticker": "ADI",
@@ -20,55 +20,55 @@
         "ticker": "CAT",
         "shares": 9,
         "avg_cost": 831.9,
-        "current_price": 904.47,
-        "market_value": 8797.44,
-        "pnl": 705.91,
+        "current_price": 904.59,
+        "market_value": 8798.61,
+        "pnl": 707.07,
         "pnl_pct": 8.7
       },
       {
         "ticker": "CVX",
         "shares": 42,
         "avg_cost": 187.28,
-        "current_price": 192.66,
-        "market_value": 8204.39,
-        "pnl": 229.0,
+        "current_price": 192.7,
+        "market_value": 8206.31,
+        "pnl": 230.92,
         "pnl_pct": 2.9
       },
       {
         "ticker": "EOG",
         "shares": 61,
         "avg_cost": 135.18,
-        "current_price": 140.86,
-        "market_value": 8683.6,
-        "pnl": 350.27,
+        "current_price": 140.82,
+        "market_value": 8681.13,
+        "pnl": 347.8,
         "pnl_pct": 4.2
       },
       {
         "ticker": "GLD",
         "shares": 11,
         "avg_cost": 419.07,
-        "current_price": 418.27,
-        "market_value": 4600.97,
-        "pnl": -8.8,
+        "current_price": 418.37,
+        "market_value": 4602.07,
+        "pnl": -7.7,
         "pnl_pct": -0.2
       },
       {
         "ticker": "JNJ",
         "shares": 35,
         "avg_cost": 226.9,
-        "current_price": 225.59,
-        "market_value": 8007.07,
-        "pnl": -46.56,
+        "current_price": 225.55,
+        "market_value": 8005.65,
+        "pnl": -47.98,
         "pnl_pct": -0.6
       },
       {
         "ticker": "LMT",
         "shares": 16,
         "avg_cost": 517.58,
-        "current_price": 509.01,
-        "market_value": 8195.43,
-        "pnl": -137.9,
-        "pnl_pct": -1.7
+        "current_price": 509.49,
+        "market_value": 8203.08,
+        "pnl": -130.25,
+        "pnl_pct": -1.6
       },
       {
         "ticker": "NOC",
@@ -101,10 +101,10 @@
         "ticker": "XOM",
         "shares": 55,
         "avg_cost": 150.66,
-        "current_price": 154.88,
-        "market_value": 8566.75,
-        "pnl": 233.42,
-        "pnl_pct": 2.8
+        "current_price": 155.5,
+        "market_value": 8601.04,
+        "pnl": 267.71,
+        "pnl_pct": 3.2
       }
     ]
   },
