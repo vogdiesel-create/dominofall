@@ -95,7 +95,7 @@ tr.notable:hover { background: #2a2a00; }
 <header>
 <div class="header-inner">
 <div class="logo"><a href="/signals.html">Dominofall</a></div>
-<div class="updated">Updated: July 13, 2026 at 08:45 PM ET</div>
+<div class="updated">Updated: July 13, 2026 at 08:58 PM ET</div>
 </div>
 </header>
 
@@ -842,18 +842,19 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 
 <div class="section">
-<h2>Performance Chart</h2>
-<div class="disclaimer">Click stocks in the table below to add/remove them from the chart. Shows % return since signal date.</div>
+<h2>Performance Chart <span id="liveTag" style="display:none; background:#3fb950; color:#0a0e17; font-size:10px; padding:2px 6px; border-radius:3px; margin-left:8px; font-weight:700;">LIVE</span></h2>
+<div class="disclaimer">Click stocks in the table to add/remove from chart. Shows % return since signal date.</div>
 
 <div style="position:relative; height:350px; background:#0d1117; border:1px solid #21262d; border-radius:6px; padding:10px; margin-bottom:12px;">
 <canvas id="perfChart"></canvas>
 </div>
 
 <div id="chartControls" style="margin-bottom:16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-<button onclick="clearAllChart()" style="background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:4px; padding:4px 10px; font-size:11px; cursor:pointer;">Clear All</button>
-<button onclick="showTopMovers()" style="background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:4px; padding:4px 10px; font-size:11px; cursor:pointer;">Top 5 Movers</button>
-<button onclick="showAllInsider()" style="background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:4px; padding:4px 10px; font-size:11px; cursor:pointer;">All SEC Picks</button>
-<button onclick="showAllCongress()" style="background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:4px; padding:4px 10px; font-size:11px; cursor:pointer;">All Congress</button>
+<button onclick="clearAllChart()" class="ctrl-btn">Clear All</button>
+<button onclick="showTopMovers()" class="ctrl-btn">Top 5 Movers</button>
+<button onclick="showAllInsider()" class="ctrl-btn">All SEC Picks</button>
+<button onclick="showAllCongress()" class="ctrl-btn">All Congress</button>
+<button onclick="fetchLivePrices()" id="liveBtn" class="ctrl-btn" style="background:#1a4021; color:#3fb950; border-color:#3fb950;">Refresh Live Prices</button>
 <span id="chartStatus" style="font-size:11px; color:#6e7681; margin-left:8px;"></span>
 </div>
 </div>
@@ -862,10 +863,10 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <h2>All Tracked Picks <small>(click row to chart)</small></h2>
 <div class="disclaimer">31 stocks tracked | Win rate: 35% (11W/20L) | Avg return: -0.9%</div>
 <div style="overflow-x: auto;">
-<table>
+<table id="perfTable">
 <thead><tr><th>Ticker</th><th>Company</th><th>Score</th><th>Source</th><th>Signal Date</th><th>Price</th><th>Return</th><th>Tracked</th></tr></thead>
 <tbody>
-<tr class="perf-row" data-ticker="GLOO" onclick="toggleChart('GLOO')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="GLOO" data-sigprice="3.105" onclick="toggleChart('GLOO')" style="cursor:pointer;">
 <td class="ticker">GLOO</td>
 <td class="company">Gloo Holdings, Inc.</td>
 <td class="score">132</td>
@@ -875,7 +876,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+6.0%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="EHSI" onclick="toggleChart('EHSI')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="EHSI" data-sigprice="1.0" onclick="toggleChart('EHSI')" style="cursor:pointer;">
 <td class="ticker">EHSI</td>
 <td class="company">Elite Health Systems Inc.</td>
 <td class="score">74</td>
@@ -885,7 +886,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+1.0%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="CV" onclick="toggleChart('CV')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="CV" data-sigprice="6.1901" onclick="toggleChart('CV')" style="cursor:pointer;">
 <td class="ticker">CV</td>
 <td class="company">Capsovision, Inc</td>
 <td class="score">69</td>
@@ -895,7 +896,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+1.0%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="BOLD" onclick="toggleChart('BOLD')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="BOLD" data-sigprice="2.4" onclick="toggleChart('BOLD')" style="cursor:pointer;">
 <td class="ticker">BOLD</td>
 <td class="company">Boundless Bio, Inc.</td>
 <td class="score">72</td>
@@ -905,7 +906,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.8%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="TDIC" onclick="toggleChart('TDIC')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="TDIC" data-sigprice="3.8094" onclick="toggleChart('TDIC')" style="cursor:pointer;">
 <td class="ticker">TDIC</td>
 <td class="company">Dreamland Ltd</td>
 <td class="score">113</td>
@@ -915,7 +916,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.8%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="VIRC" onclick="toggleChart('VIRC')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="VIRC" data-sigprice="6.2605" onclick="toggleChart('VIRC')" style="cursor:pointer;">
 <td class="ticker">VIRC</td>
 <td class="company">Virco Mfg Corporation</td>
 <td class="score">66</td>
@@ -925,7 +926,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.6%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="IPX" onclick="toggleChart('IPX')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="IPX" data-sigprice="24.935" onclick="toggleChart('IPX')" style="cursor:pointer;">
 <td class="ticker">IPX</td>
 <td class="company">Iperionx Ltd</td>
 <td class="score">85</td>
@@ -935,7 +936,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.6%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="VENU" onclick="toggleChart('VENU')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="VENU" data-sigprice="2.74" onclick="toggleChart('VENU')" style="cursor:pointer;">
 <td class="ticker">VENU</td>
 <td class="company">Venu Holding Corp</td>
 <td class="score">78</td>
@@ -945,7 +946,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.4%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="MERC" onclick="toggleChart('MERC')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="MERC" data-sigprice="0.5853" onclick="toggleChart('MERC')" style="cursor:pointer;">
 <td class="ticker">MERC</td>
 <td class="company">Mercer International Inc.</td>
 <td class="score">66</td>
@@ -955,7 +956,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.3%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="NTSK" onclick="toggleChart('NTSK')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="NTSK" data-sigprice="12.4" onclick="toggleChart('NTSK')" style="cursor:pointer;">
 <td class="ticker">NTSK</td>
 <td class="company">Netskope Inc</td>
 <td class="score">73</td>
@@ -965,7 +966,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.3%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="SWZ" onclick="toggleChart('SWZ')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="SWZ" data-sigprice="5.91" onclick="toggleChart('SWZ')" style="cursor:pointer;">
 <td class="ticker">SWZ</td>
 <td class="company">Total Return Securities Fund</td>
 <td class="score">73</td>
@@ -975,7 +976,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret buy" style="font-size:14px;">+0.2%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="EWSB" onclick="toggleChart('EWSB')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="EWSB" data-sigprice="10.95" onclick="toggleChart('EWSB')" style="cursor:pointer;">
 <td class="ticker">EWSB</td>
 <td class="company">Ewsb Bancorp, Inc. /Md/</td>
 <td class="score">94</td>
@@ -985,7 +986,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret " style="font-size:14px;">+0.0%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="GCO" onclick="toggleChart('GCO')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="GCO" data-sigprice="34.83" onclick="toggleChart('GCO')" style="cursor:pointer;">
 <td class="ticker">GCO</td>
 <td class="company">Genesco Inc</td>
 <td class="score">73</td>
@@ -995,7 +996,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.2%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="CAI" onclick="toggleChart('CAI')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="CAI" data-sigprice="16.99" onclick="toggleChart('CAI')" style="cursor:pointer;">
 <td class="ticker">CAI</td>
 <td class="company">Caris Life Sciences, Inc.</td>
 <td class="score">53</td>
@@ -1005,7 +1006,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.3%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="CMC" onclick="toggleChart('CMC')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="CMC" data-sigprice="63.73" onclick="toggleChart('CMC')" style="cursor:pointer;">
 <td class="ticker">CMC</td>
 <td class="company">Commercial Metals Co</td>
 <td class="score">98</td>
@@ -1015,7 +1016,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.3%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="ANIX" onclick="toggleChart('ANIX')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="ANIX" data-sigprice="3.02" onclick="toggleChart('ANIX')" style="cursor:pointer;">
 <td class="ticker">ANIX</td>
 <td class="company">Anixa Biosciences Inc</td>
 <td class="score">93</td>
@@ -1025,7 +1026,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.3%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="UPBD" onclick="toggleChart('UPBD')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="UPBD" data-sigprice="21.31" onclick="toggleChart('UPBD')" style="cursor:pointer;">
 <td class="ticker">UPBD</td>
 <td class="company">Upbound Group, Inc.</td>
 <td class="score">61</td>
@@ -1035,7 +1036,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.3%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="PSBD" onclick="toggleChart('PSBD')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="PSBD" data-sigprice="10.29" onclick="toggleChart('PSBD')" style="cursor:pointer;">
 <td class="ticker">PSBD</td>
 <td class="company">Palmer Square Capital Bdc Inc.</td>
 <td class="score">57</td>
@@ -1045,7 +1046,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.4%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="HNRG" onclick="toggleChart('HNRG')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="HNRG" data-sigprice="16.725" onclick="toggleChart('HNRG')" style="cursor:pointer;">
 <td class="ticker">HNRG</td>
 <td class="company">Hallador Energy Co</td>
 <td class="score">61</td>
@@ -1055,7 +1056,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.5%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="EVMN" onclick="toggleChart('EVMN')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="EVMN" data-sigprice="12.69" onclick="toggleChart('EVMN')" style="cursor:pointer;">
 <td class="ticker">EVMN</td>
 <td class="company">Evommune, Inc.</td>
 <td class="score">61</td>
@@ -1065,7 +1066,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.6%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="UUUU" onclick="toggleChart('UUUU')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="UUUU" data-sigprice="13.205" onclick="toggleChart('UUUU')" style="cursor:pointer;">
 <td class="ticker">UUUU</td>
 <td class="company">Energy Fuels Inc</td>
 <td class="score">101</td>
@@ -1075,7 +1076,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.7%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="TOI" onclick="toggleChart('TOI')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="TOI" data-sigprice="5.895" onclick="toggleChart('TOI')" style="cursor:pointer;">
 <td class="ticker">TOI</td>
 <td class="company">Oncology Institute, Inc.</td>
 <td class="score">51</td>
@@ -1085,7 +1086,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-0.9%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="COE" onclick="toggleChart('COE')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="COE" data-sigprice="17.4" onclick="toggleChart('COE')" style="cursor:pointer;">
 <td class="ticker">COE</td>
 <td class="company">51Talk Online Education Group</td>
 <td class="score">111</td>
@@ -1095,7 +1096,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-1.0%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="PRQR" onclick="toggleChart('PRQR')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="PRQR" data-sigprice="1.7289" onclick="toggleChart('PRQR')" style="cursor:pointer;">
 <td class="ticker">PRQR</td>
 <td class="company">Proqr Therapeutics N.V.</td>
 <td class="score">114</td>
@@ -1105,7 +1106,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-1.1%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="BXSY" onclick="toggleChart('BXSY')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="BXSY" data-sigprice="17.08" onclick="toggleChart('BXSY')" style="cursor:pointer;">
 <td class="ticker">BXSY</td>
 <td class="company">Bexil Investment Trust</td>
 <td class="score">61</td>
@@ -1115,7 +1116,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-1.8%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="NYC" onclick="toggleChart('NYC')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="NYC" data-sigprice="8.5" onclick="toggleChart('NYC')" style="cursor:pointer;">
 <td class="ticker">NYC</td>
 <td class="company">American Strategic Investmen..</td>
 <td class="score">69</td>
@@ -1125,7 +1126,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-1.9%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="BNKK" onclick="toggleChart('BNKK')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="BNKK" data-sigprice="1.225" onclick="toggleChart('BNKK')" style="cursor:pointer;">
 <td class="ticker">BNKK</td>
 <td class="company">Bonk, Inc.</td>
 <td class="score">59</td>
@@ -1135,7 +1136,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-1.9%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="LRMR" onclick="toggleChart('LRMR')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="LRMR" data-sigprice="4.0" onclick="toggleChart('LRMR')" style="cursor:pointer;">
 <td class="ticker">LRMR</td>
 <td class="company">Larimar Therapeutics, Inc.</td>
 <td class="score">63</td>
@@ -1145,7 +1146,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-4.1%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="WRAP" onclick="toggleChart('WRAP')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="WRAP" data-sigprice="2.2091" onclick="toggleChart('WRAP')" style="cursor:pointer;">
 <td class="ticker">WRAP</td>
 <td class="company">Wrap Technologies, Inc.</td>
 <td class="score">98</td>
@@ -1155,7 +1156,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-4.7%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="JEM" onclick="toggleChart('JEM')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="JEM" data-sigprice="0.4201" onclick="toggleChart('JEM')" style="cursor:pointer;">
 <td class="ticker">JEM</td>
 <td class="company">707 Cayman Holdings Ltd.</td>
 <td class="score">54</td>
@@ -1165,7 +1166,7 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 <td class="ret sell" style="font-size:14px;">-8.2%</td>
 <td>1d</td>
 </tr>
-<tr class="perf-row" data-ticker="CNTM" onclick="toggleChart('CNTM')" style="cursor:pointer;">
+<tr class="perf-row" data-ticker="CNTM" data-sigprice="7.32" onclick="toggleChart('CNTM')" style="cursor:pointer;">
 <td class="ticker">CNTM</td>
 <td class="company">Connectm Technology Solution..</td>
 <td class="score">61</td>
@@ -1180,11 +1181,19 @@ Mapped to US-listed tickers. Price impact tracked via EOD data.
 </div>
 </div>
 
+<style>
+.ctrl-btn { background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:4px; padding:4px 10px; font-size:11px; cursor:pointer; font-family:inherit; }
+.ctrl-btn:hover { background:#30363d; color:#c9d1d9; }
+#liveBtn.loading { opacity:0.5; pointer-events:none; }
+</style>
+
 <script>
-var PERF_DATA = [{"t":"CNTM","c":"Connectm Technology Solut","s":"insider","sc":61,"r":-10.25,"pts":[{"d":"2026-07-13","v":-10.25}]},{"t":"JEM","c":"707 Cayman Holdings Ltd.","s":"insider","sc":54,"r":-8.21,"pts":[{"d":"2026-07-13","v":-8.21}]},{"t":"GLOO","c":"Gloo Holdings, Inc.","s":"insider","sc":132,"r":5.96,"pts":[{"d":"2026-07-13","v":5.96}]},{"t":"WRAP","c":"Wrap Technologies, Inc.","s":"insider","sc":98,"r":-4.71,"pts":[{"d":"2026-07-13","v":-4.71}]},{"t":"LRMR","c":"Larimar Therapeutics, Inc","s":"insider","sc":63,"r":-4.13,"pts":[{"d":"2026-07-13","v":-4.13}]},{"t":"BNKK","c":"Bonk, Inc.","s":"insider","sc":59,"r":-1.94,"pts":[{"d":"2026-07-13","v":-1.94}]},{"t":"NYC","c":"American Strategic Invest","s":"insider","sc":69,"r":-1.88,"pts":[{"d":"2026-07-13","v":-1.88}]},{"t":"BXSY","c":"Bexil Investment Trust","s":"insider","sc":61,"r":-1.76,"pts":[{"d":"2026-07-13","v":-1.76}]},{"t":"PRQR","c":"Proqr Therapeutics N.V.","s":"insider","sc":114,"r":-1.09,"pts":[{"d":"2026-07-13","v":-1.09}]},{"t":"EHSI","c":"Elite Health Systems Inc.","s":"insider","sc":74,"r":1.0,"pts":[{"d":"2026-07-13","v":1.0}]},{"t":"COE","c":"51Talk Online Education G","s":"insider","sc":111,"r":-0.98,"pts":[{"d":"2026-07-13","v":-0.98}]},{"t":"CV","c":"Capsovision, Inc","s":"insider","sc":69,"r":0.97,"pts":[{"d":"2026-07-13","v":0.97}]},{"t":"TOI","c":"Oncology Institute, Inc.","s":"insider","sc":51,"r":-0.93,"pts":[{"d":"2026-07-13","v":-0.93}]},{"t":"BOLD","c":"Boundless Bio, Inc.","s":"insider","sc":72,"r":0.83,"pts":[{"d":"2026-07-13","v":0.83}]},{"t":"TDIC","c":"Dreamland Ltd","s":"insider","sc":113,"r":0.8,"pts":[{"d":"2026-07-13","v":0.8}]},{"t":"UUUU","c":"Energy Fuels Inc","s":"insider","sc":101,"r":-0.72,"pts":[{"d":"2026-07-13","v":-0.72}]},{"t":"VIRC","c":"Virco Mfg Corporation","s":"insider","sc":66,"r":0.63,"pts":[{"d":"2026-07-13","v":0.63}]},{"t":"IPX","c":"Iperionx Ltd","s":"insider","sc":85,"r":0.58,"pts":[{"d":"2026-07-13","v":0.58}]},{"t":"EVMN","c":"Evommune, Inc.","s":"insider","sc":61,"r":-0.55,"pts":[{"d":"2026-07-13","v":-0.55}]},{"t":"HNRG","c":"Hallador Energy Co","s":"insider","sc":61,"r":-0.51,"pts":[{"d":"2026-07-13","v":-0.51}]},{"t":"PSBD","c":"Palmer Square Capital Bdc","s":"insider","sc":57,"r":-0.44,"pts":[{"d":"2026-07-13","v":-0.44}]},{"t":"VENU","c":"Venu Holding Corp","s":"insider","sc":78,"r":0.36,"pts":[{"d":"2026-07-13","v":0.36}]},{"t":"ANIX","c":"Anixa Biosciences Inc","s":"insider","sc":93,"r":-0.33,"pts":[{"d":"2026-07-13","v":-0.33}]},{"t":"UPBD","c":"Upbound Group, Inc.","s":"insider","sc":61,"r":-0.33,"pts":[{"d":"2026-07-13","v":-0.33}]},{"t":"MERC","c":"Mercer International Inc.","s":"insider","sc":66,"r":0.32,"pts":[{"d":"2026-07-13","v":0.32}]},{"t":"CMC","c":"Commercial Metals Co","s":"insider","sc":98,"r":-0.31,"pts":[{"d":"2026-07-13","v":-0.31}]},{"t":"CAI","c":"Caris Life Sciences, Inc.","s":"insider","sc":53,"r":-0.29,"pts":[{"d":"2026-07-13","v":-0.29}]},{"t":"NTSK","c":"Netskope Inc","s":"insider","sc":73,"r":0.28,"pts":[{"d":"2026-07-13","v":0.28}]},{"t":"GCO","c":"Genesco Inc","s":"insider","sc":73,"r":-0.2,"pts":[{"d":"2026-07-13","v":-0.2}]},{"t":"SWZ","c":"Total Return Securities F","s":"insider","sc":73,"r":0.17,"pts":[{"d":"2026-07-13","v":0.17}]},{"t":"EWSB","c":"Ewsb Bancorp, Inc. /Md/","s":"insider","sc":94,"r":0.0,"pts":[{"d":"2026-07-13","v":0.0}]}];
+var PERF_DATA = [{"t":"CNTM","c":"Connectm Technology Solut","s":"insider","sc":61,"sp":7.32,"r":-10.25,"pts":[{"d":"2026-07-13","v":-10.25}]},{"t":"JEM","c":"707 Cayman Holdings Ltd.","s":"insider","sc":54,"sp":0.4201,"r":-8.21,"pts":[{"d":"2026-07-13","v":-8.21}]},{"t":"GLOO","c":"Gloo Holdings, Inc.","s":"insider","sc":132,"sp":3.105,"r":5.96,"pts":[{"d":"2026-07-13","v":5.96}]},{"t":"WRAP","c":"Wrap Technologies, Inc.","s":"insider","sc":98,"sp":2.2091,"r":-4.71,"pts":[{"d":"2026-07-13","v":-4.71}]},{"t":"LRMR","c":"Larimar Therapeutics, Inc","s":"insider","sc":63,"sp":4.0,"r":-4.13,"pts":[{"d":"2026-07-13","v":-4.13}]},{"t":"BNKK","c":"Bonk, Inc.","s":"insider","sc":59,"sp":1.225,"r":-1.94,"pts":[{"d":"2026-07-13","v":-1.94}]},{"t":"NYC","c":"American Strategic Invest","s":"insider","sc":69,"sp":8.5,"r":-1.88,"pts":[{"d":"2026-07-13","v":-1.88}]},{"t":"BXSY","c":"Bexil Investment Trust","s":"insider","sc":61,"sp":17.08,"r":-1.76,"pts":[{"d":"2026-07-13","v":-1.76}]},{"t":"PRQR","c":"Proqr Therapeutics N.V.","s":"insider","sc":114,"sp":1.7289,"r":-1.09,"pts":[{"d":"2026-07-13","v":-1.09}]},{"t":"EHSI","c":"Elite Health Systems Inc.","s":"insider","sc":74,"sp":1.0,"r":1.0,"pts":[{"d":"2026-07-13","v":1.0}]},{"t":"COE","c":"51Talk Online Education G","s":"insider","sc":111,"sp":17.4,"r":-0.98,"pts":[{"d":"2026-07-13","v":-0.98}]},{"t":"CV","c":"Capsovision, Inc","s":"insider","sc":69,"sp":6.1901,"r":0.97,"pts":[{"d":"2026-07-13","v":0.97}]},{"t":"TOI","c":"Oncology Institute, Inc.","s":"insider","sc":51,"sp":5.895,"r":-0.93,"pts":[{"d":"2026-07-13","v":-0.93}]},{"t":"BOLD","c":"Boundless Bio, Inc.","s":"insider","sc":72,"sp":2.4,"r":0.83,"pts":[{"d":"2026-07-13","v":0.83}]},{"t":"TDIC","c":"Dreamland Ltd","s":"insider","sc":113,"sp":3.8094,"r":0.8,"pts":[{"d":"2026-07-13","v":0.8}]},{"t":"UUUU","c":"Energy Fuels Inc","s":"insider","sc":101,"sp":13.205,"r":-0.72,"pts":[{"d":"2026-07-13","v":-0.72}]},{"t":"VIRC","c":"Virco Mfg Corporation","s":"insider","sc":66,"sp":6.2605,"r":0.63,"pts":[{"d":"2026-07-13","v":0.63}]},{"t":"IPX","c":"Iperionx Ltd","s":"insider","sc":85,"sp":24.935,"r":0.58,"pts":[{"d":"2026-07-13","v":0.58}]},{"t":"EVMN","c":"Evommune, Inc.","s":"insider","sc":61,"sp":12.69,"r":-0.55,"pts":[{"d":"2026-07-13","v":-0.55}]},{"t":"HNRG","c":"Hallador Energy Co","s":"insider","sc":61,"sp":16.725,"r":-0.51,"pts":[{"d":"2026-07-13","v":-0.51}]},{"t":"PSBD","c":"Palmer Square Capital Bdc","s":"insider","sc":57,"sp":10.29,"r":-0.44,"pts":[{"d":"2026-07-13","v":-0.44}]},{"t":"VENU","c":"Venu Holding Corp","s":"insider","sc":78,"sp":2.74,"r":0.36,"pts":[{"d":"2026-07-13","v":0.36}]},{"t":"ANIX","c":"Anixa Biosciences Inc","s":"insider","sc":93,"sp":3.02,"r":-0.33,"pts":[{"d":"2026-07-13","v":-0.33}]},{"t":"UPBD","c":"Upbound Group, Inc.","s":"insider","sc":61,"sp":21.31,"r":-0.33,"pts":[{"d":"2026-07-13","v":-0.33}]},{"t":"MERC","c":"Mercer International Inc.","s":"insider","sc":66,"sp":0.5853,"r":0.32,"pts":[{"d":"2026-07-13","v":0.32}]},{"t":"CMC","c":"Commercial Metals Co","s":"insider","sc":98,"sp":63.73,"r":-0.31,"pts":[{"d":"2026-07-13","v":-0.31}]},{"t":"CAI","c":"Caris Life Sciences, Inc.","s":"insider","sc":53,"sp":16.99,"r":-0.29,"pts":[{"d":"2026-07-13","v":-0.29}]},{"t":"NTSK","c":"Netskope Inc","s":"insider","sc":73,"sp":12.4,"r":0.28,"pts":[{"d":"2026-07-13","v":0.28}]},{"t":"GCO","c":"Genesco Inc","s":"insider","sc":73,"sp":34.83,"r":-0.2,"pts":[{"d":"2026-07-13","v":-0.2}]},{"t":"SWZ","c":"Total Return Securities F","s":"insider","sc":73,"sp":5.91,"r":0.17,"pts":[{"d":"2026-07-13","v":0.17}]},{"t":"EWSB","c":"Ewsb Bancorp, Inc. /Md/","s":"insider","sc":94,"sp":10.95,"r":0.0,"pts":[{"d":"2026-07-13","v":0.0}]}];
 var COLORS = ['#58a6ff','#3fb950','#f0883e','#f85149','#d2a8ff','#79c0ff','#56d364','#e3b341','#ff7b72','#a5d6ff','#7ee787','#ffa657','#ff9bce','#b1bac4'];
 var activeStocks = new Set();
 var perfChart = null;
+var liveInterval = null;
+var livePrices = {};
 
 function initChart() {
   var ctx = document.getElementById('perfChart').getContext('2d');
@@ -1210,10 +1219,114 @@ function initChart() {
     }
   });
   updateStatus();
+  fetchLivePrices();
+  liveInterval = setInterval(fetchLivePrices, 60000);
 }
 
 function findStock(ticker) {
   return PERF_DATA.find(function(s) { return s.t === ticker; });
+}
+
+async function fetchLivePrices() {
+  var btn = document.getElementById('liveBtn');
+  btn.classList.add('loading');
+  btn.textContent = 'Fetching...';
+
+  var tickers = PERF_DATA.map(function(s) { return s.t; });
+  var allRows = document.querySelectorAll('.perf-row');
+  allRows.forEach(function(r) {
+    var t = r.getAttribute('data-ticker');
+    if (t && tickers.indexOf(t) === -1) tickers.push(t);
+  });
+
+  // Filter out invalid tickers (bonds, etc.)
+  tickers = tickers.filter(function(t) { return /^[A-Z]{1,5}$/.test(t); });
+
+  var batchSize = 10;
+  var fetched = 0;
+
+  for (var i = 0; i < tickers.length; i += batchSize) {
+    var batch = tickers.slice(i, i + batchSize);
+    try {
+      var symbols = batch.join(',');
+      var url = 'https://query1.finance.yahoo.com/v8/finance/spark?symbols=' + symbols + '&range=1mo&interval=1d&includePrePost=false';
+      var proxy = 'https://corsproxy.io/?' + encodeURIComponent(url);
+      var resp = await fetch(proxy, { signal: AbortSignal.timeout(8000) });
+      var data = await resp.json();
+
+      for (var sym in data) {
+        var info = data[sym];
+        if (!info || info.length === 0) continue;
+        var chart = info[0] || info;
+        var meta = chart.meta || {};
+        var ts = (chart.timestamp || []);
+        var closes = [];
+        if (chart.indicators && chart.indicators.quote && chart.indicators.quote[0]) {
+          closes = chart.indicators.quote[0].close || [];
+        }
+
+        if (meta.regularMarketPrice) {
+          livePrices[sym] = {
+            price: meta.regularMarketPrice,
+            prevClose: meta.chartPreviousClose || meta.previousClose,
+            time: meta.regularMarketTime,
+            state: meta.marketState,
+          };
+
+          // Build historical series from spark data
+          var stock = findStock(sym);
+          if (stock && ts.length > 0 && stock.sp) {
+            var newPts = [];
+            for (var j = 0; j < ts.length; j++) {
+              if (closes[j] === null || closes[j] === undefined) continue;
+              var d = new Date(ts[j] * 1000);
+              var ds = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+              var ret = ((closes[j] - stock.sp) / stock.sp) * 100;
+              newPts.push({d: ds, v: Math.round(ret * 100) / 100});
+            }
+            if (newPts.length > 0) {
+              stock.pts = newPts;
+              stock.r = newPts[newPts.length - 1].v;
+            }
+          }
+          fetched++;
+        }
+      }
+    } catch(e) {
+      console.warn('Batch fetch failed:', batch, e);
+    }
+  }
+
+  // Update table with live prices
+  allRows.forEach(function(row) {
+    var t = row.getAttribute('data-ticker');
+    var sp = parseFloat(row.getAttribute('data-sigprice'));
+    var lp = livePrices[t];
+    if (!lp || !sp) return;
+
+    var priceCell = row.querySelector('.price');
+    var retCell = row.querySelector('.ret');
+    if (priceCell && lp.price) {
+      priceCell.innerHTML = '$' + sp.toFixed(2) + ' &rarr; <strong>$' + lp.price.toFixed(2) + '</strong>';
+    }
+    if (retCell && sp > 0) {
+      var ret = ((lp.price - sp) / sp) * 100;
+      var cls = ret > 0 ? 'buy' : ret < 0 ? 'sell' : '';
+      retCell.className = 'ret ' + cls;
+      retCell.style.fontSize = '14px';
+      retCell.textContent = (ret > 0 ? '+' : '') + ret.toFixed(1) + '%';
+    }
+  });
+
+  // Rebuild chart if stocks are selected
+  if (activeStocks.size > 0) rebuildChart();
+
+  btn.classList.remove('loading');
+  btn.textContent = 'Refresh Live Prices';
+  if (fetched > 0) {
+    document.getElementById('liveTag').style.display = 'inline';
+    updateStatus();
+  }
 }
 
 function toggleChart(ticker) {
@@ -1222,7 +1335,6 @@ function toggleChart(ticker) {
     document.querySelectorAll('tr[data-ticker="'+ticker+'"]').forEach(function(r){ r.style.background=''; });
   } else {
     activeStocks.add(ticker);
-    var ci = activeStocks.size % COLORS.length;
     document.querySelectorAll('tr[data-ticker="'+ticker+'"]').forEach(function(r){ r.style.background='#161b22'; });
   }
   rebuildChart();
@@ -1245,7 +1357,7 @@ function rebuildChart() {
     s.pts.forEach(function(p) { pmap[p.d] = p.v; });
     var values = dates.map(function(d) { return pmap[d] !== undefined ? pmap[d] : null; });
     datasets.push({
-      label: t,
+      label: t + (livePrices[t] ? ' $' + livePrices[t].price.toFixed(2) : ''),
       data: values,
       borderColor: COLORS[ci % COLORS.length],
       backgroundColor: COLORS[ci % COLORS.length] + '33',
@@ -1290,11 +1402,17 @@ function showAllCongress() {
 
 function updateStatus() {
   var el = document.getElementById('chartStatus');
+  var parts = [];
   if (activeStocks.size === 0) {
-    el.textContent = 'Click a stock in the table to chart it';
+    parts.push('Click a stock in the table to chart it');
   } else {
-    el.textContent = activeStocks.size + ' stock' + (activeStocks.size > 1 ? 's' : '') + ' on chart';
+    parts.push(activeStocks.size + ' stock' + (activeStocks.size > 1 ? 's' : '') + ' on chart');
   }
+  if (Object.keys(livePrices).length > 0) {
+    var now = new Date();
+    parts.push('Live as of ' + now.toLocaleTimeString());
+  }
+  el.textContent = parts.join(' | ');
 }
 
 document.addEventListener('DOMContentLoaded', initChart);
