@@ -95,7 +95,7 @@ tr.notable:hover { background: #2a2a00; }
 <header>
 <div class="header-inner">
 <div class="logo"><a href="/signals.html">Dominofall</a></div>
-<div class="updated">Updated: July 13, 2026 at 08:59 PM ET</div>
+<div class="updated">Updated: July 13, 2026 at 09:04 PM ET</div>
 </div>
 </header>
 
@@ -1232,101 +1232,70 @@ async function fetchLivePrices() {
   btn.classList.add('loading');
   btn.textContent = 'Fetching...';
 
-  var tickers = PERF_DATA.map(function(s) { return s.t; });
-  var allRows = document.querySelectorAll('.perf-row');
-  allRows.forEach(function(r) {
-    var t = r.getAttribute('data-ticker');
-    if (t && tickers.indexOf(t) === -1) tickers.push(t);
-  });
+  try {
+    var resp = await fetch('/prices.json?_=' + Date.now(), { signal: AbortSignal.timeout(8000) });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    var data = await resp.json();
+    var prices = data.prices || {};
+    var fetched = 0;
 
-  // Filter out invalid tickers (bonds, etc.)
-  tickers = tickers.filter(function(t) { return /^[A-Z]{1,5}$/.test(t); });
+    for (var sym in prices) {
+      var p = prices[sym];
+      if (!p || !p.price) continue;
+      livePrices[sym] = { price: p.price };
 
-  var batchSize = 10;
-  var fetched = 0;
-
-  for (var i = 0; i < tickers.length; i += batchSize) {
-    var batch = tickers.slice(i, i + batchSize);
-    try {
-      var symbols = batch.join(',');
-      var url = 'https://query1.finance.yahoo.com/v8/finance/spark?symbols=' + symbols + '&range=1mo&interval=1d&includePrePost=false';
-      var proxy = 'https://corsproxy.io/?' + encodeURIComponent(url);
-      var resp = await fetch(proxy, { signal: AbortSignal.timeout(8000) });
-      var data = await resp.json();
-
-      for (var sym in data) {
-        var info = data[sym];
-        if (!info || info.length === 0) continue;
-        var chart = info[0] || info;
-        var meta = chart.meta || {};
-        var ts = (chart.timestamp || []);
-        var closes = [];
-        if (chart.indicators && chart.indicators.quote && chart.indicators.quote[0]) {
-          closes = chart.indicators.quote[0].close || [];
+      var stock = findStock(sym);
+      if (stock && stock.sp && p.series && p.series.length > 0) {
+        var newPts = [];
+        for (var j = 0; j < p.series.length; j++) {
+          var ret = ((p.series[j].c - stock.sp) / stock.sp) * 100;
+          newPts.push({d: p.series[j].d, v: Math.round(ret * 100) / 100});
         }
-
-        if (meta.regularMarketPrice) {
-          livePrices[sym] = {
-            price: meta.regularMarketPrice,
-            prevClose: meta.chartPreviousClose || meta.previousClose,
-            time: meta.regularMarketTime,
-            state: meta.marketState,
-          };
-
-          // Build historical series from spark data
-          var stock = findStock(sym);
-          if (stock && ts.length > 0 && stock.sp) {
-            var newPts = [];
-            for (var j = 0; j < ts.length; j++) {
-              if (closes[j] === null || closes[j] === undefined) continue;
-              var d = new Date(ts[j] * 1000);
-              var ds = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-              var ret = ((closes[j] - stock.sp) / stock.sp) * 100;
-              newPts.push({d: ds, v: Math.round(ret * 100) / 100});
-            }
-            if (newPts.length > 0) {
-              stock.pts = newPts;
-              stock.r = newPts[newPts.length - 1].v;
-            }
-          }
-          fetched++;
+        if (newPts.length > 0) {
+          stock.pts = newPts;
+          stock.r = newPts[newPts.length - 1].v;
         }
       }
-    } catch(e) {
-      console.warn('Batch fetch failed:', batch, e);
+      fetched++;
     }
+
+    var allRows = document.querySelectorAll('.perf-row');
+    allRows.forEach(function(row) {
+      var t = row.getAttribute('data-ticker');
+      var sp = parseFloat(row.getAttribute('data-sigprice'));
+      var lp = livePrices[t];
+      if (!lp || !sp) return;
+
+      var priceCell = row.querySelector('.price');
+      var retCell = row.querySelector('.ret');
+      if (priceCell && lp.price) {
+        priceCell.innerHTML = '$' + sp.toFixed(2) + ' &rarr; <strong>$' + lp.price.toFixed(2) + '</strong>';
+      }
+      if (retCell && sp > 0) {
+        var ret = ((lp.price - sp) / sp) * 100;
+        var cls = ret > 0 ? 'buy' : ret < 0 ? 'sell' : '';
+        retCell.className = 'ret ' + cls;
+        retCell.style.fontSize = '14px';
+        retCell.textContent = (ret > 0 ? '+' : '') + ret.toFixed(1) + '%';
+      }
+    });
+
+    if (activeStocks.size > 0) rebuildChart();
+
+    if (fetched > 0) {
+      document.getElementById('liveTag').style.display = 'inline';
+      var updated = data.updated_utc ? new Date(data.updated_utc) : null;
+      if (updated) {
+        document.getElementById('liveTag').textContent = 'LIVE ' + updated.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      }
+    }
+  } catch(e) {
+    console.warn('Price fetch failed:', e);
   }
-
-  // Update table with live prices
-  allRows.forEach(function(row) {
-    var t = row.getAttribute('data-ticker');
-    var sp = parseFloat(row.getAttribute('data-sigprice'));
-    var lp = livePrices[t];
-    if (!lp || !sp) return;
-
-    var priceCell = row.querySelector('.price');
-    var retCell = row.querySelector('.ret');
-    if (priceCell && lp.price) {
-      priceCell.innerHTML = '$' + sp.toFixed(2) + ' &rarr; <strong>$' + lp.price.toFixed(2) + '</strong>';
-    }
-    if (retCell && sp > 0) {
-      var ret = ((lp.price - sp) / sp) * 100;
-      var cls = ret > 0 ? 'buy' : ret < 0 ? 'sell' : '';
-      retCell.className = 'ret ' + cls;
-      retCell.style.fontSize = '14px';
-      retCell.textContent = (ret > 0 ? '+' : '') + ret.toFixed(1) + '%';
-    }
-  });
-
-  // Rebuild chart if stocks are selected
-  if (activeStocks.size > 0) rebuildChart();
 
   btn.classList.remove('loading');
   btn.textContent = 'Refresh Live Prices';
-  if (fetched > 0) {
-    document.getElementById('liveTag').style.display = 'inline';
-    updateStatus();
-  }
+  updateStatus();
 }
 
 function toggleChart(ticker) {
