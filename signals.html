@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insider Signals - Daily Stock Picks from SEC &amp; Congressional Filings</title>
+<meta name="description" content="Daily insider trading signals from SEC Form 4 filings and Congressional trade disclosures. Backtest-validated anomaly scoring.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace; background: #0a0e17; color: #c9d1d9; line-height: 1.5; }
+
+header { background: #0d1117; border-bottom: 2px solid #f0883e; padding: 16px 20px; }
+.header-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 20px; font-weight: 700; color: #f0883e; letter-spacing: -0.5px; }
+.logo a { color: #f0883e; text-decoration: none; }
+.updated { font-size: 12px; color: #6e7681; }
+
+.stats-bar { background: #161b22; padding: 16px 20px; border-bottom: 1px solid #21262d; }
+.stats-inner { max-width: 1400px; margin: 0 auto; display: flex; gap: 40px; flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat-val { font-size: 24px; font-weight: 700; color: #58a6ff; }
+.stat-val.green { color: #3fb950; }
+.stat-val.orange { color: #f0883e; }
+.stat-label { font-size: 11px; color: #6e7681; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+h2 { color: #f0883e; font-size: 18px; margin: 30px 0 4px 0; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
+h2 small { color: #6e7681; font-weight: 400; font-size: 13px; }
+.disclaimer { font-size: 11px; color: #6e7681; margin-bottom: 12px; }
+
+.section { margin-bottom: 30px; }
+.prev-section h2 { color: #6e7681; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #161b22; color: #8b949e; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 10px; text-align: left; border-bottom: 1px solid #21262d; position: sticky; top: 0; }
+td { padding: 8px 10px; border-bottom: 1px solid #161b22; vertical-align: top; }
+tr:hover { background: #161b22; }
+
+.ticker { font-weight: 700; color: #58a6ff; font-size: 14px; white-space: nowrap; }
+.company { color: #8b949e; font-size: 12px; }
+.score { white-space: nowrap; }
+.conf { padding: 2px 8px; border-radius: 3px; font-weight: 700; font-size: 12px; }
+.conf.high { background: #1a4021; color: #3fb950; }
+.conf.med { background: #3d2e00; color: #f0883e; }
+.window { font-weight: 600; font-size: 12px; }
+.window.actionable { color: #3fb950; }
+.window.moving { color: #f0883e; }
+.window.missed { color: #6e7681; }
+.price { font-size: 12px; white-space: nowrap; }
+.who { font-size: 12px; }
+.who small { color: #6e7681; }
+.sentiment { font-size: 12px; font-weight: 600; }
+.sentiment.buy { color: #3fb950; }
+.sentiment.sell { color: #f85149; }
+.catalyst { font-size: 11px; color: #8b949e; }
+.flags { font-size: 11px; color: #6e7681; }
+.flags small { display: block; margin-top: 2px; color: #484f58; }
+.amount { white-space: nowrap; font-size: 12px; }
+.date { white-space: nowrap; font-size: 12px; }
+.filer { font-size: 13px; }
+.filer small { color: #6e7681; }
+.ret { font-size: 12px; font-weight: 600; white-space: nowrap; }
+.type { font-weight: 700; font-size: 12px; }
+.type.buy { color: #3fb950; }
+.type.sell { color: #f85149; }
+tr.notable { background: #1a1a00; }
+tr.notable:hover { background: #2a2a00; }
+.empty { text-align: center; color: #484f58; padding: 20px; font-style: italic; }
+
+.cluster-section { margin: 12px 0 20px 0; }
+.cluster-section h3 { color: #8b949e; font-size: 13px; margin-bottom: 6px; }
+.cluster-table { width: auto; }
+.cluster-table th { font-size: 10px; }
+.cluster-table td { font-size: 12px; padding: 4px 10px; }
+
+.legend { background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 12px 16px; margin: 20px 0; font-size: 12px; color: #8b949e; }
+.legend strong { color: #c9d1d9; }
+
+@media (max-width: 900px) {
+    table { font-size: 11px; }
+    th, td { padding: 6px 4px; }
+    .who, .catalyst, .flags { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="header-inner">
+<div class="logo"><a href="/signals.html">Dominofall -- Insider Signals</a></div>
+<div class="updated">Updated: July 13, 2026 at 04:44 PM ET</div>
+</div>
+</header>
+
+<div class="stats-bar">
+<div class="stats-inner">
+<div class="stat"><div class="stat-val green">45</div><div class="stat-label">Actionable Today</div></div>
+<div class="stat"><div class="stat-val">76</div><div class="stat-label">Total Anomalies</div></div>
+<div class="stat"><div class="stat-val orange">200</div><div class="stat-label">Congressional Trades (H+S)</div></div>
+</div>
+</div>
+
+<div class="container">
+
+<div class="legend">
+<strong>How this works:</strong> SEC Form 4 insider buys scored by role weight, buy size, market cap, cluster activity, sentiment, and catalyst proximity.
+Backtest-validated (582 signals, 90 days): score &ge; 25 = 74% win rate, &ge; 30 = 76% win rate.
+Congressional trades scored by amount, notable trader status, options use, and filing speed.
+<br><strong>Window:</strong> OPEN = still near insider's price. OPEN (dip) = cheaper than insider paid. MOVING = already up. MISSED = moved too far.
+</div>
+
+<div class="section">
+<h2>Today's Insider Buys <small>(2026-07-13)</small></h2>
+<div class="disclaimer">MED/HIGH confidence signals only (score &ge; 25). Not financial advice.</div>
+<div style="overflow-x: auto;">
+<table>
+<thead><tr><th>Ticker</th><th>Company</th><th>Score</th><th>Window</th><th>Price</th><th>Insider</th><th>Sentiment</th><th>Catalyst</th></tr></thead>
+<tbody>
+<tr>
+<td class="ticker">GLOO</td>
+<td class="company">Gloo Holdings, Inc.</td>
+<td class="score"><span class="conf high">132 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$3.25 &rarr; $3.10 (-4.5%)</td>
+<td class="who">Beck Scott Arthur (Pres, CEO, 10%) $3,500,000<br><small>+ Green Derek Todd (Dir) $1,999,998</small><br><small>+ Gelsinger Patrick P (See Remarks) $500,000</small><br><small><strong>3 insiders, $5,999,998 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 56d | software</td>
+</tr>
+<tr>
+<td class="ticker">PRQR</td>
+<td class="company">Proqr Therapeutics N.V.</td>
+<td class="score"><span class="conf high">114 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$1.74 &rarr; $1.73 (-0.6%)</td>
+<td class="who">De Boer Daniel Anton (CEO) $261,000<br><small>+ De Boer Daniel Anton (CEO) $238,500</small><br><small><strong>2 insiders, $499,500 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 23d | biotechnology</td>
+</tr>
+<tr>
+<td class="ticker">TDIC</td>
+<td class="company">Dreamland Ltd</td>
+<td class="score"><span class="conf high">113 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$3.75 &rarr; $3.81 (+1.6%)</td>
+<td class="who">Seto Wai Yue (CEO, 10%) $2,445,000</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">COE</td>
+<td class="company">51Talk Online Education Group</td>
+<td class="score"><span class="conf high">111 (HIGH)</span></td>
+<td class="window moving">MOVING</td>
+<td class="price">$16.55 &rarr; $17.40 (+5.1%)</td>
+<td class="who">Huang Jack Jiajia (CEO, 10%) $9,312,806<br><small>+ Huang Jack Jiajia (CEO, 10%) $23,487,344</small><br><small><strong>2 insiders, $32,800,150 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">UUUU</td>
+<td class="company">Energy Fuels Inc</td>
+<td class="score"><span class="conf high">101 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$13.08 &rarr; $13.21 (+1.0%)</td>
+<td class="who">Bhappu Ross R. (Pres, CEO) $967,920<br><small>+ Hansen Bruce D (Dir) $50,780</small><br><small><strong>2 insiders, $1,018,700 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 23d</td>
+</tr>
+<tr>
+<td class="ticker">CMC</td>
+<td class="company">Commercial Metals Co</td>
+<td class="score"><span class="conf high">98 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$61.30 &rarr; $63.73 (+4.0%)</td>
+<td class="who">Matt Peter R (Pres, CEO) $504,499<br><small>+ MATT PETER R (President and CEO) $504,499</small><br><small><strong>2 insiders, $1,008,998 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">EWSB</td>
+<td class="company">Ewsb Bancorp, Inc. /Md/</td>
+<td class="score"><span class="conf high">94 (HIGH)</span></td>
+<td class="window moving">MOVING</td>
+<td class="price">$10.00 &rarr; $10.95 (+9.5%)</td>
+<td class="who">Schmalz Charles D (Pres, CEO) $676,410<br><small>+ Schmalz Charles D (Pres, CEO) $676,410</small><br><small>+ Mangold James E (VP - Lending) $399,500</small><br><small>+ Schneider Kory J (VP - Member Experience) $479,000</small><br><small>+ Vander Loop Kailee (VP HR Technology) $151,800</small><br><small>+ Vander Loop Kailee (VP HR Technology) $151,800</small><br><small>+ Schneider Kory J (VP - Member Experience) $479,000</small><br><small>+ Mangold James E (VP - Lending) $399,500</small><br><small>+ Haen Steven (Dir) $10,000</small><br><small><strong>9 insiders, $3,423,420 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">banks</td>
+</tr>
+<tr>
+<td class="ticker">ANIX</td>
+<td class="company">Anixa Biosciences Inc</td>
+<td class="score"><span class="conf high">93 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$3.04 &rarr; $3.02 (-0.7%)</td>
+<td class="who">Kumar Amit (CEO) $15,200</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 58d | Trial EARLY_PHASE1 | Pre-Rev | biotechnology</td>
+</tr>
+<tr>
+<td class="ticker">VENU</td>
+<td class="company">Venu Holding Corp</td>
+<td class="score"><span class="conf high">78 (HIGH)</span></td>
+<td class="window moving">MOVING</td>
+<td class="price">$2.54 &rarr; $2.74 (+7.9%)</td>
+<td class="who">Roth Jay W (CEO, COB, 10%) $19,911</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 30d</td>
+</tr>
+<tr>
+<td class="ticker">EHSI</td>
+<td class="company">Elite Health Systems Inc.</td>
+<td class="score"><span class="conf high">74 (HIGH)</span></td>
+<td class="window moving">MOVING</td>
+<td class="price">$0.95 &rarr; $1.00 (+5.3%)</td>
+<td class="who">Jeereddi Prasad Anjaneya (CEO, 10%) $40,000</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">GCO</td>
+<td class="company">Genesco Inc</td>
+<td class="score"><span class="conf high">73 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$33.80 &rarr; $34.83 (+3.0%)</td>
+<td class="who">Sandfort Gregory A (Dir) $99,980</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 44d</td>
+</tr>
+<tr>
+<td class="ticker">NTSK</td>
+<td class="company">Netskope Inc</td>
+<td class="score"><span class="conf high">73 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$11.82 &rarr; $12.40 (+4.9%)</td>
+<td class="who">Griffith William J.G. (Dir, 10%) $7,216,081</td>
+<td class="sentiment sell">NET SELL</td>
+<td class="catalyst">Earnings 29d | software</td>
+</tr>
+<tr>
+<td class="ticker">SWZ</td>
+<td class="company">Total Return Securities Fund</td>
+<td class="score"><span class="conf high">73 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$5.92 &rarr; $5.91 (-0.2%)</td>
+<td class="who">Dakos Andrew (Pres, CEO) $29,601<br><small>+ Goldstein Phillip (Secretary) $35,581</small><br><small><strong>2 insiders, $65,182 total</strong></small></td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">BOLD</td>
+<td class="company">Boundless Bio, Inc.</td>
+<td class="score"><span class="conf high">72 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$2.48 &rarr; $2.40 (-3.2%)</td>
+<td class="who">Tang Kevin (10%) $141,865</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Trial ? | Pre-Rev | biotechnology</td>
+</tr>
+<tr>
+<td class="ticker">CV</td>
+<td class="company">Capsovision, Inc</td>
+<td class="score"><span class="conf high">69 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$6.09 &rarr; $6.19 (+1.6%)</td>
+<td class="who">Harari Eliyahou Et Al (10%) $495,117</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 30d | Trial NA</td>
+</tr>
+<tr>
+<td class="ticker">NYC</td>
+<td class="company">American Strategic Investment Co.</td>
+<td class="score"><span class="conf high">69 (HIGH)</span></td>
+<td class="window actionable">OPEN (dip)</td>
+<td class="price">$9.53 &rarr; $8.50 (-10.8%)</td>
+<td class="who">Schorsch Nicholas S (10%) $76,240</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 31d | real estate</td>
+</tr>
+<tr>
+<td class="ticker">VII</td>
+<td class="company">Viking Acquisition Corp. II</td>
+<td class="score"><span class="conf high">68 (HIGH)</span></td>
+<td class="window ">CLOSING</td>
+<td class="price"></td>
+<td class="who">Wohlin Hakan (CEO, 10%) $3,000,000</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">VIRC</td>
+<td class="company">Virco Mfg Corporation</td>
+<td class="score"><span class="conf high">66 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$6.00 &rarr; $6.26 (+4.3%)</td>
+<td class="who">Virtue Douglas A (EVP) $48,504</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 52d</td>
+</tr>
+<tr>
+<td class="ticker">MERC</td>
+<td class="company">Mercer International Inc.</td>
+<td class="score"><span class="conf high">66 (HIGH)</span></td>
+<td class="window actionable">OPEN (dip)</td>
+<td class="price">$0.86 &rarr; $0.59 (-31.9%)</td>
+<td class="who">Kellogg Peter R (10%) $362,665</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 23d</td>
+</tr>
+<tr>
+<td class="ticker">CNTM</td>
+<td class="company">Connectm Technology Solutions, Inc.</td>
+<td class="score"><span class="conf high">61 (HIGH)</span></td>
+<td class="window actionable">OPEN (dip)</td>
+<td class="price">$8.77 &rarr; $7.32 (-16.5%)</td>
+<td class="who">Choudhury Mahesh (Principal Financial Officer) $31,766</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">EVMN</td>
+<td class="company">Evommune, Inc.</td>
+<td class="score"><span class="conf high">61 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$13.26 &rarr; $12.69 (-4.3%)</td>
+<td class="who">Carver Kyle (CFO) $13,260<br><small>+ Kirsch Arthur S (Dir) $133,000</small><br><small><strong>2 insiders, $146,260 total</strong></small></td>
+<td class="sentiment sell">STRONG SELL</td>
+<td class="catalyst">Earnings 23d | Trial EARLY_PHASE1 | biotechnology</td>
+</tr>
+<tr>
+<td class="ticker">HNRG</td>
+<td class="company">Hallador Energy Co</td>
+<td class="score"><span class="conf high">61 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$16.58 &rarr; $16.73 (+0.9%)</td>
+<td class="who">Hudson Daniel Timothy (Dir) $82,913</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">UPBD</td>
+<td class="company">Upbound Group, Inc.</td>
+<td class="score"><span class="conf high">61 (HIGH)</span></td>
+<td class="window moving">MOVING</td>
+<td class="price">$20.09 &rarr; $21.31 (+6.1%)</td>
+<td class="who">Brown Jeffrey J (Dir) $46,107</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 16d | software</td>
+</tr>
+<tr>
+<td class="ticker">BXSY</td>
+<td class="company">Bexil Investment Trust</td>
+<td class="score"><span class="conf high">61 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$17.08 &rarr; $17.08 (+0.0%)</td>
+<td class="who">Atkinson Roger A. (Dir) $79,934</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">BNKK</td>
+<td class="company">Bonk, Inc.</td>
+<td class="score"><span class="conf high">59 (HIGH)</span></td>
+<td class="window actionable">OPEN (dip)</td>
+<td class="price">$1.47 &rarr; $1.23 (-16.7%)</td>
+<td class="who">Rudy Mitchell Austin (Dir, 10%) $17,139</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">PSBD</td>
+<td class="company">Palmer Square Capital Bdc Inc.</td>
+<td class="score"><span class="conf high">57 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$10.53 &rarr; $10.29 (-2.3%)</td>
+<td class="who">Bicknell Martin C (10%) $647,337</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Earnings 23d</td>
+</tr>
+<tr>
+<td class="ticker">JEM</td>
+<td class="company">707 Cayman Holdings Ltd.</td>
+<td class="score"><span class="conf high">54 (HIGH)</span></td>
+<td class="window actionable">OPEN (dip)</td>
+<td class="price">$1.36 &rarr; $0.42 (-69.1%)</td>
+<td class="who">Hrt Financial LP (10%) $186,684</td>
+<td class="sentiment ">MIXED</td>
+<td class="catalyst">-</td>
+</tr>
+<tr>
+<td class="ticker">TOI</td>
+<td class="company">Oncology Institute, Inc.</td>
+<td class="score"><span class="conf high">51 (HIGH)</span></td>
+<td class="window actionable">OPEN</td>
+<td class="price">$5.85 &rarr; $5.89 (+0.8%)</td>
+<td class="who">Chernett Jorey (10%) $87,750</td>
+<td class="sentiment buy">STRONG BUY</td>
+<td class="catalyst">Trial PHASE2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cluster-section">
+<h3>Cluster Buys</h3>
+<table class="cluster-table"><thead><tr><th>Ticker</th><th>Buys</th><th>Total</th><th>Traders</th></tr></thead>
+<tbody><tr><td class='ticker'>TSM</td><td>31 buys</td><td>$122,592</td><td>He Jun, Hwang Yuan-Ko, Lee Chun-Hsien</td></tr><tr><td class='ticker'>GLOO</td><td>3 buys</td><td>$5,999,998</td><td>Gelsinger Patrick P, Green Derek Todd, Beck Scott Arthur</td></tr><tr><td class='ticker'>CMC</td><td>2 buys</td><td>$1,008,998</td><td>MATT PETER R, Matt Peter R</td></tr><tr><td class='ticker'>UUUU</td><td>2 buys</td><td>$1,018,700</td><td>Bhappu Ross R., Hansen Bruce D</td></tr><tr><td class='ticker'>IPX</td><td>2 buys</td><td>$2,378,393</td><td>Hannigan Todd, Arima Anastasios</td></tr><tr><td class='ticker'>COE</td><td>1 buys</td><td>$32,800,150</td><td>Huang Jack Jiajia</td></tr><tr><td class='ticker'>WRAP</td><td>2 buys</td><td>$340,288</td><td>Shulman John D, Cohen Scot</td></tr><tr><td class='ticker'>NTSK</td><td>2 buys</td><td>$14,432,130</td><td>Griffith William J.G., Iconiq Strategic Partners VIII Holdings, L.P.</td></tr></tbody></table></div>
+</div>
+
+<div class="section">
+<h2>Today's Congressional Trades <small>(2026-07-13)</small></h2>
+<div class="disclaimer">House + Senate PTR filings. Scored by amount, notable trader, options, filing speed. Return = stock performance since trade.</div>
+<div style="overflow-x: auto;">
+<table>
+<thead><tr><th>Ticker</th><th>Filer</th><th>Type</th><th>Amount</th><th>Trade Date</th><th>Return</th><th>Flags</th></tr></thead>
+<tbody>
+<tr class="notable">
+<td class="ticker">INTC</td>
+<td class="filer">Nancy Pelosi<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,000,001 - $5,000,000</td>
+<td class="date">2026-05-29</td>
+<td class="ret"><span class='sell'>-8.3%</span></td>
+<td class="flags">$3.0M+, Notable: Nancy Pelosi, CALL OPTIONS (leveraged bet)<br><small>Purchased 200 call options with a strike price of $50 and an expiration date o..</small></td>
+</tr>
+<tr class="notable">
+<td class="ticker">UBER</td>
+<td class="filer">Nancy Pelosi<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$500,001 - $1,000,000</td>
+<td class="date">2026-05-29</td>
+<td class="ret"><span class='buy'>+6.3%</span></td>
+<td class="flags">$500K+, Notable: Nancy Pelosi, CALL OPTIONS (leveraged bet)<br><small>Purchased 200 call options with a strike price of $50 and an expiration date o..</small></td>
+</tr>
+<tr class="">
+<td class="ticker">MSFT</td>
+<td class="filer">Josh Gottheimer<br><small>House | D-NJ</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$500,001 - $1,000,000</td>
+<td class="date">2026-05-19</td>
+<td class="ret"><span class='sell'>-6.6%</span></td>
+<td class="flags">$500K+, CALL OPTIONS (leveraged bet), Joint trade<br><small>Description: Call options; Strike price $325; Expires 06/18/2026</small></td>
+</tr>
+<tr class="">
+<td class="ticker">MSFT</td>
+<td class="filer">Josh Gottheimer<br><small>House | D-NJ</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$250,001 - $500,000</td>
+<td class="date">2026-05-19</td>
+<td class="ret"><span class='sell'>-6.6%</span></td>
+<td class="flags">$100K+, CALL OPTIONS (leveraged bet), Joint trade<br><small>Description: Call options; Strike price $325; Expires 06/18/2026</small></td>
+</tr>
+<tr class="">
+<td class="ticker">MSFT</td>
+<td class="filer">Josh Gottheimer<br><small>House | D-NJ</small></td>
+<td class="type sell">SELL</td>
+<td class="amount">$500,001 - $1,000,000</td>
+<td class="date">2026-05-19</td>
+<td class="ret"><span class='sell'>-6.6%</span></td>
+<td class="flags">$500K+, CALL OPTIONS (leveraged bet), Joint trade<br><small>Description: Call options; Strike price $330; Expires 10/16/2026</small></td>
+</tr>
+<tr class="">
+<td class="ticker">MSFT</td>
+<td class="filer">Josh Gottheimer<br><small>House | D-NJ</small></td>
+<td class="type sell">SELL</td>
+<td class="amount">$250,001 - $500,000</td>
+<td class="date">2026-05-19</td>
+<td class="ret"><span class='sell'>-6.6%</span></td>
+<td class="flags">$100K+, CALL OPTIONS (leveraged bet), Joint trade<br><small>Description: Call options; Strike price $340; Expires 10/16/2026</small></td>
+</tr>
+<tr class="">
+<td class="ticker">T</td>
+<td class="filer">Tim Moore<br><small>House | R-NC</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$50,001 - $100,000</td>
+<td class="date">2026-06-04</td>
+<td class="ret"><span class='sell'>-5.8%</span></td>
+<td class="flags">Filed in 1d (fast)<br><small>AT&T Inc.</small></td>
+</tr>
+<tr class="">
+<td class="ticker">FMAO</td>
+<td class="filer">Robert E. Latta<br><small>House | R-OH</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$15,001 - $50,000</td>
+<td class="date">2026-06-04</td>
+<td class="ret"><span class='buy'>+6.9%</span></td>
+<td class="flags">Filed in 1d (fast), Spouse trade<br><small>Compensation</small></td>
+</tr>
+<tr class="">
+<td class="ticker">PINS</td>
+<td class="filer">Christian D. Menefee<br><small>House | D-TX</small></td>
+<td class="type sell">SELL</td>
+<td class="amount">$15,001 - $50,000</td>
+<td class="date">2026-05-28</td>
+<td class="ret"><span class='buy'>+10.1%</span></td>
+<td class="flags">CALL OPTIONS (leveraged bet), Spouse trade<br><small>Spouse received restricted stock units (RSUs) as part of compensation as emplo..</small></td>
+</tr>
+<tr class="">
+<td class="ticker">BLK</td>
+<td class="filer">John McGuire<br><small>House | R-VA</small></td>
+<td class="type sell">SELL</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-07-07</td>
+<td class="ret"><span class='buy'>+1.2%</span></td>
+<td class="flags">Filed in 1d (fast), Spouse trade<br><small>BlackRock, Inc. Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">AGX</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$15,001 - $50,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret">-</td>
+<td class="flags">Filed in 2d (fast)<br><small>Argan, Inc. Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">JPM</td>
+<td class="filer">John R Curtis<br><small>Senate | R-UT</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$100,001 - $250,000</td>
+<td class="date">2026-06-02</td>
+<td class="ret"><span class='buy'>+10.7%</span></td>
+<td class="flags">$100K+, Joint trade<br><small>JPMORGAN CHASE FINL CO CONTIN INT
+                                        
+   ..</small></td>
+</tr>
+<tr class="">
+<td class="ticker">TCNNF</td>
+<td class="filer">Greg Stanton<br><small>House | D-AZ</small></td>
+<td class="type sell">SELL</td>
+<td class="amount">$100,001 - $250,000</td>
+<td class="date">2026-05-28</td>
+<td class="ret">-</td>
+<td class="flags">$100K+, Spouse trade<br><small>TRULIEVE CANNABIS CORP</small></td>
+</tr>
+<tr class="">
+<td class="ticker">91282CNG2</td>
+<td class="filer">Richard W. Allen<br><small>House | R-GA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$100,001 - $250,000</td>
+<td class="date">2026-05-19</td>
+<td class="ret">-</td>
+<td class="flags">$100K+<br><small>Filing Status: New
+Subholding Of: SCH1</small></td>
+</tr>
+<tr class="">
+<td class="ticker">T</td>
+<td class="filer">Tim Moore<br><small>House | R-NC</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$15,001 - $50,000</td>
+<td class="date">2026-05-18</td>
+<td class="ret"><span class='sell'>-12.2%</span></td>
+<td class="flags">Filed in 1d (fast)<br><small>AT&T Inc.</small></td>
+</tr>
+<tr class="">
+<td class="ticker">DSGX</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='buy'>+6.0%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>The Descartes Systems Group Inc. - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">TXRH</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='sell'>-0.9%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>Texas Roadhouse, Inc. - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">TCBI</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='sell'>-1.6%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>Texas Capital Bancshares, Inc. - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">MCHP</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='sell'>-6.2%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>Microchip Technology Incorporated - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">HQY</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='buy'>+5.2%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>HealthEquity, Inc. - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">CYTK</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='sell'>-3.2%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>Cytokinetics, Incorporated - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">CECO</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret">-</td>
+<td class="flags">Filed in 2d (fast)<br><small>CECO Environmental Corp. - Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">CDRE</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='buy'>+0.1%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>Cadre Holdings, Inc. Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">BOOT</td>
+<td class="filer">Gilbert Cisneros<br><small>House | D-CA</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-30</td>
+<td class="ret"><span class='buy'>+1.1%</span></td>
+<td class="flags">Filed in 2d (fast)<br><small>Boot Barn Holdings, Inc. Common Stock</small></td>
+</tr>
+<tr class="">
+<td class="ticker">T</td>
+<td class="filer">Gary C Peters<br><small>Senate | D-MI</small></td>
+<td class="type buy">BUY</td>
+<td class="amount">$1,001 - $15,000</td>
+<td class="date">2026-06-29</td>
+<td class="ret"><span class='sell'>-1.7%</span></td>
+<td class="flags">Filed in 3d (fast)<br><small>AT&T Inc.</small></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cluster-section">
+<h3>Congressional Cluster Buys</h3>
+<table class="cluster-table"><thead><tr><th>Ticker</th><th>Activity</th><th>Total</th><th>Members</th></tr></thead>
+<tbody><tr><td class='ticker'>MSFT</td><td>6 buys by 4 members</td><td>~$1,224,000</td><td>Josh Gottheimer, Gilbert Cisneros, Cleo Fields</td></tr><tr><td class='ticker'>JPM</td><td>3 buys by 2 members</td><td>~$191,000</td><td>John R Curtis, Rohit Khanna</td></tr><tr><td class='ticker'>T</td><td>6 buys by 4 members</td><td>~$164,000</td><td>David J. Taylor, Gary C Peters, Tim Moore</td></tr><tr><td class='ticker'>LLY</td><td>2 buys by 2 members</td><td>~$83,000</td><td>Gilbert Cisneros, Rohit Khanna</td></tr><tr><td class='ticker'>IBM</td><td>3 buys by 3 members</td><td>~$73,000</td><td>Maria Elvira Salazar, Gilbert Cisneros, Lloyd Doggett</td></tr><tr><td class='ticker'>SPCX</td><td>3 buys by 3 members</td><td>~$48,500</td><td>Daniel Meuser, Gilbert Cisneros, John McGuire</td></tr><tr><td class='ticker'>HD</td><td>3 buys by 3 members</td><td>~$48,500</td><td>David J. Taylor, Lloyd Doggett, Rohit Khanna</td></tr><tr><td class='ticker'>ABT</td><td>3 buys by 3 members</td><td>~$24,000</td><td>Richard Dean McCormick, Gilbert Cisneros, Rohit Khanna</td></tr></tbody></table></div>
+</div>
+
+<div class="section prev-section">
+<h2>Previous Day <small>(N/A)</small></h2>
+<h3 style="color: #6e7681; font-size: 14px; margin: 10px 0 6px 0;">Insider Buys</h3>
+<div style="overflow-x: auto;">
+<table>
+<thead><tr><th>Ticker</th><th>Company</th><th>Score</th><th>Window</th><th>Price</th><th>Insider</th><th>Sentiment</th><th>Catalyst</th></tr></thead>
+<tbody>
+<tr><td colspan="8" class="empty">No previous day's data available.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<h3 style="color: #6e7681; font-size: 14px; margin: 16px 0 6px 0;">Congressional Trades</h3>
+<div style="overflow-x: auto;">
+<table>
+<thead><tr><th>Ticker</th><th>Filer</th><th>Type</th><th>Amount</th><th>Trade Date</th><th>Return</th><th>Flags</th></tr></thead>
+<tbody>
+<tr><td colspan="7" class="empty">No previous day's congressional data.</td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Performance Tracker <small>(all previous picks, EOD prices)</small></h2>
+<div class="disclaimer">31 stocks tracked | Win rate: 35% (11W/20L) | Avg return: -0.9%</div>
+<div style="overflow-x: auto;">
+<table>
+<thead><tr><th>Ticker</th><th>Company</th><th>Score</th><th>Source</th><th>Signal Date</th><th>Price</th><th>Return</th><th>Tracked</th></tr></thead>
+<tbody>
+<tr>
+<td class="ticker">GLOO</td>
+<td class="company">Gloo Holdings, Inc.</td>
+<td class="score">132</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$3.10 &rarr; $3.29</td>
+<td class="ret buy" style="font-size:14px;">+6.0%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">EHSI</td>
+<td class="company">Elite Health Systems Inc.</td>
+<td class="score">74</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$1.00 &rarr; $1.01</td>
+<td class="ret buy" style="font-size:14px;">+1.0%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">CV</td>
+<td class="company">Capsovision, Inc</td>
+<td class="score">69</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$6.19 &rarr; $6.25</td>
+<td class="ret buy" style="font-size:14px;">+1.0%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">BOLD</td>
+<td class="company">Boundless Bio, Inc.</td>
+<td class="score">72</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$2.40 &rarr; $2.42</td>
+<td class="ret buy" style="font-size:14px;">+0.8%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">TDIC</td>
+<td class="company">Dreamland Ltd</td>
+<td class="score">113</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$3.81 &rarr; $3.84</td>
+<td class="ret buy" style="font-size:14px;">+0.8%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">VIRC</td>
+<td class="company">Virco Mfg Corporation</td>
+<td class="score">66</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$6.26 &rarr; $6.30</td>
+<td class="ret buy" style="font-size:14px;">+0.6%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">IPX</td>
+<td class="company">Iperionx Ltd</td>
+<td class="score">85</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$24.93 &rarr; $25.08</td>
+<td class="ret buy" style="font-size:14px;">+0.6%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">VENU</td>
+<td class="company">Venu Holding Corp</td>
+<td class="score">78</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$2.74 &rarr; $2.75</td>
+<td class="ret buy" style="font-size:14px;">+0.4%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">MERC</td>
+<td class="company">Mercer International Inc.</td>
+<td class="score">66</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$0.59 &rarr; $0.59</td>
+<td class="ret buy" style="font-size:14px;">+0.3%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">NTSK</td>
+<td class="company">Netskope Inc</td>
+<td class="score">73</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$12.40 &rarr; $12.44</td>
+<td class="ret buy" style="font-size:14px;">+0.3%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">SWZ</td>
+<td class="company">Total Return Securities Fund</td>
+<td class="score">73</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$5.91 &rarr; $5.92</td>
+<td class="ret buy" style="font-size:14px;">+0.2%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">EWSB</td>
+<td class="company">Ewsb Bancorp, Inc. /Md/</td>
+<td class="score">94</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$10.95 &rarr; $10.95</td>
+<td class="ret " style="font-size:14px;">+0.0%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">GCO</td>
+<td class="company">Genesco Inc</td>
+<td class="score">73</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$34.83 &rarr; $34.76</td>
+<td class="ret sell" style="font-size:14px;">-0.2%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">CAI</td>
+<td class="company">Caris Life Sciences, Inc.</td>
+<td class="score">53</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$16.99 &rarr; $16.94</td>
+<td class="ret sell" style="font-size:14px;">-0.3%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">CMC</td>
+<td class="company">Commercial Metals Co</td>
+<td class="score">98</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$63.73 &rarr; $63.53</td>
+<td class="ret sell" style="font-size:14px;">-0.3%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">ANIX</td>
+<td class="company">Anixa Biosciences Inc</td>
+<td class="score">93</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$3.02 &rarr; $3.01</td>
+<td class="ret sell" style="font-size:14px;">-0.3%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">UPBD</td>
+<td class="company">Upbound Group, Inc.</td>
+<td class="score">61</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$21.31 &rarr; $21.24</td>
+<td class="ret sell" style="font-size:14px;">-0.3%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">PSBD</td>
+<td class="company">Palmer Square Capital Bdc Inc.</td>
+<td class="score">57</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$10.29 &rarr; $10.24</td>
+<td class="ret sell" style="font-size:14px;">-0.4%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">HNRG</td>
+<td class="company">Hallador Energy Co</td>
+<td class="score">61</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$16.73 &rarr; $16.64</td>
+<td class="ret sell" style="font-size:14px;">-0.5%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">EVMN</td>
+<td class="company">Evommune, Inc.</td>
+<td class="score">61</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$12.69 &rarr; $12.62</td>
+<td class="ret sell" style="font-size:14px;">-0.6%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">UUUU</td>
+<td class="company">Energy Fuels Inc</td>
+<td class="score">101</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$13.21 &rarr; $13.11</td>
+<td class="ret sell" style="font-size:14px;">-0.7%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">TOI</td>
+<td class="company">Oncology Institute, Inc.</td>
+<td class="score">51</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$5.89 &rarr; $5.84</td>
+<td class="ret sell" style="font-size:14px;">-0.9%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">COE</td>
+<td class="company">51Talk Online Education Group</td>
+<td class="score">111</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$17.40 &rarr; $17.23</td>
+<td class="ret sell" style="font-size:14px;">-1.0%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">PRQR</td>
+<td class="company">Proqr Therapeutics N.V.</td>
+<td class="score">114</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$1.73 &rarr; $1.71</td>
+<td class="ret sell" style="font-size:14px;">-1.1%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">BXSY</td>
+<td class="company">Bexil Investment Trust</td>
+<td class="score">61</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$17.08 &rarr; $16.78</td>
+<td class="ret sell" style="font-size:14px;">-1.8%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">NYC</td>
+<td class="company">American Strategic Investmen..</td>
+<td class="score">69</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$8.50 &rarr; $8.34</td>
+<td class="ret sell" style="font-size:14px;">-1.9%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">BNKK</td>
+<td class="company">Bonk, Inc.</td>
+<td class="score">59</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$1.23 &rarr; $1.20</td>
+<td class="ret sell" style="font-size:14px;">-1.9%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">LRMR</td>
+<td class="company">Larimar Therapeutics, Inc.</td>
+<td class="score">63</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$4.00 &rarr; $3.83</td>
+<td class="ret sell" style="font-size:14px;">-4.1%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">WRAP</td>
+<td class="company">Wrap Technologies, Inc.</td>
+<td class="score">98</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$2.21 &rarr; $2.10</td>
+<td class="ret sell" style="font-size:14px;">-4.7%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">JEM</td>
+<td class="company">707 Cayman Holdings Ltd.</td>
+<td class="score">54</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$0.42 &rarr; $0.39</td>
+<td class="ret sell" style="font-size:14px;">-8.2%</td>
+<td>1d</td>
+</tr>
+<tr>
+<td class="ticker">CNTM</td>
+<td class="company">Connectm Technology Solution..</td>
+<td class="score">61</td>
+<td>SEC</td>
+<td class="date">2026-07-13</td>
+<td class="price">$7.32 &rarr; $6.57</td>
+<td class="ret sell" style="font-size:14px;">-10.2%</td>
+<td>1d</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</body>
+</html>
