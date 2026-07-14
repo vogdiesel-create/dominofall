@@ -60,7 +60,7 @@ tbody tr:hover { background:#161b22; }
 <body>
 <div class="container">
 <h1>Sports Edge</h1>
-<div class="subtitle">MLB + UFC + WNBA | Updated Jul 14, 2026 04:19 PM ET</div>
+<div class="subtitle">MLB + UFC + WNBA | Updated Jul 14, 2026 04:24 PM ET</div>
 
 <div class="stats-row">
 <div class="stats-bar">
@@ -92,47 +92,38 @@ tbody tr:hover { background:#161b22; }
 <div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button><button class="sport-btn" onclick="filterSport('wnba')">WNBA</button></div>
 
 <div id="tab-today" class="tab-content active">
-<div class="section"><h2>Pending Results (3)</h2><div class="disclaimer">Picks awaiting outcome.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead><tbody><tr class="" data-sport="ufc">
+<div class="section"><h2>Pending Results (3)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="ufc">
 <td>2026-07-18</td>
 <td class="ticker">Kamaru Usman</td>
-<td>Kamaru Usman vs</td>
+<td>Kamaru Usman vs Dric</td>
 <td>ML</td>
-<td><span class="tier-badge ">-</span></td>
 <td>+226</td>
 <td>UFC Model</td>
 <td>Edge 9.6%, Model 40%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
+<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 3.2600)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-0" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
-<tr class="" data-sport="ufc">
+<tr data-sport="ufc">
 <td>2026-08-15</td>
 <td class="ticker">Gillian Robertson</td>
-<td>Gillian Roberts</td>
+<td>Gillian Robertson vs</td>
 <td>ML</td>
-<td><span class="tier-badge ">-</span></td>
 <td>+202</td>
 <td>UFC Model</td>
 <td>Edge 25.8%, Model 58%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
+<td><input type="number" class="wager-input" id="wager-1" placeholder="$" min="0" step="1" oninput="calcPayout(1, 3.0200)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-1" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
-<tr class="" data-sport="ufc">
+<tr data-sport="ufc">
 <td>2026-08-15</td>
 <td class="ticker">Ian Machado Garry</td>
-<td>Ian Machado Gar</td>
+<td>Ian Machado Garry vs</td>
 <td>ML</td>
-<td><span class="tier-badge ">-</span></td>
 <td>+305</td>
 <td>UFC Model</td>
 <td>Edge 22.7%, Model 47%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
+<td><input type="number" class="wager-input" id="wager-2" placeholder="$" min="0" step="1" oninput="calcPayout(2, 4.0500)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-2" style="color:#3fb950;font-weight:600;">-</td>
 </tr></tbody></table></div></div>
 <div class="section">
 <h2>Today's Picks</h2>
@@ -17515,6 +17506,18 @@ function switchTab(name) {
   });
   history.replaceState(null, '', '#' + name);
   if (name === 'pnl' && !window.pnlChartInit) initPnlChart();
+}
+function calcPayout(idx, decOdds) {
+  var w = parseFloat(document.getElementById('wager-' + idx).value) || 0;
+  var el = document.getElementById('payout-' + idx);
+  if (w > 0 && decOdds > 0) {
+    var profit = (w * (decOdds - 1)).toFixed(2);
+    el.textContent = '+$' + profit;
+    el.style.color = '#3fb950';
+  } else {
+    el.textContent = '-';
+    el.style.color = '#6e7681';
+  }
 }
 function filterSport(sport) {
   document.querySelectorAll('.sport-btn').forEach(function(b) { b.classList.remove('active'); });
