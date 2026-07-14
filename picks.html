@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Edge -- Live Betting Dashboard</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0e17; color:#c9d1d9; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:13px; }
+.container { max-width:1200px; margin:0 auto; padding:12px; }
+h1 { font-size:20px; color:#f0f6fc; margin-bottom:4px; }
+h2 { font-size:16px; color:#f0f6fc; margin-bottom:8px; }
+.subtitle { color:#6e7681; font-size:12px; margin-bottom:16px; }
+.stats-bar { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px; padding:12px; background:#161b22; border:1px solid #21262d; border-radius:6px; }
+.stat { text-align:center; min-width:80px; }
+.stat-val { font-size:22px; font-weight:700; color:#f0f6fc; }
+.stat-label { font-size:10px; color:#6e7681; text-transform:uppercase; letter-spacing:0.5px; }
+.stat-val.buy { color:#3fb950; }
+.stat-val.sell { color:#f85149; }
+.tabs { display:flex; gap:4px; margin-bottom:16px; border-bottom:1px solid #21262d; padding-bottom:8px; }
+.tab-btn { background:none; border:1px solid transparent; color:#8b949e; padding:6px 14px; border-radius:4px 4px 0 0; cursor:pointer; font-size:13px; font-family:inherit; }
+.tab-btn:hover { color:#c9d1d9; background:#161b22; }
+.tab-btn.active { color:#f0f6fc; border-color:#21262d; border-bottom-color:#0a0e17; background:#0a0e17; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.section { margin-bottom:20px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+thead th { background:#161b22; color:#8b949e; padding:6px 8px; text-align:left; font-weight:600; position:sticky; top:0; border-bottom:2px solid #21262d; }
+tbody td { padding:5px 8px; border-bottom:1px solid #21262d; }
+tbody tr:hover { background:#161b22; }
+.ticker { color:#58a6ff; font-weight:600; }
+.buy { color:#3fb950; }
+.sell { color:#f85149; }
+.tier-badge { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:700; }
+.tier-App { background:#1a4021; color:#3fb950; }
+.tier-Ap { background:#1a3a20; color:#3fb950; }
+.tier-A { background:#1a3520; color:#56d364; }
+.tier-B { background:#2a2000; color:#e3b341; }
+.tier-C { background:#2a1500; color:#f0883e; }
+.live-badge { background:#f85149; color:#fff; font-size:9px; padding:1px 5px; border-radius:3px; font-weight:700; }
+.chart-container { position:relative; height:250px; background:#0d1117; border:1px solid #21262d; border-radius:6px; padding:10px; margin-bottom:16px; }
+.disclaimer { color:#6e7681; font-size:11px; margin-bottom:8px; }
+@media (max-width:768px) {
+  .stats-bar { gap:8px; }
+  .stat { min-width:60px; }
+  .stat-val { font-size:18px; }
+  table { font-size:11px; }
+  thead th, tbody td { padding:4px 4px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Sports Edge</h1>
+<div class="subtitle">MLB Betting Dashboard | Updated Jul 14, 2026 10:58 AM ET</div>
+
+<div class="stats-bar">
+<div class="stat"><div class="stat-val">1159</div><div class="stat-label">Graded</div></div>
+<div class="stat"><div class="stat-val">726-408</div><div class="stat-label">W-L</div></div>
+<div class="stat"><div class="stat-val buy">64.0%</div><div class="stat-label">Win Rate</div></div>
+<div class="stat"><div class="stat-val sell">$-650</div><div class="stat-label">Shadow P&L</div></div>
+<div class="stat"><div class="stat-val">91</div><div class="stat-label">Live Bets</div></div>
+<div class="stat"><div class="stat-val buy">$+44</div><div class="stat-label">Live P&L</div></div>
+</div>
+
+<div class="tabs">
+<button class="tab-btn active" onclick="switchTab('today')">Today's Picks<span style="background:#21262d;color:#8b949e;padding:1px 6px;border-radius:10px;margin-left:6px;font-size:11px;">0</span></button>
+<button class="tab-btn" onclick="switchTab('record')">Track Record</button>
+<button class="tab-btn" onclick="switchTab('scanners')">Scanners</button>
+<button class="tab-btn" onclick="switchTab('pnl')">P&L Chart</button>
+</div>
+
+<div id="tab-today" class="tab-content active">
+<div class="section">
+<h2>Today + Yesterday</h2>
+<div class="disclaimer">Picks from all scanners. LIVE = real money wagered on Hard Rock Bet.</div>
+<div style="overflow-x:auto;">
+<table>
+<thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
+<tbody><tr><td colspan="12" style="text-align:center; padding:20px; color:#6e7681;">No picks today (All-Star break?). Check back when games resume.</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="tab-record" class="tab-content">
+<div class="section">
+<h2>Recent Graded Picks (Last 7 Days)</h2>
+<div style="overflow-x:auto;">
+<table>
+<thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
+<tbody><tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Joey Meneses</td>
+<td>ATH @ CHW</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-230</td>
+<td>TB Lineup</td>
+<td>SLG 0.118</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>1</td>
+<td class="buy">$+13</td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Drew Cavanaugh</td>
+<td>COL @ SF</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-300</td>
+<td>TB Lineup</td>
+<td>SLG 0.233</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Zack Short</td>
+<td>BOS @ NYM</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-550</td>
+<td>TB Lineup</td>
+<td>SLG 0.191</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+5</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Austin Wells</td>
+<td>NYY @ WSH</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-300</td>
+<td>TB Lineup</td>
+<td>SLG 0.255</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>1</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Victor Robles</td>
+<td>SEA @ TB</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-325</td>
+<td>TB Lineup</td>
+<td>SLG 0.255</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+9</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Alan Roden</td>
+<td>LAA @ MIN</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-275</td>
+<td>TB Lineup</td>
+<td>SLG 0.273</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+11</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Jake Cronenworth</td>
+<td>TOR @ SD</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-300</td>
+<td>TB Lineup</td>
+<td>SLG 0.273</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Patrick Bailey</td>
+<td>CLE @ MIA</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-325</td>
+<td>TB Lineup</td>
+<td>SLG 0.274</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>1</td>
+<td class="buy">$+9</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Steven Kwan</td>
+<td>CLE @ MIA</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-250</td>
+<td>TB Lineup</td>
+<td>SLG 0.279</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Weston Wilson</td>
+<td>SEA @ TB</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-130</td>
+<td>TB Lineup</td>
+<td>SLG 0.283</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>4</td>
+<td class="sell">$-15</td>
+<td><span class="live-badge">LIVE</span></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Taylor Walls</td>
+<td>SEA @ TB</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-350</td>
+<td>TB Lineup</td>
+<td>SLG 0.285</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+9</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Sung-Mun Song</td>
+<td>TOR @ SD</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-350</td>
+<td>TB Lineup</td>
+<td>SLG 0.289</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+9</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Jared Triolo</td>
+<td>MIL @ PIT</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>TB Lineup</td>
+<td>SLG 0.293</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>4</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">James Outman</td>
+<td>PHI @ DET</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-550</td>
+<td>TB Lineup</td>
+<td>SLG 0.295</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+5</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Zach McKinstry</td>
+<td>PHI @ DET</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-325</td>
+<td>TB Lineup</td>
+<td>SLG 0.298</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>1</td>
+<td class="buy">$+9</td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Billy Cook</td>
+<td>MIL @ PIT</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-</td>
+<td>TB Lineup</td>
+<td>SLG 0.206</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Andrés Chaparro</td>
+<td>NYY @ WSH</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>TB Lineup</td>
+<td>SLG 0.283</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Nasim Nuñez</td>
+<td>NYY @ WSH</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>TB Lineup</td>
+<td>SLG 0.292</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-A">
+<td>2026-07-12</td>
+<td class="ticker">Jakob Marsee</td>
+<td>CLE @ MIA</td>
+<td>TB u1.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>TB Lineup</td>
+<td>SLG 0.297</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Buddy Kennedy</td>
+<td>SEA @ TB</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-125</td>
+<td>Hits Under</td>
+<td></td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Joey Meneses</td>
+<td>OAK @ CWS</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+140</td>
+<td>Hits Under</td>
+<td>BA 0.118</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Rece Hinds</td>
+<td>CLE @ MIA</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-135</td>
+<td>Hits Under</td>
+<td>BA 0.121</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Nate Eaton</td>
+<td>BOS @ NYM</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+100</td>
+<td>Hits Under</td>
+<td>BA 0.138</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Zack Short</td>
+<td>BOS @ NYM</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-175</td>
+<td>Hits Under</td>
+<td>BA 0.149</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Austin Wells</td>
+<td>NYY @ WSH</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-105</td>
+<td>Hits Under</td>
+<td>BA 0.151</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Henry Davis</td>
+<td>MIL @ PIT</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-105</td>
+<td>Hits Under</td>
+<td>BA 0.157</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Cal Raleigh</td>
+<td>SEA @ TB</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+100</td>
+<td>Hits Under</td>
+<td>BA 0.168</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Petey Halpin</td>
+<td>CLE @ MIA</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+125</td>
+<td>Hits Under</td>
+<td>BA 0.172</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Jimmy Crooks</td>
+<td>ATL @ STL</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-110</td>
+<td>Hits Under</td>
+<td>BA 0.172</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Kyle Teel</td>
+<td>OAK @ CWS</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+120</td>
+<td>Hits Under</td>
+<td>BA 0.180</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Patrick Bailey</td>
+<td>CLE @ MIA</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+110</td>
+<td>Hits Under</td>
+<td>BA 0.183</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Evan Carter</td>
+<td>HOU @ TEX</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+100</td>
+<td>Hits Under</td>
+<td>BA 0.186</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Jake Cronenworth</td>
+<td>TOR @ SD</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+105</td>
+<td>Hits Under</td>
+<td>BA 0.187</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Mitch Garver</td>
+<td>SEA @ TB</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-160</td>
+<td>Hits Under</td>
+<td>BA 0.190</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Jarren Duran</td>
+<td>BOS @ NYM</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+125</td>
+<td>Hits Under</td>
+<td>BA 0.193</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Eric Wagaman</td>
+<td>BOS @ NYM</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+105</td>
+<td>Hits Under</td>
+<td>BA 0.194</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Zach McKinstry</td>
+<td>PHI @ DET</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+100</td>
+<td>Hits Under</td>
+<td>BA 0.195</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Manny Machado</td>
+<td>TOR @ SD</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+135</td>
+<td>Hits Under</td>
+<td>BA 0.196</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>3</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Brice Matthews</td>
+<td>HOU @ TEX</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>-115</td>
+<td>Hits Under</td>
+<td>BA 0.197</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-App">
+<td>2026-07-12</td>
+<td class="ticker">Lawrence Butler</td>
+<td>OAK @ CWS</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-App">A++</span></td>
+<td>+100</td>
+<td>Hits Under</td>
+<td>BA 0.199</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Josh Rojas</td>
+<td>KC @ BAL</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+115</td>
+<td>Hits Under</td>
+<td>BA 0.200</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">J.T. Realmuto</td>
+<td>PHI @ DET</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+110</td>
+<td>Hits Under</td>
+<td>BA 0.200</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Marcell Ozuna</td>
+<td>MIL @ PIT</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+120</td>
+<td>Hits Under</td>
+<td>BA 0.201</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Ezequiel Tovar</td>
+<td>COL @ SF</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+115</td>
+<td>Hits Under</td>
+<td>BA 0.202</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Cedric Mullins</td>
+<td>SEA @ TB</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+125</td>
+<td>Hits Under</td>
+<td>BA 0.203</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Josh Lowe</td>
+<td>LAA @ MIN</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+125</td>
+<td>Hits Under</td>
+<td>BA 0.207</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Sean Keys</td>
+<td>TOR @ SD</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+115</td>
+<td>Hits Under</td>
+<td>BA 0.207</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Kahlil Watson</td>
+<td>CLE @ MIA</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-130</td>
+<td>Hits Under</td>
+<td>BA 0.208</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Weston Wilson</td>
+<td>SEA @ TB</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-185</td>
+<td>Hits Under</td>
+<td>BA 0.208</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>1</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap">
+<td>2026-07-12</td>
+<td class="ticker">Colby Thomas</td>
+<td>OAK @ CWS</td>
+<td>H u0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+105</td>
+<td>Hits Under</td>
+<td>BA 0.208</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0</td>
+<td class=""></td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="tab-scanners" class="tab-content">
+<div class="section">
+<h2>Scanner Performance</h2>
+<div class="disclaimer">All-time performance by scanner type. Shadow P&L uses $30 flat bets where tracked.</div>
+<div style="overflow-x:auto;">
+<table>
+<thead><tr><th>Scanner</th><th>Graded</th><th>W</th><th>L</th><th>Win Rate</th><th>Shadow P&L</th><th>Live Bets</th><th>Live P&L</th></tr></thead>
+<tbody><tr>
+<td class="ticker">TB Lineup</td>
+<td>650</td>
+<td>457</td>
+<td>183</td>
+<td class="buy" style="font-weight:700;">71.4%</td>
+<td class="sell">$-332</td>
+<td>91</td>
+<td class="buy">$+44</td>
+</tr><tr>
+<td class="ticker">Runs Under</td>
+<td>187</td>
+<td>126</td>
+<td>54</td>
+<td class="buy" style="font-weight:700;">70.0%</td>
+<td class="">$+0</td>
+<td>0</td>
+<td class="">$+0</td>
+</tr><tr>
+<td class="ticker">Hits Under</td>
+<td>257</td>
+<td>118</td>
+<td>131</td>
+<td class="" style="font-weight:700;">47.4%</td>
+<td class="">$+0</td>
+<td>0</td>
+<td class="">$+0</td>
+</tr><tr>
+<td class="ticker">Game Totals</td>
+<td>39</td>
+<td>18</td>
+<td>21</td>
+<td class="" style="font-weight:700;">46.2%</td>
+<td class="sell">$-140</td>
+<td>0</td>
+<td class="">$+0</td>
+</tr><tr>
+<td class="ticker">K Props</td>
+<td>26</td>
+<td>7</td>
+<td>19</td>
+<td class="sell" style="font-weight:700;">26.9%</td>
+<td class="sell">$-178</td>
+<td>0</td>
+<td class="">$+0</td>
+</tr><tr>
+<td class="ticker">Sharp Lines</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="sell" style="font-weight:700;">0%</td>
+<td class="">$+0</td>
+<td>0</td>
+<td class="">$+0</td>
+</tr><tr>
+<td class="ticker">EV Scanner</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="sell" style="font-weight:700;">0%</td>
+<td class="">$+0</td>
+<td>0</td>
+<td class="">$+0</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="tab-pnl" class="tab-content">
+<div class="section">
+<h2>Cumulative P&L</h2>
+<div class="disclaimer">Daily profit/loss from graded picks with P&L tracking (TB Lineup, Game Totals, K Props).</div>
+<div class="chart-container">
+<canvas id="pnlChart"></canvas>
+</div>
+</div>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + name + "'") !== -1) b.classList.add('active');
+  });
+  history.replaceState(null, '', '#' + name);
+  if (name === 'pnl' && !window.pnlChartInit) initPnlChart();
+}
+(function() {
+  var h = location.hash.replace('#', '');
+  if (h && document.getElementById('tab-' + h)) switchTab(h);
+})();
+
+var PNL_DATA = [{"d":"2026-06-09","v":-66.6,"w":45,"l":20},{"d":"2026-06-10","v":-30.2,"w":35,"l":19},{"d":"2026-06-11","v":166.27,"w":26,"l":5},{"d":"2026-06-12","v":-18.32,"w":38,"l":22},{"d":"2026-06-13","v":58.57,"w":44,"l":14},{"d":"2026-06-14","v":37.66,"w":40,"l":15},{"d":"2026-06-15","v":-141.8,"w":23,"l":14},{"d":"2026-06-16","v":-107.84,"w":40,"l":14},{"d":"2026-06-17","v":-168.83,"w":43,"l":19},{"d":"2026-06-18","v":-82.1,"w":21,"l":6},{"d":"2026-06-19","v":-247.2,"w":27,"l":15},{"d":"2026-06-20","v":-278.13,"w":29,"l":12},{"d":"2026-07-09","v":-404.68,"w":18,"l":11},{"d":"2026-07-10","v":-429.95,"w":27,"l":19},{"d":"2026-07-11","v":-529.46,"w":9,"l":7},{"d":"2026-07-12","v":-650.21,"w":17,"l":11}];
+var pnlChartInit = false;
+
+function initPnlChart() {
+  pnlChartInit = true;
+  var ctx = document.getElementById('pnlChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: PNL_DATA.map(function(d) { return d.d; }),
+      datasets: [{
+        label: 'Cumulative P&L ($)',
+        data: PNL_DATA.map(function(d) { return d.v; }),
+        borderColor: PNL_DATA[PNL_DATA.length-1] && PNL_DATA[PNL_DATA.length-1].v >= 0 ? '#3fb950' : '#f85149',
+        backgroundColor: PNL_DATA[PNL_DATA.length-1] && PNL_DATA[PNL_DATA.length-1].v >= 0 ? '#3fb95033' : '#f8514933',
+        fill: true,
+        borderWidth: 2,
+        pointRadius: 2,
+        tension: 0.1,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#161b22', borderColor: '#30363d', borderWidth: 1,
+          titleColor: '#c9d1d9', bodyColor: '#c9d1d9',
+          callbacks: {
+            label: function(c) {
+              var d = PNL_DATA[c.dataIndex];
+              return '$' + c.parsed.y.toFixed(0) + ' (' + d.w + 'W-' + d.l + 'L)';
+            }
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#6e7681', font: { size: 10 }, maxTicksLimit: 15 }, grid: { color: '#21262d' } },
+        y: { ticks: { color: '#6e7681', callback: function(v) { return '$' + v; } }, grid: { color: '#21262d' } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
