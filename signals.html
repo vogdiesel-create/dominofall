@@ -72,6 +72,31 @@ tr.notable:hover { background: #2a2a00; }
 .fda-nme { color: #d2a8ff; font-weight: 700; }
 .fda-indication { color: #79c0ff; }
 .empty { text-align: center; color: #484f58; padding: 20px; font-style: italic; }
+.live-price { font-size: 13px; white-space: nowrap; font-weight: 700; }
+.live-return { font-size: 14px; white-space: nowrap; font-weight: 700; }
+.live-return.up { color: #3fb950; }
+.live-return.down { color: #f85149; }
+.live-return.flat { color: #8b949e; }
+#insiderLiveTag { display:none; background:#3fb950; color:#0a0e17; font-size:10px; padding:2px 6px; border-radius:3px; margin-left:8px; font-weight:700; }
+
+.stats-bar { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0 20px 0; }
+.stat { background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 12px 20px; text-align: center; min-width: 120px; }
+.stat-num { display: block; font-size: 22px; font-weight: 700; color: #f0883e; }
+.stat-label { display: block; font-size: 11px; color: #6e7681; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+.score-fire { background: #3fb950; color: #0a0e17; padding: 2px 10px; border-radius: 3px; font-weight: 700; font-size: 14px; }
+.score-high { background: #1a4021; color: #3fb950; padding: 2px 10px; border-radius: 3px; font-weight: 700; font-size: 13px; }
+.score-med { background: #3d2e00; color: #f0883e; padding: 2px 10px; border-radius: 3px; font-weight: 700; font-size: 13px; }
+
+.status-open { color: #3fb950; font-weight: 700; font-size: 12px; }
+.status-dip { background: #1a4021; color: #3fb950; padding: 2px 8px; border-radius: 3px; font-weight: 700; font-size: 11px; }
+.status-moving { color: #f0883e; font-weight: 600; font-size: 12px; }
+.status-other { color: #8b949e; font-size: 12px; }
+
+.entry { font-size: 13px; color: #8b949e; white-space: nowrap; }
+.insider-amt { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.insider-amt small { color: #6e7681; font-weight: 400; }
+.flags-compact { font-size: 11px; color: #8b949e; }
 
 .cluster-section { margin: 12px 0 20px 0; }
 .cluster-section h3 { color: #8b949e; font-size: 13px; margin-bottom: 6px; }
@@ -85,7 +110,7 @@ tr.notable:hover { background: #2a2a00; }
 @media (max-width: 900px) {
     table { font-size: 11px; }
     th, td { padding: 6px 4px; }
-    .who, .catalyst, .flags { display: none; }
+    .who, .catalyst, .flags, .flags-compact, .insider-amt { display: none; }
     .tab-btn { padding: 10px 12px; font-size: 12px; }
 }
 </style>
@@ -95,7 +120,7 @@ tr.notable:hover { background: #2a2a00; }
 <header>
 <div class="header-inner">
 <div class="logo"><a href="/signals.html">Dominofall</a></div>
-<div class="updated">Updated: July 15, 2026 at 12:33 PM ET</div>
+<div class="updated">Updated: July 15, 2026 at 01:58 PM ET</div>
 </div>
 </header>
 
@@ -113,662 +138,699 @@ tr.notable:hover { background: #2a2a00; }
 <!-- INSIDER BUYS TAB -->
 <div id="tab-insider" class="tab-content active">
 
-<div class="legend">
-<strong>How it works:</strong> SEC Form 4 insider buys scored by role weight, buy size, market cap, cluster activity, sentiment, and catalyst proximity.
-Backtest-validated (582 signals, 90 days): score &ge; 25 = 74% win rate, &ge; 30 = 76% win rate.
-<br><strong>Window:</strong> OPEN = still near insider's price. OPEN (dip) = cheaper than insider paid. MOVING = already up. MISSED = moved too far.
-</div>
-
-<div class="section">
-<h2>Today <small>(2026-07-15)</small></h2>
-<div class="disclaimer">MED/HIGH confidence signals only (score &ge; 25). Not financial advice.</div>
+<div class="stats-bar">
+<div class="stat"><span class="stat-num">31</span><span class="stat-label">Open Now</span></div>
+<div class="stat"><span class="stat-num">10</span><span class="stat-label">Moving</span></div>
+<div class="stat"><span class="stat-num">75</span><span class="stat-label">Avg Score</span></div>
+<div class="stat"><span class="stat-num">$25,197,718</span><span class="stat-label">Total Insider $</span></div>
+</div><div class="section">
+<h2>Actionable Now <small>(2026-07-15)</small> <span id="insiderLiveTag">LIVE</span></h2>
+<div class="disclaimer">Still near insider buy price. Score 30+ = 76% historical win rate.</div>
 <div style="overflow-x: auto;">
-<table>
-<thead><tr><th>Ticker</th><th>Company</th><th>Score</th><th>Window</th><th>Price</th><th>Insider</th><th>Sentiment</th><th>Catalyst</th></tr></thead>
+<table><thead><tr><th>Ticker</th><th>Score</th><th>Status</th><th>Entry</th><th>Price</th><th>Return</th><th>Bought</th><th>Flags</th></tr></thead>
 <tbody>
-<tr>
-<td class="ticker">GLOO</td>
-<td class="company">Gloo Holdings, Inc.</td>
-<td class="score"><span class="conf high">127 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$3.25 &rarr; $3.38 (+4.0%)</td>
-<td class="who">Beck Scott Arthur (Pres, CEO, 10%) $3,500,000<br><small>+ Green Derek Todd (Dir) $1,999,998</small><br><small>+ Gelsinger Patrick P (See Remarks) $500,000</small><br><small><strong>3 insiders, $5,999,998 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 54d | software</td>
+<tr class="insider-row" data-ticker="GLOO" data-buyprice="3.25">
+<td class="ticker">GLOO<br><small class="company">Gloo Holdings, Inc.</small></td>
+<td class="score"><span class="score-fire">127</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$3.25</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$5,999,998<br><small>3 insiders</small></td>
+<td class="flags-compact">4-cluster / Strong Buy / software</td>
 </tr>
-<tr>
-<td class="ticker">COE</td>
-<td class="company">51Talk Online Education Group</td>
-<td class="score"><span class="conf high">111 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$16.55 &rarr; $16.34 (-1.3%)</td>
-<td class="who">Huang Jack Jiajia (CEO, 10%) $9,312,806</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="COE" data-buyprice="16.55">
+<td class="ticker">COE<br><small class="company">51Talk Online Education Group</small></td>
+<td class="score"><span class="score-fire">111</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$16.55</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$9,312,806<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">PRQR</td>
-<td class="company">Proqr Therapeutics N.V.</td>
-<td class="score"><span class="conf high">109 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$1.74 &rarr; $1.70 (-2.3%)</td>
-<td class="who">De Boer Daniel Anton (CEO) $261,000</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 21d | biotechnology</td>
+<tr class="insider-row" data-ticker="PRQR" data-buyprice="1.74">
+<td class="ticker">PRQR<br><small class="company">Proqr Therapeutics N.V.</small></td>
+<td class="score"><span class="score-fire">109</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$1.74</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$261,000<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / ER 21d / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">TDIC</td>
-<td class="company">Dreamland Ltd</td>
-<td class="score"><span class="conf high">108 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$3.75 &rarr; $3.59 (-4.3%)</td>
-<td class="who">Seto Wai Yue (CEO, 10%) $2,445,000</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="TDIC" data-buyprice="3.75">
+<td class="ticker">TDIC<br><small class="company">Dreamland Ltd</small></td>
+<td class="score"><span class="score-fire">108</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$3.75</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$2,445,000<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">EWSB</td>
-<td class="company">Ewsb Bancorp, Inc. /Md/</td>
-<td class="score"><span class="conf high">104 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$10.00 &rarr; $10.95 (+9.5%)</td>
-<td class="who">Schmalz Charles D (Pres, CEO) $676,410<br><small>+ Mangold James E (VP - Lending) $399,500</small><br><small>+ Schneider Kory J (VP - Member Experience) $479,000</small><br><small>+ Vander Loop Kailee (VP HR Technology) $151,800</small><br><small>+ Haen Steven (Dir) $10,000</small><br><small><strong>5 insiders, $1,716,710 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">banks</td>
+<tr class="insider-row" data-ticker="GLBS" data-buyprice="2.73">
+<td class="ticker">GLBS<br><small class="company">Globus Maritime Ltd</small></td>
+<td class="score"><span class="score-fire">94</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$2.73</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$602,887<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">GLBS</td>
-<td class="company">Globus Maritime Ltd</td>
-<td class="score"><span class="conf high">94 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$2.73 &rarr; $2.73 (+0.0%)</td>
-<td class="who">Feidakis Georgios (Dir) $602,887</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="UUUU" data-buyprice="13.08">
+<td class="ticker">UUUU<br><small class="company">Energy Fuels Inc</small></td>
+<td class="score"><span class="score-fire">91</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$13.08</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$1,018,700<br><small>2 insiders</small></td>
+<td class="flags-compact">Strong Buy / ER 21d</td>
 </tr>
-<tr>
-<td class="ticker">UUUU</td>
-<td class="company">Energy Fuels Inc</td>
-<td class="score"><span class="conf high">91 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$13.08 &rarr; $13.23 (+1.1%)</td>
-<td class="who">Bhappu Ross R. (Pres, CEO) $967,920<br><small>+ Hansen Bruce D (Dir) $50,780</small><br><small><strong>2 insiders, $1,018,700 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 21d</td>
+<tr class="insider-row" data-ticker="CYAB" data-buyprice="0.44">
+<td class="ticker">CYAB<br><small class="company">Cyabra, Inc.</small></td>
+<td class="score"><span class="score-fire">89</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$0.44</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$23,338<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / software</td>
 </tr>
-<tr>
-<td class="ticker">CYAB</td>
-<td class="company">Cyabra, Inc.</td>
-<td class="score"><span class="conf high">89 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$0.44 &rarr; $0.36 (-18.2%)</td>
-<td class="who">Brahmy Dan (CEO) $23,338</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">software</td>
+<tr class="insider-row" data-ticker="ANIX" data-buyprice="3.04">
+<td class="ticker">ANIX<br><small class="company">Anixa Biosciences Inc</small></td>
+<td class="score"><span class="score-fire">88</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$3.04</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$15,200<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">ANIX</td>
-<td class="company">Anixa Biosciences Inc</td>
-<td class="score"><span class="conf high">88 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$3.04 &rarr; $3.19 (+4.9%)</td>
-<td class="who">Kumar Amit (CEO) $15,200</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 56d | Trial EARLY_PHASE1 | Pre-Rev | biotechnology</td>
+<tr class="insider-row" data-ticker="ARTV" data-buyprice="8.96">
+<td class="ticker">ARTV<br><small class="company">Artiva Biotherapeutics, Inc.</small></td>
+<td class="score"><span class="score-fire">83</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$8.96</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$194,040<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">ARTV</td>
-<td class="company">Artiva Biotherapeutics, Inc.</td>
-<td class="score"><span class="conf high">83 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$8.96 &rarr; $9.35 (+4.4%)</td>
-<td class="who">Ra Capital Management, L.P. (Dir, 10%) $194,040</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Trial PHASE1 | Pre-Rev | biotechnology</td>
+<tr class="insider-row" data-ticker="BOLD" data-buyprice="2.42">
+<td class="ticker">BOLD<br><small class="company">Boundless Bio, Inc.</small></td>
+<td class="score"><span class="score-high">77</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$2.42</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$222,070<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">BOLD</td>
-<td class="company">Boundless Bio, Inc.</td>
-<td class="score"><span class="conf high">77 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$2.42 &rarr; $2.46 (+1.7%)</td>
-<td class="who">Tang Kevin (10%) $222,070</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Trial ? | Pre-Rev | biotechnology</td>
+<tr class="insider-row" data-ticker="EOI" data-buyprice="20.11">
+<td class="ticker">EOI<br><small class="company">Eaton Vance Enhanced Equity ..</small></td>
+<td class="score"><span class="score-high">70</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$20.11</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$502,705<br><small>Portfolio Manager</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">CMC</td>
-<td class="company">Commercial Metals Co</td>
-<td class="score"><span class="conf high">76 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$61.30 &rarr; $66.19 (+8.0%)</td>
-<td class="who">Matt Peter R (Pres, CEO) $504,499</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="EHSI" data-buyprice="0.95">
+<td class="ticker">EHSI<br><small class="company">Elite Health Systems Inc.</small></td>
+<td class="score"><span class="score-high">69</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$0.95</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$40,000<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">CULP</td>
-<td class="company">Culp Inc</td>
-<td class="score"><span class="conf high">73 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$3.45 &rarr; $3.79 (+9.9%)</td>
-<td class="who">Collier John Douglas (Dir) $17,250</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 62d</td>
+<tr class="insider-row" data-ticker="YEXT" data-buyprice="5.22">
+<td class="ticker">YEXT<br><small class="company">Yext, Inc.</small></td>
+<td class="score"><span class="score-high">68</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$5.22</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$397,910<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy / software</td>
 </tr>
-<tr>
-<td class="ticker">VENU</td>
-<td class="company">Venu Holding Corp</td>
-<td class="score"><span class="conf high">73 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$2.54 &rarr; $2.81 (+10.6%)</td>
-<td class="who">Roth Jay W (CEO, COB, 10%) $19,911</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 28d</td>
+<tr class="insider-row" data-ticker="GCO" data-buyprice="33.8">
+<td class="ticker">GCO<br><small class="company">Genesco Inc</small></td>
+<td class="score"><span class="score-high">68</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$33.80</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$99,980<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">EOI</td>
-<td class="company">Eaton Vance Enhanced Equity Incom..</td>
-<td class="score"><span class="conf high">70 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$20.11 &rarr; $20.11 (+0.0%)</td>
-<td class="who">Gaffney Charles (Portfolio Manager) $502,705</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="BUKS" data-buyprice="4.38">
+<td class="ticker">BUKS<br><small class="company">Butler National Corp</small></td>
+<td class="score"><span class="score-high">65</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$4.38</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$147,296<br><small>2 insiders</small></td>
+<td class="flags-compact">-</td>
 </tr>
-<tr>
-<td class="ticker">BNKK</td>
-<td class="company">Bonk, Inc.</td>
-<td class="score"><span class="conf high">69 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$1.21 &rarr; $1.31 (+8.3%)</td>
-<td class="who">Rudy Mitchell Austin (Dir, 10%) $12,100</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="CV" data-buyprice="6.09">
+<td class="ticker">CV<br><small class="company">Capsovision, Inc</small></td>
+<td class="score"><span class="score-high">64</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$6.09</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$495,117<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy / ER 28d</td>
 </tr>
-<tr>
-<td class="ticker">EHSI</td>
-<td class="company">Elite Health Systems Inc.</td>
-<td class="score"><span class="conf high">69 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$0.95 &rarr; $0.99 (+4.2%)</td>
-<td class="who">Jeereddi Prasad Anjaneya (CEO, 10%) $40,000</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="NMM" data-buyprice="75.45">
+<td class="ticker">NMM<br><small class="company">Navios Maritime Partners L.P.</small></td>
+<td class="score"><span class="score-high">63</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$75.45</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$500,572<br><small>2 insiders</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">YEXT</td>
-<td class="company">Yext, Inc.</td>
-<td class="score"><span class="conf high">68 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$5.22 &rarr; $5.43 (+4.0%)</td>
-<td class="who">Englander Daniel J (Dir) $397,910</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">software</td>
+<tr class="insider-row" data-ticker="BXSY" data-buyprice="17.04">
+<td class="ticker">BXSY<br><small class="company">Bexil Investment Trust</small></td>
+<td class="score"><span class="score-high">63</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$17.04</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$76,680<br><small>See "Explanation of Responses"</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">GCO</td>
-<td class="company">Genesco Inc</td>
-<td class="score"><span class="conf high">68 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$33.80 &rarr; $34.35 (+1.6%)</td>
-<td class="who">Sandfort Gregory A (Dir) $99,980</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 42d</td>
+<tr class="insider-row" data-ticker="NYC" data-buyprice="9.53">
+<td class="ticker">NYC<br><small class="company">American Strategic Investmen..</small></td>
+<td class="score"><span class="score-high">59</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$9.53</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$76,240<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy / ER 29d / real estate</td>
 </tr>
-<tr>
-<td class="ticker">BUKS</td>
-<td class="company">Butler National Corp</td>
-<td class="score"><span class="conf high">65 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$4.38 &rarr; $4.55 (+3.9%)</td>
-<td class="who">Daly Joseph Patrick (Dir, 10%) $131,420<br><small>+ Loh Michael Anthony (Dir) $15,876</small><br><small><strong>2 insiders, $147,296 total</strong></small></td>
-<td class="sentiment sell">NET SELL</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="BJDX" data-buyprice="1.51">
+<td class="ticker">BJDX<br><small class="company">Bluejay Diagnostics, Inc.</small></td>
+<td class="score"><span class="score-high">58</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$1.51</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$96,711<br><small>10%</small></td>
+<td class="flags-compact">Buy</td>
 </tr>
-<tr>
-<td class="ticker">CV</td>
-<td class="company">Capsovision, Inc</td>
-<td class="score"><span class="conf high">64 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$6.09 &rarr; $6.36 (+4.4%)</td>
-<td class="who">Harari Eliyahou Et Al (10%) $495,117</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 28d | Trial NA</td>
+<tr class="insider-row" data-ticker="CNTM" data-buyprice="8.77">
+<td class="ticker">CNTM<br><small class="company">Connectm Technology Solution..</small></td>
+<td class="score"><span class="score-high">56</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$8.77</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$31,766<br><small>Principal Financial Officer</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">NMM</td>
-<td class="company">Navios Maritime Partners L.P.</td>
-<td class="score"><span class="conf high">63 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$75.45 &rarr; $74.52 (-1.2%)</td>
-<td class="who">Frangou Angeliki (See Remarks, 10%) $251,556<br><small>+ Frangou Angeliki (See Remarks, 10%) $249,016</small><br><small><strong>2 insiders, $500,572 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 35d</td>
+<tr class="insider-row" data-ticker="HNRG" data-buyprice="16.58">
+<td class="ticker">HNRG<br><small class="company">Hallador Energy Co</small></td>
+<td class="score"><span class="score-high">56</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$16.58</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$82,913<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">BXSY</td>
-<td class="company">Bexil Investment Trust</td>
-<td class="score"><span class="conf high">63 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$17.04 &rarr; $17.05 (+0.1%)</td>
-<td class="who">Winmill & Co. Inc (See "Explanation of Responses") $76,680</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="VIRC" data-buyprice="6.0">
+<td class="ticker">VIRC<br><small class="company">Virco Mfg Corporation</small></td>
+<td class="score"><span class="score-high">56</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$6.00</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$48,504<br><small>EVP</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">NYC</td>
-<td class="company">American Strategic Investment Co.</td>
-<td class="score"><span class="conf high">59 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$9.53 &rarr; $8.41 (-11.8%)</td>
-<td class="who">Schorsch Nicholas S (10%) $76,240</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 29d | real estate</td>
+<tr class="insider-row" data-ticker="UPBD" data-buyprice="20.09">
+<td class="ticker">UPBD<br><small class="company">Upbound Group, Inc.</small></td>
+<td class="score"><span class="score-high">56</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$20.09</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$46,107<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy / ER 14d / software</td>
 </tr>
-<tr>
-<td class="ticker">BJDX</td>
-<td class="company">Bluejay Diagnostics, Inc.</td>
-<td class="score"><span class="conf high">58 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$1.51 &rarr; $1.25 (-17.2%)</td>
-<td class="who">Hrt Financial LP (10%) $96,711</td>
-<td class="sentiment buy">NET BUY</td>
-<td class="catalyst">Trial ?</td>
+<tr class="insider-row" data-ticker="EVMN" data-buyprice="13.26">
+<td class="ticker">EVMN<br><small class="company">Evommune, Inc.</small></td>
+<td class="score"><span class="score-high">49</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$13.26</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$13,260<br><small>CFO</small></td>
+<td class="flags-compact">ER 21d / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">CNTM</td>
-<td class="company">Connectm Technology Solutions, Inc.</td>
-<td class="score"><span class="conf high">56 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$8.77 &rarr; $7.57 (-13.6%)</td>
-<td class="who">Choudhury Mahesh (Principal Financial Officer) $31,766</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="PALI" data-buyprice="1.97">
+<td class="ticker">PALI<br><small class="company">Palisade Bio, Inc.</small></td>
+<td class="score"><span class="score-high">41</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$1.97</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$88,698<br><small>Dir</small></td>
+<td class="flags-compact">biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">HNRG</td>
-<td class="company">Hallador Energy Co</td>
-<td class="score"><span class="conf high">56 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$16.58 &rarr; $17.24 (+4.0%)</td>
-<td class="who">Hudson Daniel Timothy (Dir) $82,913</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
-</tr>
-<tr>
-<td class="ticker">VIRC</td>
-<td class="company">Virco Mfg Corporation</td>
-<td class="score"><span class="conf high">56 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$6.00 &rarr; $6.04 (+0.7%)</td>
-<td class="who">Virtue Douglas A (EVP) $48,504</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 50d</td>
-</tr>
-<tr>
-<td class="ticker">UPBD</td>
-<td class="company">Upbound Group, Inc.</td>
-<td class="score"><span class="conf high">56 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$20.09 &rarr; $21.08 (+4.9%)</td>
-<td class="who">Brown Jeffrey J (Dir) $46,107</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 14d | software</td>
-</tr>
-<tr>
-<td class="ticker">EVMN</td>
-<td class="company">Evommune, Inc.</td>
-<td class="score"><span class="conf high">49 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$13.26 &rarr; $11.99 (-9.6%)</td>
-<td class="who">Carver Kyle (CFO) $13,260</td>
-<td class="sentiment sell">STRONG SELL</td>
-<td class="catalyst">Earnings 21d | Trial EARLY_PHASE1 | biotechnology</td>
-</tr>
-<tr>
-<td class="ticker">TOI</td>
-<td class="company">Oncology Institute, Inc.</td>
-<td class="score"><span class="conf high">41 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$5.85 &rarr; $6.28 (+7.4%)</td>
-<td class="who">Chernett Jorey (10%) $87,750</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Trial PHASE2</td>
-</tr>
-<tr>
-<td class="ticker">PALI</td>
-<td class="company">Palisade Bio, Inc.</td>
-<td class="score"><span class="conf high">41 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$1.97 &rarr; $1.93 (-2.0%)</td>
-<td class="who">Baltera Robert Jr. (Dir) $88,698</td>
-<td class="sentiment sell">NET SELL</td>
-<td class="catalyst">Trial PHASE1 | Pre-Rev | biotechnology</td>
-</tr>
-</tbody>
-</table>
-</div>
+</tbody></table></div>
 <div class="cluster-section">
 <h3>Cluster Buys</h3>
 <table class="cluster-table"><thead><tr><th>Ticker</th><th>Buys</th><th>Total</th><th>Traders</th></tr></thead>
 <tbody><tr><td class='ticker'>TSM</td><td>31 buys</td><td>$122,592</td><td>Chin Yung-Pei, Mii Yuh-Jier, Yeap Choh Fei</td></tr><tr><td class='ticker'>EWSB</td><td>5 buys</td><td>$1,716,710</td><td>Schmalz Charles D, Schneider Kory J, Vander Loop Kailee</td></tr><tr><td class='ticker'>GLOO</td><td>4 buys</td><td>$8,999,995</td><td>Grace & Mercy Foundation, Inc., Gelsinger Patrick P, Beck Scott Arthur</td></tr><tr><td class='ticker'>UUUU</td><td>2 buys</td><td>$1,018,700</td><td>Hansen Bruce D, Bhappu Ross R.</td></tr><tr><td class='ticker'>IPX</td><td>2 buys</td><td>$2,378,393</td><td>Hannigan Todd, Arima Anastasios</td></tr><tr><td class='ticker'>WRAP</td><td>2 buys</td><td>$340,288</td><td>Cohen Scot, Shulman John D</td></tr><tr><td class='ticker'>NTSK</td><td>2 buys</td><td>$21,963,526</td><td>Griffith William J.G., Iconiq Strategic Partners VIII Holdings, L.P.</td></tr><tr><td class='ticker'>BBASX</td><td>2 buys</td><td>$2,282,515</td><td>Brown Brothers Harriman Credit Partners, LLC, Amg New York Holdings Corp.</td></tr></tbody></table></div>
 </div>
-
+<div class="section">
+<h2>Already Moving <small>(2026-07-15)</small></h2>
+<div class="disclaimer">Price has moved since insider purchase. Track but entry may be late.</div>
+<div style="overflow-x: auto;">
+<table><thead><tr><th>Ticker</th><th>Score</th><th>Status</th><th>Entry</th><th>Price</th><th>Return</th><th>Bought</th><th>Flags</th></tr></thead>
+<tbody>
+<tr class="insider-row" data-ticker="EWSB" data-buyprice="10.0">
+<td class="ticker">EWSB<br><small class="company">Ewsb Bancorp, Inc. /Md/</small></td>
+<td class="score"><span class="score-fire">104</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$10.00</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$1,716,710<br><small>5 insiders</small></td>
+<td class="flags-compact">5-cluster / Strong Buy / banks</td>
+</tr>
+<tr class="insider-row" data-ticker="CMC" data-buyprice="61.3">
+<td class="ticker">CMC<br><small class="company">Commercial Metals Co</small></td>
+<td class="score"><span class="score-high">76</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$61.30</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$504,499<br><small>Pres</small></td>
+<td class="flags-compact">Strong Buy</td>
+</tr>
+<tr class="insider-row" data-ticker="CULP" data-buyprice="3.45">
+<td class="ticker">CULP<br><small class="company">Culp Inc</small></td>
+<td class="score"><span class="score-high">73</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$3.45</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$17,250<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
+</tr>
+<tr class="insider-row" data-ticker="VENU" data-buyprice="2.54">
+<td class="ticker">VENU<br><small class="company">Venu Holding Corp</small></td>
+<td class="score"><span class="score-high">73</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$2.54</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$19,911<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / ER 28d</td>
+</tr>
+<tr class="insider-row" data-ticker="BNKK" data-buyprice="1.21">
+<td class="ticker">BNKK<br><small class="company">Bonk, Inc.</small></td>
+<td class="score"><span class="score-high">69</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$1.21</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$12,100<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
+</tr>
+<tr class="insider-row" data-ticker="TOI" data-buyprice="5.85">
+<td class="ticker">TOI<br><small class="company">Oncology Institute, Inc.</small></td>
+<td class="score"><span class="score-high">41</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$5.85</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$87,750<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy</td>
+</tr>
+</tbody></table></div>
+</div>
 <div class="section prev-section">
 <h2>Previous Day <small>(2026-07-14)</small></h2>
 <div style="overflow-x: auto;">
-<table>
-<thead><tr><th>Ticker</th><th>Company</th><th>Score</th><th>Window</th><th>Price</th><th>Insider</th><th>Sentiment</th><th>Catalyst</th></tr></thead>
+<table><thead><tr><th>Ticker</th><th>Score</th><th>Status</th><th>Entry</th><th>Price</th><th>Return</th><th>Bought</th><th>Flags</th></tr></thead>
 <tbody>
-<tr>
-<td class="ticker">GLOO</td>
-<td class="company">Gloo Holdings, Inc.</td>
-<td class="score"><span class="conf high">127 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$3.25 &rarr; $3.16 (-2.8%)</td>
-<td class="who">Beck Scott Arthur (Pres, CEO, 10%) $3,500,000<br><small>+ Green Derek Todd (Dir) $1,999,998</small><br><small>+ Gelsinger Patrick P (See Remarks) $500,000</small><br><small><strong>3 insiders, $5,999,998 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 55d | software</td>
+<tr class="insider-row" data-ticker="GLOO" data-buyprice="3.25">
+<td class="ticker">GLOO<br><small class="company">Gloo Holdings, Inc.</small></td>
+<td class="score"><span class="score-fire">127</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$3.25</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$5,999,998<br><small>3 insiders</small></td>
+<td class="flags-compact">4-cluster / Strong Buy / software</td>
 </tr>
-<tr>
-<td class="ticker">COE</td>
-<td class="company">51Talk Online Education Group</td>
-<td class="score"><span class="conf high">116 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$16.55 &rarr; $17.27 (+4.4%)</td>
-<td class="who">Huang Jack Jiajia (CEO, 10%) $9,312,806<br><small>+ Huang Jack Jiajia (CEO, 10%) $23,487,344</small><br><small><strong>2 insiders, $32,800,150 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="COE" data-buyprice="16.55">
+<td class="ticker">COE<br><small class="company">51Talk Online Education Group</small></td>
+<td class="score"><span class="score-fire">116</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$16.55</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$32,800,150<br><small>2 insiders</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">PRQR</td>
-<td class="company">Proqr Therapeutics N.V.</td>
-<td class="score"><span class="conf high">114 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$1.74 &rarr; $1.70 (-2.3%)</td>
-<td class="who">De Boer Daniel Anton (CEO) $261,000<br><small>+ De Boer Daniel Anton (CEO) $238,500</small><br><small><strong>2 insiders, $499,500 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 22d | biotechnology</td>
+<tr class="insider-row" data-ticker="PRQR" data-buyprice="1.74">
+<td class="ticker">PRQR<br><small class="company">Proqr Therapeutics N.V.</small></td>
+<td class="score"><span class="score-fire">114</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$1.74</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$499,500<br><small>2 insiders</small></td>
+<td class="flags-compact">Strong Buy / ER 22d / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">TDIC</td>
-<td class="company">Dreamland Ltd</td>
-<td class="score"><span class="conf high">113 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$3.75 &rarr; $3.88 (+3.5%)</td>
-<td class="who">Seto Wai Yue (CEO, 10%) $2,445,000</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="TDIC" data-buyprice="3.75">
+<td class="ticker">TDIC<br><small class="company">Dreamland Ltd</small></td>
+<td class="score"><span class="score-fire">113</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$3.75</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$2,445,000<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">UUUU</td>
-<td class="company">Energy Fuels Inc</td>
-<td class="score"><span class="conf high">101 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$13.08 &rarr; $13.05 (-0.2%)</td>
-<td class="who">Bhappu Ross R. (Pres, CEO) $967,920<br><small>+ Hansen Bruce D (Dir) $50,780</small><br><small><strong>2 insiders, $1,018,700 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 22d</td>
+<tr class="insider-row" data-ticker="UUUU" data-buyprice="13.08">
+<td class="ticker">UUUU<br><small class="company">Energy Fuels Inc</small></td>
+<td class="score"><span class="score-fire">101</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$13.08</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$1,018,700<br><small>2 insiders</small></td>
+<td class="flags-compact">Strong Buy / ER 22d</td>
 </tr>
-<tr>
-<td class="ticker">CYAB</td>
-<td class="company">Cyabra, Inc.</td>
-<td class="score"><span class="conf high">94 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$0.44 &rarr; $0.33 (-25.0%)</td>
-<td class="who">Brahmy Dan (CEO) $23,338</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">software</td>
+<tr class="insider-row" data-ticker="CYAB" data-buyprice="0.44">
+<td class="ticker">CYAB<br><small class="company">Cyabra, Inc.</small></td>
+<td class="score"><span class="score-fire">94</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$0.44</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$23,338<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / software</td>
 </tr>
-<tr>
-<td class="ticker">EWSB</td>
-<td class="company">Ewsb Bancorp, Inc. /Md/</td>
-<td class="score"><span class="conf high">94 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$10.00 &rarr; $10.95 (+9.5%)</td>
-<td class="who">Schmalz Charles D (Pres, CEO) $676,410<br><small>+ Schmalz Charles D (Pres, CEO) $676,410</small><br><small>+ Mangold James E (VP - Lending) $399,500</small><br><small>+ Schneider Kory J (VP - Member Experience) $479,000</small><br><small>+ Vander Loop Kailee (VP HR Technology) $151,800</small><br><small>+ Vander Loop Kailee (VP HR Technology) $151,800</small><br><small>+ Schneider Kory J (VP - Member Experience) $479,000</small><br><small>+ Mangold James E (VP - Lending) $399,500</small><br><small>+ Haen Steven (Dir) $10,000</small><br><small><strong>9 insiders, $3,423,420 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">banks</td>
+<tr class="insider-row" data-ticker="EWSB" data-buyprice="10.0">
+<td class="ticker">EWSB<br><small class="company">Ewsb Bancorp, Inc. /Md/</small></td>
+<td class="score"><span class="score-fire">94</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$10.00</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$3,423,420<br><small>9 insiders</small></td>
+<td class="flags-compact">Strong Buy / banks</td>
 </tr>
-<tr>
-<td class="ticker">ANIX</td>
-<td class="company">Anixa Biosciences Inc</td>
-<td class="score"><span class="conf high">93 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$3.04 &rarr; $3.06 (+0.7%)</td>
-<td class="who">Kumar Amit (CEO) $15,200</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 57d | Trial EARLY_PHASE1 | Pre-Rev | biotechnology</td>
+<tr class="insider-row" data-ticker="ANIX" data-buyprice="3.04">
+<td class="ticker">ANIX<br><small class="company">Anixa Biosciences Inc</small></td>
+<td class="score"><span class="score-fire">93</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$3.04</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$15,200<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">CMC</td>
-<td class="company">Commercial Metals Co</td>
-<td class="score"><span class="conf high">86 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$61.30 &rarr; $63.67 (+3.9%)</td>
-<td class="who">Matt Peter R (Pres, CEO) $504,499</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 92d</td>
+<tr class="insider-row" data-ticker="CMC" data-buyprice="61.3">
+<td class="ticker">CMC<br><small class="company">Commercial Metals Co</small></td>
+<td class="score"><span class="score-fire">86</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$61.30</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$504,499<br><small>Pres</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">BOLD</td>
-<td class="company">Boundless Bio, Inc.</td>
-<td class="score"><span class="conf high">82 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$2.42 &rarr; $2.44 (+0.8%)</td>
-<td class="who">Tang Kevin (10%) $222,070<br><small>+ Tang Kevin (10%) $141,865</small><br><small><strong>2 insiders, $363,935 total</strong></small></td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Trial ? | Pre-Rev | biotechnology</td>
+<tr class="insider-row" data-ticker="BOLD" data-buyprice="2.42">
+<td class="ticker">BOLD<br><small class="company">Boundless Bio, Inc.</small></td>
+<td class="score"><span class="score-fire">82</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$2.42</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$363,935<br><small>2 insiders</small></td>
+<td class="flags-compact">Strong Buy / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">VENU</td>
-<td class="company">Venu Holding Corp</td>
-<td class="score"><span class="conf high">78 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$2.54 &rarr; $2.65 (+4.3%)</td>
-<td class="who">Roth Jay W (CEO, COB, 10%) $19,911</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 29d</td>
+<tr class="insider-row" data-ticker="VENU" data-buyprice="2.54">
+<td class="ticker">VENU<br><small class="company">Venu Holding Corp</small></td>
+<td class="score"><span class="score-high">78</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$2.54</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$19,911<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy / ER 29d</td>
 </tr>
-<tr>
-<td class="ticker">EOI</td>
-<td class="company">Eaton Vance Enhanced Equity Incom..</td>
-<td class="score"><span class="conf high">75 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$20.11 &rarr; $19.91 (-1.0%)</td>
-<td class="who">Gaffney Charles (Portfolio Manager) $502,705</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="EOI" data-buyprice="20.11">
+<td class="ticker">EOI<br><small class="company">Eaton Vance Enhanced Equity ..</small></td>
+<td class="score"><span class="score-high">75</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$20.11</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$502,705<br><small>Portfolio Manager</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">EHSI</td>
-<td class="company">Elite Health Systems Inc.</td>
-<td class="score"><span class="conf high">74 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$0.95 &rarr; $1.01 (+6.3%)</td>
-<td class="who">Jeereddi Prasad Anjaneya (CEO, 10%) $40,000</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="EHSI" data-buyprice="0.95">
+<td class="ticker">EHSI<br><small class="company">Elite Health Systems Inc.</small></td>
+<td class="score"><span class="score-high">74</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$0.95</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$40,000<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">YEXT</td>
-<td class="company">Yext, Inc.</td>
-<td class="score"><span class="conf high">73 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$5.22 &rarr; $5.21 (-0.2%)</td>
-<td class="who">Englander Daniel J (Dir) $397,910</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">software</td>
+<tr class="insider-row" data-ticker="YEXT" data-buyprice="5.22">
+<td class="ticker">YEXT<br><small class="company">Yext, Inc.</small></td>
+<td class="score"><span class="score-high">73</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$5.22</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$397,910<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy / software</td>
 </tr>
-<tr>
-<td class="ticker">GCO</td>
-<td class="company">Genesco Inc</td>
-<td class="score"><span class="conf high">73 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$33.80 &rarr; $34.42 (+1.8%)</td>
-<td class="who">Sandfort Gregory A (Dir) $99,980</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 43d</td>
+<tr class="insider-row" data-ticker="GCO" data-buyprice="33.8">
+<td class="ticker">GCO<br><small class="company">Genesco Inc</small></td>
+<td class="score"><span class="score-high">73</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$33.80</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$99,980<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">NYC</td>
-<td class="company">American Strategic Investment Co.</td>
-<td class="score"><span class="conf high">69 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$9.53 &rarr; $8.40 (-11.9%)</td>
-<td class="who">Schorsch Nicholas S (10%) $76,240</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 30d | real estate</td>
+<tr class="insider-row" data-ticker="NYC" data-buyprice="9.53">
+<td class="ticker">NYC<br><small class="company">American Strategic Investmen..</small></td>
+<td class="score"><span class="score-high">69</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$9.53</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$76,240<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy / ER 30d / real estate</td>
 </tr>
-<tr>
-<td class="ticker">BUKS</td>
-<td class="company">Butler National Corp</td>
-<td class="score"><span class="conf high">68 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$4.34 &rarr; $4.47 (+3.0%)</td>
-<td class="who">Loh Michael Anthony (Dir) $15,876</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="BUKS" data-buyprice="4.34">
+<td class="ticker">BUKS<br><small class="company">Butler National Corp</small></td>
+<td class="score"><span class="score-high">68</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$4.34</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$15,876<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">VIRC</td>
-<td class="company">Virco Mfg Corporation</td>
-<td class="score"><span class="conf high">66 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$6.00 &rarr; $6.16 (+2.7%)</td>
-<td class="who">Virtue Douglas A (EVP) $48,504</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 51d</td>
+<tr class="insider-row" data-ticker="VIRC" data-buyprice="6.0">
+<td class="ticker">VIRC<br><small class="company">Virco Mfg Corporation</small></td>
+<td class="score"><span class="score-high">66</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$6.00</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$48,504<br><small>EVP</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">CV</td>
-<td class="company">Capsovision, Inc</td>
-<td class="score"><span class="conf high">64 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$6.09 &rarr; $6.22 (+2.1%)</td>
-<td class="who">Harari Eliyahou Et Al (10%) $495,117</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 29d | Trial NA</td>
+<tr class="insider-row" data-ticker="CV" data-buyprice="6.09">
+<td class="ticker">CV<br><small class="company">Capsovision, Inc</small></td>
+<td class="score"><span class="score-high">64</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$6.09</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$495,117<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy / ER 29d</td>
 </tr>
-<tr>
-<td class="ticker">BJDX</td>
-<td class="company">Bluejay Diagnostics, Inc.</td>
-<td class="score"><span class="conf high">63 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$1.51 &rarr; $1.22 (-19.2%)</td>
-<td class="who">Hrt Financial LP (10%) $96,711</td>
-<td class="sentiment buy">NET BUY</td>
-<td class="catalyst">Trial ?</td>
+<tr class="insider-row" data-ticker="BJDX" data-buyprice="1.51">
+<td class="ticker">BJDX<br><small class="company">Bluejay Diagnostics, Inc.</small></td>
+<td class="score"><span class="score-high">63</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$1.51</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$96,711<br><small>10%</small></td>
+<td class="flags-compact">Buy</td>
 </tr>
-<tr>
-<td class="ticker">NTSK</td>
-<td class="company">Netskope Inc</td>
-<td class="score"><span class="conf high">63 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$11.82 &rarr; $12.80 (+8.3%)</td>
-<td class="who">Griffith William J.G. (Dir, 10%) $7,216,081</td>
-<td class="sentiment sell">NET SELL</td>
-<td class="catalyst">Earnings 28d | software</td>
+<tr class="insider-row" data-ticker="NTSK" data-buyprice="11.82">
+<td class="ticker">NTSK<br><small class="company">Netskope Inc</small></td>
+<td class="score"><span class="score-high">63</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$11.82</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$7,216,081<br><small>Dir</small></td>
+<td class="flags-compact">ER 28d / software</td>
 </tr>
-<tr>
-<td class="ticker">LRMR</td>
-<td class="company">Larimar Therapeutics, Inc.</td>
-<td class="score"><span class="conf high">63 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$3.34 &rarr; $3.73 (+11.5%)</td>
-<td class="who">Hamilton Thomas Edward (Dir) $166,890</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 29d | Trial PHASE2 | Pre-Rev | biotechnology</td>
+<tr class="insider-row" data-ticker="LRMR" data-buyprice="3.34">
+<td class="ticker">LRMR<br><small class="company">Larimar Therapeutics, Inc.</small></td>
+<td class="score"><span class="score-high">63</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$3.34</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$166,890<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy / ER 29d / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">CNTM</td>
-<td class="company">Connectm Technology Solutions, Inc.</td>
-<td class="score"><span class="conf high">61 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$8.77 &rarr; $6.99 (-20.3%)</td>
-<td class="who">Choudhury Mahesh (Principal Financial Officer) $31,766</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="CNTM" data-buyprice="8.77">
+<td class="ticker">CNTM<br><small class="company">Connectm Technology Solution..</small></td>
+<td class="score"><span class="score-high">61</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$8.77</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$31,766<br><small>Principal Financial Officer</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">EVMN</td>
-<td class="company">Evommune, Inc.</td>
-<td class="score"><span class="conf high">61 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$13.26 &rarr; $12.10 (-8.7%)</td>
-<td class="who">Carver Kyle (CFO) $13,260</td>
-<td class="sentiment sell">STRONG SELL</td>
-<td class="catalyst">Earnings 22d | Trial EARLY_PHASE1 | biotechnology</td>
+<tr class="insider-row" data-ticker="EVMN" data-buyprice="13.26">
+<td class="ticker">EVMN<br><small class="company">Evommune, Inc.</small></td>
+<td class="score"><span class="score-high">61</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$13.26</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$13,260<br><small>CFO</small></td>
+<td class="flags-compact">ER 22d / biotechnology</td>
 </tr>
-<tr>
-<td class="ticker">UPBD</td>
-<td class="company">Upbound Group, Inc.</td>
-<td class="score"><span class="conf high">61 (HIGH)</span></td>
-<td class="window moving">MOVING</td>
-<td class="price">$20.09 &rarr; $21.15 (+5.3%)</td>
-<td class="who">Brown Jeffrey J (Dir) $46,107</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 15d | software</td>
+<tr class="insider-row" data-ticker="UPBD" data-buyprice="20.09">
+<td class="ticker">UPBD<br><small class="company">Upbound Group, Inc.</small></td>
+<td class="score"><span class="score-high">61</span></td>
+<td class="status"><span class="status-moving">MOVING</span></td>
+<td class="entry">$20.09</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$46,107<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy / ER 15d / software</td>
 </tr>
-<tr>
-<td class="ticker">VII</td>
-<td class="company">Viking Acquisition Corp. II</td>
-<td class="score"><span class="conf high">58 (HIGH)</span></td>
-<td class="window ">CLOSING</td>
-<td class="price"></td>
-<td class="who">Wohlin Hakan (CEO, 10%) $3,000,000</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="VII" data-buyprice="10.0">
+<td class="ticker">VII<br><small class="company">Viking Acquisition Corp. II</small></td>
+<td class="score"><span class="score-high">58</span></td>
+<td class="status"><span class="status-other">CLOSING</span></td>
+<td class="entry">$10.00</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$3,000,000<br><small>CEO</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">HNRG</td>
-<td class="company">Hallador Energy Co</td>
-<td class="score"><span class="conf high">56 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$16.58 &rarr; $16.68 (+0.6%)</td>
-<td class="who">Hudson Daniel Timothy (Dir) $82,913</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="HNRG" data-buyprice="16.58">
+<td class="ticker">HNRG<br><small class="company">Hallador Energy Co</small></td>
+<td class="score"><span class="score-high">56</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$16.58</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$82,913<br><small>Dir</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-<tr>
-<td class="ticker">MERC</td>
-<td class="company">Mercer International Inc.</td>
-<td class="score"><span class="conf high">56 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$0.86 &rarr; $0.58 (-32.6%)</td>
-<td class="who">Kellogg Peter R (10%) $362,665</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 22d</td>
+<tr class="insider-row" data-ticker="MERC" data-buyprice="0.86">
+<td class="ticker">MERC<br><small class="company">Mercer International Inc.</small></td>
+<td class="score"><span class="score-high">56</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$0.86</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$362,665<br><small>10%</small></td>
+<td class="flags-compact">Strong Buy / ER 22d</td>
 </tr>
-<tr>
-<td class="ticker">SHPH</td>
-<td class="company">Shuttle Pharmaceuticals Holdings,..</td>
-<td class="score"><span class="conf high">54 (HIGH)</span></td>
-<td class="window actionable">OPEN (dip)</td>
-<td class="price">$3.36 &rarr; $2.96 (-11.9%)</td>
-<td class="who">Hrt Financial LP (10%) $30,212</td>
-<td class="sentiment ">MIXED</td>
-<td class="catalyst">-</td>
+<tr class="insider-row" data-ticker="SHPH" data-buyprice="3.36">
+<td class="ticker">SHPH<br><small class="company">Shuttle Pharmaceuticals Hold..</small></td>
+<td class="score"><span class="score-high">54</span></td>
+<td class="status"><span class="status-dip">DIP</span></td>
+<td class="entry">$3.36</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$30,212<br><small>10%</small></td>
+<td class="flags-compact">-</td>
 </tr>
-<tr>
-<td class="ticker">NMM</td>
-<td class="company">Navios Maritime Partners L.P.</td>
-<td class="score"><span class="conf high">51 (HIGH)</span></td>
-<td class="window actionable">OPEN</td>
-<td class="price">$75.00 &rarr; $75.41 (+0.5%)</td>
-<td class="who">Frangou Angeliki (See Remarks, 10%) $249,016</td>
-<td class="sentiment buy">STRONG BUY</td>
-<td class="catalyst">Earnings 36d</td>
+<tr class="insider-row" data-ticker="NMM" data-buyprice="75.0">
+<td class="ticker">NMM<br><small class="company">Navios Maritime Partners L.P.</small></td>
+<td class="score"><span class="score-high">51</span></td>
+<td class="status"><span class="status-open">OPEN</span></td>
+<td class="entry">$75.00</td>
+<td class="live-price">-</td>
+<td class="live-return">-</td>
+<td class="insider-amt">$249,016<br><small>See Remarks</small></td>
+<td class="flags-compact">Strong Buy</td>
 </tr>
-</tbody>
-</table>
+</tbody></table></div>
 </div>
-<div class="cluster-section">
-<h3>Cluster Buys</h3>
-<table class="cluster-table"><thead><tr><th>Ticker</th><th>Buys</th><th>Total</th><th>Traders</th></tr></thead>
-<tbody><tr><td class='ticker'>TSM</td><td>31 buys</td><td>$122,592</td><td>Lu Chin-Sheng, Yeap Choh Fei, Hou Yung-Chin</td></tr><tr><td class='ticker'>GLOO</td><td>4 buys</td><td>$8,999,995</td><td>Gelsinger Patrick P, Beck Scott Arthur, Green Derek Todd</td></tr><tr><td class='ticker'>UUUU</td><td>2 buys</td><td>$1,018,700</td><td>Bhappu Ross R., Hansen Bruce D</td></tr><tr><td class='ticker'>IPX</td><td>2 buys</td><td>$2,378,393</td><td>Hannigan Todd, Arima Anastasios</td></tr><tr><td class='ticker'>COE</td><td>1 buys</td><td>$32,800,150</td><td>Huang Jack Jiajia</td></tr><tr><td class='ticker'>WRAP</td><td>2 buys</td><td>$340,288</td><td>Cohen Scot, Shulman John D</td></tr><tr><td class='ticker'>NTSK</td><td>2 buys</td><td>$14,432,130</td><td>Griffith William J.G., Iconiq Strategic Partners VIII Holdings, L.P.</td></tr><tr><td class='ticker'>BBASX</td><td>2 buys</td><td>$2,282,515</td><td>Brown Brothers Harriman Credit Partners, LLC, Amg New York Holdings Corp.</td></tr></tbody></table></div>
-</div>
+
+<script>
+(function() {
+  function refreshInsiderPrices() {
+    fetch('/prices.json?_=' + Date.now(), { signal: AbortSignal.timeout(8000) })
+      .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function(data) {
+        var prices = data.prices || {};
+        var rows = document.querySelectorAll('.insider-row');
+        rows.forEach(function(row) {
+          var ticker = row.getAttribute('data-ticker');
+          var buyPrice = parseFloat(row.getAttribute('data-buyprice'));
+          var priceCell = row.querySelector('.live-price');
+          var retCell = row.querySelector('.live-return');
+          var p = prices[ticker];
+          if (!p || !p.price) return;
+          var cur = p.price;
+          if (priceCell) priceCell.textContent = '$' + cur.toFixed(2);
+          if (retCell && buyPrice > 0) {
+            var pct = ((cur - buyPrice) / buyPrice) * 100;
+            var cls = pct > 0.5 ? 'up' : pct < -0.5 ? 'down' : 'flat';
+            var sign = pct > 0 ? '+' : '';
+            retCell.className = 'live-return ' + cls;
+            retCell.textContent = sign + pct.toFixed(1) + '%';
+          }
+        });
+        var tag = document.getElementById('insiderLiveTag');
+        if (tag && data.updated_utc) {
+          tag.style.display = 'inline';
+          var t = new Date(data.updated_utc);
+          tag.textContent = 'LIVE ' + t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+        }
+      })
+      .catch(function(e) { console.warn('Insider price fetch failed:', e); });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    refreshInsiderPrices();
+    setInterval(refreshInsiderPrices, 60000);
+  });
+})();
+</script>
 
 </div>
 
