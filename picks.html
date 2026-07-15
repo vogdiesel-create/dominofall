@@ -60,12 +60,12 @@ tbody tr:hover { background:#161b22; }
 <body>
 <div class="container">
 <h1>Sports Edge</h1>
-<div class="subtitle">MLB + UFC + WNBA | Updated Jul 14, 2026 06:27 PM ET</div>
+<div class="subtitle">MLB + UFC + WNBA | Updated Jul 15, 2026 12:33 PM ET</div>
 
 <div class="stats-row">
 <div class="stats-bar">
 <h3>Today</h3>
-<div class="stat"><div class="stat-val">0</div><div class="stat-label">Picks</div></div>
+<div class="stat"><div class="stat-val">4</div><div class="stat-label">Picks</div></div>
 <div class="stat"><div class="stat-val">0</div><div class="stat-label">Live Bets</div></div>
 </div>
 <div class="stats-bar">
@@ -89,10 +89,54 @@ tbody tr:hover { background:#161b22; }
 <button class="tab-btn" onclick="switchTab('pnl')">P&L Chart</button>
 </div>
 
-<div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button><button class="sport-btn" onclick="filterSport('wnba')">WNBA</button></div>
+<div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('tennis')">TENNIS</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button><button class="sport-btn" onclick="filterSport('wnba')">WNBA</button></div>
 
 <div id="tab-today" class="tab-content active">
-<div class="section"><h2>Pending Results (3)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="ufc">
+<div class="section"><h2>Pending Results (7)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Valentin Vacherot</td>
+<td>Valentin Vacherot vs</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 67%, Edge +29.2%</td>
+<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 2.6700)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-0" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Grigor Dimitrov</td>
+<td>Grigor Dimitrov vs N</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 63%, Edge +26.0%</td>
+<td><input type="number" class="wager-input" id="wager-1" placeholder="$" min="0" step="1" oninput="calcPayout(1, 2.7400)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-1" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Alejandro Davidovich Foki</td>
+<td>Alejandro Davidovich</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 87%, Edge +11.1%</td>
+<td><input type="number" class="wager-input" id="wager-2" placeholder="$" min="0" step="1" oninput="calcPayout(2, 1.3120)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-2" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Stefano Travaglia</td>
+<td>Stefano Travaglia vs</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 25%, Edge +5.9%</td>
+<td><input type="number" class="wager-input" id="wager-3" placeholder="$" min="0" step="1" oninput="calcPayout(3, 5.2700)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-3" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="ufc">
 <td>2026-07-18</td>
 <td class="ticker">Kamaru Usman</td>
 <td>Kamaru Usman vs Dric</td>
@@ -100,8 +144,8 @@ tbody tr:hover { background:#161b22; }
 <td>+226</td>
 <td>UFC Model</td>
 <td>Edge 9.6%, Model 40%</td>
-<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 3.2600)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
-<td id="payout-0" style="color:#3fb950;font-weight:600;">-</td>
+<td><input type="number" class="wager-input" id="wager-4" placeholder="$" min="0" step="1" oninput="calcPayout(4, 3.2600)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-4" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
 <tr data-sport="ufc">
 <td>2026-08-15</td>
@@ -111,8 +155,8 @@ tbody tr:hover { background:#161b22; }
 <td>+202</td>
 <td>UFC Model</td>
 <td>Edge 25.8%, Model 58%</td>
-<td><input type="number" class="wager-input" id="wager-1" placeholder="$" min="0" step="1" oninput="calcPayout(1, 3.0200)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
-<td id="payout-1" style="color:#3fb950;font-weight:600;">-</td>
+<td><input type="number" class="wager-input" id="wager-5" placeholder="$" min="0" step="1" oninput="calcPayout(5, 3.0200)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-5" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
 <tr data-sport="ufc">
 <td>2026-08-15</td>
@@ -122,8 +166,8 @@ tbody tr:hover { background:#161b22; }
 <td>+305</td>
 <td>UFC Model</td>
 <td>Edge 22.7%, Model 47%</td>
-<td><input type="number" class="wager-input" id="wager-2" placeholder="$" min="0" step="1" oninput="calcPayout(2, 4.0500)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
-<td id="payout-2" style="color:#3fb950;font-weight:600;">-</td>
+<td><input type="number" class="wager-input" id="wager-6" placeholder="$" min="0" step="1" oninput="calcPayout(6, 4.0500)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-6" style="color:#3fb950;font-weight:600;">-</td>
 </tr></tbody></table></div></div>
 <div class="section">
 <h2>Today's Picks</h2>
@@ -131,7 +175,62 @@ tbody tr:hover { background:#161b22; }
 <div style="overflow-x:auto;">
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
-<tbody><tr><td colspan="12" style="text-align:center; padding:20px; color:#6e7681;">No picks today (All-Star break?). Check back when games resume.</td></tr></tbody>
+<tbody><tr class="tier-A" data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Stefano Travaglia</td>
+<td>Stefano Travagl</td>
+<td>ML</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 25%, Edge +5.9%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Alejandro Davidovich Foki</td>
+<td>Alejandro David</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 87%, Edge +11.1%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Grigor Dimitrov</td>
+<td>Grigor Dimitrov</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 63%, Edge +26.0%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-15</td>
+<td class="ticker">Valentin Vacherot</td>
+<td>Valentin Vacher</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 67%, Edge +29.2%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr></tbody>
 </table>
 </div>
 </div>
@@ -17662,6 +17761,13 @@ tbody tr:hover { background:#161b22; }
 <td class="" style="font-weight:700;">+0.0%</td>
 </tr><tr>
 <td class="ticker">EV Scanner</td>
+<td>0</td>
+<td>0-0</td>
+<td>0%</td>
+<td class="" style="font-weight:700;">$+0.00</td>
+<td class="" style="font-weight:700;">+0.0%</td>
+</tr><tr>
+<td class="ticker">Tennis ML</td>
 <td>0</td>
 <td>0-0</td>
 <td>0%</td>
