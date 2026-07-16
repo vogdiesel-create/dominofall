@@ -60,114 +60,103 @@ tbody tr:hover { background:#161b22; }
 <body>
 <div class="container">
 <h1>Sports Edge</h1>
-<div class="subtitle">MLB + UFC + WNBA | Updated Jul 15, 2026 12:33 PM ET</div>
+<div class="subtitle">MLB + UFC + WNBA | Updated Jul 16, 2026 12:34 PM ET</div>
 
 <div class="stats-row">
 <div class="stats-bar">
 <h3>Today</h3>
-<div class="stat"><div class="stat-val">4</div><div class="stat-label">Picks</div></div>
+<div class="stat"><div class="stat-val">6</div><div class="stat-label">Picks</div></div>
 <div class="stat"><div class="stat-val">0</div><div class="stat-label">Live Bets</div></div>
 </div>
 <div class="stats-bar">
 <h3>All-Time Record</h3>
-<div class="stat"><div class="stat-val">1197</div><div class="stat-label">Graded</div></div>
-<div class="stat"><div class="stat-val">747-425</div><div class="stat-label">W-L</div></div>
-<div class="stat"><div class="stat-val buy">63.7%</div><div class="stat-label">Win Rate</div></div>
+<div class="stat"><div class="stat-val">1154</div><div class="stat-label">Graded</div></div>
+<div class="stat"><div class="stat-val">735-394</div><div class="stat-label">W-L</div></div>
+<div class="stat"><div class="stat-val buy">65.1%</div><div class="stat-label">Win Rate</div></div>
 </div>
 <div class="stats-bar">
 <h3>Edge (All Scanners)</h3>
-<div class="stat"><div class="stat-val sell">$-0.30</div><div class="stat-label">EV/Bet</div></div>
-<div class="stat"><div class="stat-val sell">-1.0%</div><div class="stat-label">ROI</div></div>
+<div class="stat"><div class="stat-val buy">$+0.27</div><div class="stat-label">EV/Bet</div></div>
+<div class="stat"><div class="stat-val buy">+0.9%</div><div class="stat-label">ROI</div></div>
 </div>
 </div>
 
 <div class="tabs">
 <button class="tab-btn active" onclick="switchTab('today')">Today</button>
 <button class="tab-btn" onclick="switchTab('record')">Last 7 Days</button>
-<button class="tab-btn" onclick="switchTab('history')">Full History (1197)</button>
+<button class="tab-btn" onclick="switchTab('history')">Full History (1154)</button>
 <button class="tab-btn" onclick="switchTab('scanners')">Scanners</button>
 <button class="tab-btn" onclick="switchTab('pnl')">P&L Chart</button>
 </div>
 
-<div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('tennis')">TENNIS</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button><button class="sport-btn" onclick="filterSport('wnba')">WNBA</button></div>
+<div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('tennis')">TENNIS</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button></div>
 
 <div id="tab-today" class="tab-content active">
-<div class="section"><h2>Pending Results (7)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="tennis">
-<td>2026-07-15</td>
-<td class="ticker">Valentin Vacherot</td>
-<td>Valentin Vacherot vs</td>
-<td>ML</td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 67%, Edge +29.2%</td>
-<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 2.6700)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<div class="section"><h2>Pending Results (6)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="mlb">
+<td>2026-07-16</td>
+<td class="ticker">Jared Young</td>
+<td>NYM @ PHI</td>
+<td>O0.5</td>
+<td>+280</td>
+<td>EV Scanner</td>
+<td>EV 16.1%, LOW</td>
+<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 3.8000)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
 <td id="payout-0" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
 <tr data-sport="tennis">
-<td>2026-07-15</td>
-<td class="ticker">Grigor Dimitrov</td>
-<td>Grigor Dimitrov vs N</td>
+<td>2026-07-16</td>
+<td class="ticker">Alexander Bublik</td>
+<td>Alexander Bublik vs </td>
 <td>ML</td>
 <td>-</td>
 <td>Tennis ML</td>
-<td>Model 63%, Edge +26.0%</td>
-<td><input type="number" class="wager-input" id="wager-1" placeholder="$" min="0" step="1" oninput="calcPayout(1, 2.7400)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td>Model 76%, Edge +8.8%</td>
+<td><input type="number" class="wager-input" id="wager-1" placeholder="$" min="0" step="1" oninput="calcPayout(1, 1.4880)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
 <td id="payout-1" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
 <tr data-sport="tennis">
-<td>2026-07-15</td>
+<td>2026-07-16</td>
 <td class="ticker">Alejandro Davidovich Foki</td>
 <td>Alejandro Davidovich</td>
 <td>ML</td>
 <td>-</td>
 <td>Tennis ML</td>
-<td>Model 87%, Edge +11.1%</td>
-<td><input type="number" class="wager-input" id="wager-2" placeholder="$" min="0" step="1" oninput="calcPayout(2, 1.3120)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td>Model 65%, Edge +5.1%</td>
+<td><input type="number" class="wager-input" id="wager-2" placeholder="$" min="0" step="1" oninput="calcPayout(2, 1.6580)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
 <td id="payout-2" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
 <tr data-sport="tennis">
-<td>2026-07-15</td>
-<td class="ticker">Stefano Travaglia</td>
-<td>Stefano Travaglia vs</td>
+<td>2026-07-16</td>
+<td class="ticker">Ann Li</td>
+<td>Ann Li vs Alina Korn</td>
 <td>ML</td>
 <td>-</td>
 <td>Tennis ML</td>
-<td>Model 25%, Edge +5.9%</td>
-<td><input type="number" class="wager-input" id="wager-3" placeholder="$" min="0" step="1" oninput="calcPayout(3, 5.2700)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td>Model 70%, Edge +18.8%</td>
+<td><input type="number" class="wager-input" id="wager-3" placeholder="$" min="0" step="1" oninput="calcPayout(3, 1.9350)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
 <td id="payout-3" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
-<tr data-sport="ufc">
-<td>2026-07-18</td>
-<td class="ticker">Kamaru Usman</td>
-<td>Kamaru Usman vs Dric</td>
+<tr data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Danka Kovinic</td>
+<td>Danka Kovinic vs Jul</td>
 <td>ML</td>
-<td>+226</td>
-<td>UFC Model</td>
-<td>Edge 9.6%, Model 40%</td>
-<td><input type="number" class="wager-input" id="wager-4" placeholder="$" min="0" step="1" oninput="calcPayout(4, 3.2600)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 43%, Edge +17.8%</td>
+<td><input type="number" class="wager-input" id="wager-4" placeholder="$" min="0" step="1" oninput="calcPayout(4, 3.9500)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
 <td id="payout-4" style="color:#3fb950;font-weight:600;">-</td>
 </tr>
-<tr data-sport="ufc">
-<td>2026-08-15</td>
-<td class="ticker">Gillian Robertson</td>
-<td>Gillian Robertson vs</td>
+<tr data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Aliaksandra Sasnovich</td>
+<td>Aliaksandra Sasnovic</td>
 <td>ML</td>
-<td>+202</td>
-<td>UFC Model</td>
-<td>Edge 25.8%, Model 58%</td>
-<td><input type="number" class="wager-input" id="wager-5" placeholder="$" min="0" step="1" oninput="calcPayout(5, 3.0200)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 45%, Edge +11.1%</td>
+<td><input type="number" class="wager-input" id="wager-5" placeholder="$" min="0" step="1" oninput="calcPayout(5, 2.9800)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
 <td id="payout-5" style="color:#3fb950;font-weight:600;">-</td>
-</tr>
-<tr data-sport="ufc">
-<td>2026-08-15</td>
-<td class="ticker">Ian Machado Garry</td>
-<td>Ian Machado Garry vs</td>
-<td>ML</td>
-<td>+305</td>
-<td>UFC Model</td>
-<td>Edge 22.7%, Model 47%</td>
-<td><input type="number" class="wager-input" id="wager-6" placeholder="$" min="0" step="1" oninput="calcPayout(6, 4.0500)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
-<td id="payout-6" style="color:#3fb950;font-weight:600;">-</td>
 </tr></tbody></table></div></div>
 <div class="section">
 <h2>Today's Picks</h2>
@@ -176,6 +165,90 @@ tbody tr:hover { background:#161b22; }
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
 <tbody><tr class="tier-A" data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Alejandro Davidovich Foki</td>
+<td>Alejandro David</td>
+<td>ML</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 65%, Edge +5.1%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Alexander Bublik</td>
+<td>Alexander Bubli</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 76%, Edge +8.8%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Aliaksandra Sasnovich</td>
+<td>Aliaksandra Sas</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 45%, Edge +11.1%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-16</td>
+<td class="ticker">Jared Young</td>
+<td>NYM @ PHI</td>
+<td>O0.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+280</td>
+<td>EV Scanner</td>
+<td>EV 16.1%, LOW</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Danka Kovinic</td>
+<td>Danka Kovinic v</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 43%, Edge +17.8%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-16</td>
+<td class="ticker">Ann Li</td>
+<td>Ann Li vs Alina</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 70%, Edge +18.8%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="tennis">
 <td>2026-07-15</td>
 <td class="ticker">Stefano Travaglia</td>
 <td>Stefano Travagl</td>
@@ -949,7 +1022,7 @@ tbody tr:hover { background:#161b22; }
 
 <div id="tab-history" class="tab-content">
 <div class="section">
-<h2>Full History (1197 graded picks)</h2>
+<h2>Full History (1154 graded picks)</h2>
 <div class="disclaimer">Every graded pick across all scanners, newest first.</div>
 <div style="overflow-x:auto; max-height:600px; overflow-y:auto;">
 <table>
@@ -7856,62 +7929,6 @@ tbody tr:hover { background:#161b22; }
 <td class="buy">$+10</td>
 <td></td>
 </tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-20</td>
-<td class="ticker">Dominique Malonga</td>
-<td>SEA vs @PHO</td>
-<td>R u8.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-150</td>
-<td>WNBA Props</td>
-<td>Avg 6.9, Diff -1.6</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>3</td>
-<td class="buy">$+20</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-20</td>
-<td class="ticker">Paige Bueckers</td>
-<td>DAL vs CHI</td>
-<td>A o4.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-150</td>
-<td>WNBA Props</td>
-<td>Avg 6.0, Diff +1.5</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>8</td>
-<td class="buy">$+20</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-20</td>
-<td class="ticker">Kahleah Copper</td>
-<td>PHO vs SEA</td>
-<td>T u2.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-210</td>
-<td>WNBA Props</td>
-<td>Avg 1.6, Diff -0.9</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>2</td>
-<td class="buy">$+14</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-20</td>
-<td class="ticker">Sydney Taylor</td>
-<td>CHI vs @DAL</td>
-<td>P u13.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-115</td>
-<td>WNBA Props</td>
-<td>Avg 10.7, Diff -2.8</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>18</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
 <tr class="tier-App" data-sport="mlb">
 <td>2026-06-19</td>
 <td class="ticker">LuJames Groover</td>
@@ -8525,76 +8542,6 @@ tbody tr:hover { background:#161b22; }
 <td></td>
 <td class="sell" style="font-weight:700;">L</td>
 <td>3</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="wnba">
-<td>2026-06-19</td>
-<td class="ticker">Marine Johannes</td>
-<td>NYL vs WAS</td>
-<td>P o7.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-105</td>
-<td>WNBA Props</td>
-<td>Avg 11.0, Diff +3.5</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>4</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="wnba">
-<td>2026-06-19</td>
-<td class="ticker">Marine Johannes</td>
-<td>NYL vs WAS</td>
-<td>T o1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+100</td>
-<td>WNBA Props</td>
-<td>Avg 2.7, Diff +1.2</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-19</td>
-<td class="ticker">Michaela Onyenwere</td>
-<td>WAS vs @NYL</td>
-<td>P o9.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-125</td>
-<td>WNBA Props</td>
-<td>Avg 12.7, Diff +3.2</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>11</td>
-<td class="buy">$+24</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-19</td>
-<td class="ticker">Olivia Miles</td>
-<td>MIN vs @GSV</td>
-<td>P o16.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-125</td>
-<td>WNBA Props</td>
-<td>Avg 19.0, Diff +2.5</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>7</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-19</td>
-<td class="ticker">Natasha Howard</td>
-<td>MIN vs @GSV</td>
-<td>P o14.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-120</td>
-<td>WNBA Props</td>
-<td>Avg 17.6, Diff +3.1</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>10</td>
 <td class="sell">$-30</td>
 <td></td>
 </tr>
@@ -9856,62 +9803,6 @@ tbody tr:hover { background:#161b22; }
 <td class="buy" style="font-weight:700;">W</td>
 <td>0</td>
 <td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="wnba">
-<td>2026-06-17</td>
-<td class="ticker">Marine Johannes</td>
-<td>NYL vs @CHI</td>
-<td>T o1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-175</td>
-<td>WNBA Props</td>
-<td>Avg 2.8, Diff +1.3</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-17</td>
-<td class="ticker">Marine Johannes</td>
-<td>NYL vs @CHI</td>
-<td>P o8.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+105</td>
-<td>WNBA Props</td>
-<td>Avg 11.6, Diff +3.1</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>3</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-17</td>
-<td class="ticker">Jackie Young</td>
-<td>LVA vs @PHO</td>
-<td>P u17.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-125</td>
-<td>WNBA Props</td>
-<td>Avg 14.7, Diff -2.8</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>20</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-17</td>
-<td class="ticker">Breanna Stewart</td>
-<td>NYL vs @CHI</td>
-<td>R o7.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-150</td>
-<td>WNBA Props</td>
-<td>Avg 9.0, Diff +1.5</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>6</td>
-<td class="sell">$-30</td>
 <td></td>
 </tr>
 <tr class="tier-App" data-sport="mlb">
@@ -11200,62 +11091,6 @@ tbody tr:hover { background:#161b22; }
 <td class="buy" style="font-weight:700;">W</td>
 <td>0</td>
 <td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="wnba">
-<td>2026-06-15</td>
-<td class="ticker">Kelsey Plum</td>
-<td>LAS vs @GSV</td>
-<td>P o20.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-125</td>
-<td>WNBA Props</td>
-<td>Avg 26.6, Diff +6.1</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>9</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="wnba">
-<td>2026-06-15</td>
-<td class="ticker">Chelsea Gray</td>
-<td>LVA vs @DAL</td>
-<td>T o1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-185</td>
-<td>WNBA Props</td>
-<td>Avg 2.5, Diff +1.0</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>0</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="wnba">
-<td>2026-06-15</td>
-<td class="ticker">Tiffany Hayes</td>
-<td>GSV vs LAS</td>
-<td>T u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-210</td>
-<td>WNBA Props</td>
-<td>Avg 0.5, Diff -1.0</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+14</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="wnba">
-<td>2026-06-15</td>
-<td class="ticker">Nneka Ogwumike</td>
-<td>LAS vs @GSV</td>
-<td>P o13.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-110</td>
-<td>WNBA Props</td>
-<td>Avg 16.2, Diff +2.7</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>9</td>
-<td class="sell">$-30</td>
 <td></td>
 </tr>
 <tr class="tier-App" data-sport="mlb">
@@ -12910,20 +12745,6 @@ tbody tr:hover { background:#161b22; }
 <td class="buy">$+10</td>
 <td></td>
 </tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-13</td>
-<td class="ticker">Rhett Lowder</td>
-<td>AZ@CIN</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+100</td>
-<td>K Props</td>
-<td>K%tile 15</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>6</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
 <tr class="" data-sport="ufc">
 <td>2026-06-13</td>
 <td class="ticker">Steve Garcia</td>
@@ -13681,118 +13502,6 @@ tbody tr:hover { background:#161b22; }
 <td></td>
 </tr>
 <tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Javier Assad</td>
-<td>CHC@SF</td>
-<td>K u2.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+140</td>
-<td>K Props</td>
-<td>K%tile 5</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>5</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Zack Littell</td>
-<td>SEA@WSH</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-125</td>
-<td>K Props</td>
-<td>K%tile 4</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+24</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Anthony Kay</td>
-<td>LAD@CWS</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-115</td>
-<td>K Props</td>
-<td>K%tile 12</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>7</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Sandy Alcantara</td>
-<td>MIA@PIT</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-120</td>
-<td>K Props</td>
-<td>K%tile 16</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>7</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Nick Lodolo</td>
-<td>AZ@CIN</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-110</td>
-<td>K Props</td>
-<td>K%tile 16</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>5</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Kyle Leahy</td>
-<td>STL@MIN</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+120</td>
-<td>K Props</td>
-<td>K%tile 19</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>5</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Eduardo Rodriguez</td>
-<td>AZ@CIN</td>
-<td>K u5.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-155</td>
-<td>K Props</td>
-<td>K%tile 21</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>3</td>
-<td class="buy">$+19</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-06-12</td>
-<td class="ticker">Andrew Painter</td>
-<td>PHI@MIL</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+120</td>
-<td>K Props</td>
-<td>K%tile 23</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>3</td>
-<td class="buy">$+36</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
 <td>2026-06-11</td>
 <td class="ticker">Pavin Smith</td>
 <td>AZ @ MIA</td>
@@ -14169,62 +13878,6 @@ tbody tr:hover { background:#161b22; }
 <td>0</td>
 <td class="buy">$+10</td>
 <td><span class="live-badge">LIVE</span></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-11</td>
-<td class="ticker">Justin Wrobleski</td>
-<td>LAD@PIT</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+105</td>
-<td>K Props</td>
-<td>K%tile 12</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>1</td>
-<td class="buy">$+32</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-11</td>
-<td class="ticker">Keider Montero</td>
-<td>MIN@DET</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+110</td>
-<td>K Props</td>
-<td>K%tile 15</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>4</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-11</td>
-<td class="ticker">Anthony Kay</td>
-<td>CWS ATL</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+100</td>
-<td>K Props</td>
-<td>K%tile 13</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-06-11</td>
-<td class="ticker">Mitch Keller</td>
-<td>LAD@PIT</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-155</td>
-<td>K Props</td>
-<td>K%tile 23</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>3</td>
-<td class="buy">$+19</td>
-<td></td>
 </tr>
 <tr class="tier-Ap" data-sport="mlb">
 <td>2026-06-10</td>
@@ -14798,188 +14451,6 @@ tbody tr:hover { background:#161b22; }
 <td class="buy" style="font-weight:700;">W</td>
 <td>0</td>
 <td class="buy">$+22</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Tomoyuki Sugano</td>
-<td></td>
-<td>K u2.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+115</td>
-<td>K Props</td>
-<td>K%tile 2</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Adrian Houser</td>
-<td></td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-115</td>
-<td>K Props</td>
-<td>K%tile 4</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Nick Martinez</td>
-<td></td>
-<td>K u2.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+115</td>
-<td>K Props</td>
-<td>K%tile 4</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Chase Burns</td>
-<td></td>
-<td>K u7.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+120</td>
-<td>K Props</td>
-<td>K%tile 92</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Slade Cecconi</td>
-<td></td>
-<td>K u6.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-240</td>
-<td>K Props</td>
-<td>K%tile 25</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Taj Bradley</td>
-<td></td>
-<td>K u5.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-115</td>
-<td>K Props</td>
-<td>K%tile 79</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>-</td>
-<td class="">$+0.00</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Michael Lorenzen</td>
-<td>CHC@COL</td>
-<td>K u3.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-120</td>
-<td>K Props</td>
-<td>K%tile 10</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>7</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Shohei Ohtani</td>
-<td>LAD@PIT</td>
-<td>K u6.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-115</td>
-<td>K Props</td>
-<td>K%tile 88</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>6</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Chris Sale</td>
-<td>ATL@CWS</td>
-<td>K u7.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-110</td>
-<td>K Props</td>
-<td>K%tile 89</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>6</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Reid Detmers</td>
-<td>HOU@LAA</td>
-<td>K u6.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+100</td>
-<td>K Props</td>
-<td>K%tile 87</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>9</td>
-<td class="buy">$+30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Jack Perkins</td>
-<td>MIL@ATH</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-105</td>
-<td>K Props</td>
-<td>K%tile 82</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>4</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Brandon Young</td>
-<td>SEA@BAL</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-110</td>
-<td>K Props</td>
-<td>K%tile 18</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>5</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-06-10</td>
-<td class="ticker">Ryne Nelson</td>
-<td>AZ@MIA</td>
-<td>K u4.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-140</td>
-<td>K Props</td>
-<td>K%tile 24</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>2</td>
-<td class="buy">$+21</td>
 <td></td>
 </tr>
 <tr class="tier-Ap" data-sport="mlb">
@@ -17787,27 +17258,13 @@ tbody tr:hover { background:#161b22; }
 <td>46.2%</td>
 <td class="sell" style="font-weight:700;">$-9.23</td>
 <td class="sell" style="font-weight:700;">-30.8%</td>
-</tr><tr>
-<td class="ticker">K Props</td>
-<td>26</td>
-<td>7-19</td>
-<td>26.9%</td>
-<td class="sell" style="font-weight:700;">$-14.94</td>
-<td class="sell" style="font-weight:700;">-49.8%</td>
-</tr><tr>
-<td class="ticker">WNBA Props</td>
-<td>17</td>
-<td>5-12</td>
-<td>29.4%</td>
-<td class="sell" style="font-weight:700;">$-15.73</td>
-<td class="sell" style="font-weight:700;">-52.4%</td>
 </tr><tr style="border-top:2px solid #30363d; font-weight:700;">
 <td style="color:#f0f6fc;">TOTAL</td>
-<td>1197</td>
-<td>747-425</td>
-<td>63.7%</td>
-<td class="sell" style="font-weight:700;">$-0.30</td>
-<td class="sell" style="font-weight:700;">-1.0%</td>
+<td>1154</td>
+<td>735-394</td>
+<td>65.1%</td>
+<td class="buy" style="font-weight:700;">$+0.27</td>
+<td class="buy" style="font-weight:700;">+0.9%</td>
 </tr></tbody>
 </table>
 </div>
