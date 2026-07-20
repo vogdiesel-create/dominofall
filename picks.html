@@ -60,31 +60,31 @@ tbody tr:hover { background:#161b22; }
 <body>
 <div class="container">
 <h1>Sports Edge</h1>
-<div class="subtitle">MLB + UFC + WNBA | Updated Jul 17, 2026 12:34 PM ET</div>
+<div class="subtitle">MLB + UFC + WNBA | Updated Jul 20, 2026 12:35 PM ET</div>
 
 <div class="stats-row">
 <div class="stats-bar">
 <h3>Today</h3>
-<div class="stat"><div class="stat-val">1</div><div class="stat-label">Picks</div></div>
+<div class="stat"><div class="stat-val">0</div><div class="stat-label">Picks</div></div>
 <div class="stat"><div class="stat-val">0</div><div class="stat-label">Live Bets</div></div>
 </div>
 <div class="stats-bar">
 <h3>All-Time Record</h3>
-<div class="stat"><div class="stat-val">1154</div><div class="stat-label">Graded</div></div>
-<div class="stat"><div class="stat-val">735-394</div><div class="stat-label">W-L</div></div>
-<div class="stat"><div class="stat-val buy">65.1%</div><div class="stat-label">Win Rate</div></div>
+<div class="stat"><div class="stat-val">1159</div><div class="stat-label">Graded</div></div>
+<div class="stat"><div class="stat-val">739-395</div><div class="stat-label">W-L</div></div>
+<div class="stat"><div class="stat-val buy">65.2%</div><div class="stat-label">Win Rate</div></div>
 </div>
 <div class="stats-bar">
 <h3>Edge (All Scanners)</h3>
-<div class="stat"><div class="stat-val buy">$+0.27</div><div class="stat-label">EV/Bet</div></div>
-<div class="stat"><div class="stat-val buy">+0.9%</div><div class="stat-label">ROI</div></div>
+<div class="stat"><div class="stat-val buy">$+0.33</div><div class="stat-label">EV/Bet</div></div>
+<div class="stat"><div class="stat-val buy">+1.1%</div><div class="stat-label">ROI</div></div>
 </div>
 </div>
 
 <div class="tabs">
 <button class="tab-btn active" onclick="switchTab('today')">Today</button>
 <button class="tab-btn" onclick="switchTab('record')">Last 7 Days</button>
-<button class="tab-btn" onclick="switchTab('history')">Full History (1154)</button>
+<button class="tab-btn" onclick="switchTab('history')">Full History (1159)</button>
 <button class="tab-btn" onclick="switchTab('scanners')">Scanners</button>
 <button class="tab-btn" onclick="switchTab('pnl')">P&L Chart</button>
 </div>
@@ -92,499 +92,14 @@ tbody tr:hover { background:#161b22; }
 <div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('tennis')">TENNIS</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button></div>
 
 <div id="tab-today" class="tab-content active">
-<div class="section"><h2>Pending Results (1)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="tennis">
-<td>2026-07-17</td>
-<td class="ticker">Arthur Rinderknech</td>
-<td>Arthur Rinderknech v</td>
-<td>ML</td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 54%, Edge +13.5%</td>
-<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 2.4500)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
-<td id="payout-0" style="color:#3fb950;font-weight:600;">-</td>
-</tr></tbody></table></div></div>
+
 <div class="section">
 <h2>Today's Picks</h2>
 <div class="disclaimer">Picks from all scanners. LIVE = real money wagered on Hard Rock Bet.</div>
 <div style="overflow-x:auto;">
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
-<tbody><tr class="tier-Ap" data-sport="tennis">
-<td>2026-07-17</td>
-<td class="ticker">Arthur Rinderknech</td>
-<td>Arthur Rinderkn</td>
-<td>ML</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 54%, Edge +13.5%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Jorge Polanco</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+130</td>
-<td>Hits Under</td>
-<td>BA 0.178</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Gabriel Rincones</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-110</td>
-<td>Hits Under</td>
-<td>BA 0.179</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">J.T. Realmuto</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+135</td>
-<td>Hits Under</td>
-<td>BA 0.206</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Alec Bohm</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+150</td>
-<td>Hits Under</td>
-<td>BA 0.215</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Francisco Lindor</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+150</td>
-<td>Hits Under</td>
-<td>BA 0.216</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Brett Baty</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+110</td>
-<td>Hits Under</td>
-<td>BA 0.221</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Trea Turner</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+185</td>
-<td>Hits Under</td>
-<td>BA 0.236</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Jared Young</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+115</td>
-<td>Hits Under</td>
-<td>BA 0.248</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Bryson Stott</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+165</td>
-<td>Hits Under</td>
-<td>BA 0.249</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Francisco Alvarez</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+120</td>
-<td>Hits Under</td>
-<td>BA 0.254</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Kyle Schwarber</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+145</td>
-<td>Hits Under</td>
-<td>BA 0.254</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Bo Bichette</td>
-<td>NYM @ PHI</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>+185</td>
-<td>Hits Under</td>
-<td>BA 0.255</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Gabriel Rincones</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-230</td>
-<td>Runs Under</td>
-<td>wOBA 0.228</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Jorge Polanco</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-160</td>
-<td>Runs Under</td>
-<td>wOBA 0.233</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Brett Baty</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-195</td>
-<td>Runs Under</td>
-<td>wOBA 0.276</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Alec Bohm</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-160</td>
-<td>Runs Under</td>
-<td>wOBA 0.280</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Trea Turner</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-115</td>
-<td>Runs Under</td>
-<td>wOBA 0.283</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">J.T. Realmuto</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-170</td>
-<td>Runs Under</td>
-<td>wOBA 0.284</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Justin Crawford</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-210</td>
-<td>Runs Under</td>
-<td>wOBA 0.296</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Bo Bichette</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-160</td>
-<td>Runs Under</td>
-<td>wOBA 0.297</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Francisco Lindor</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-140</td>
-<td>Runs Under</td>
-<td>wOBA 0.298</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-B" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Bryson Stott</td>
-<td>NYM @ PHI</td>
-<td>R u0.5</td>
-<td><span class="tier-badge tier-B">B</span></td>
-<td>-165</td>
-<td>Runs Under</td>
-<td>wOBA 0.308</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Brett Baty</td>
-<td>NYM @ PHI</td>
-<td>U1.5</td>
-<td><span class="tier-badge ">-</span></td>
-<td>-275</td>
-<td>Sharp Lines</td>
-<td>statcast, EV 0.0%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">J.T. Realmuto</td>
-<td>NYM @ PHI</td>
-<td>U1.5</td>
-<td><span class="tier-badge ">-</span></td>
-<td>-250</td>
-<td>Sharp Lines</td>
-<td>statcast, EV 0.0%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Jorge Polanco</td>
-<td>NYM @ PHI</td>
-<td>U1.5</td>
-<td><span class="tier-badge ">-</span></td>
-<td>-190</td>
-<td>Sharp Lines</td>
-<td>statcast, EV 0.0%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="tennis">
-<td>2026-07-16</td>
-<td class="ticker">Alejandro Davidovich Foki</td>
-<td>Alejandro David</td>
-<td>ML</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 65%, Edge +5.1%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Brett Baty</td>
-<td>NYM @ PHI</td>
-<td>O1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>+190</td>
-<td>EV Scanner</td>
-<td>EV 6.0%, LOW</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Brett Baty</td>
-<td>NYM @ PHI</td>
-<td>O1.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+210</td>
-<td>EV Scanner</td>
-<td>EV 8.2%, LOW</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="tennis">
-<td>2026-07-16</td>
-<td class="ticker">Alexander Bublik</td>
-<td>Alexander Bubli</td>
-<td>ML</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 76%, Edge +8.8%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="tennis">
-<td>2026-07-16</td>
-<td class="ticker">Aliaksandra Sasnovich</td>
-<td>Aliaksandra Sas</td>
-<td>ML</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 45%, Edge +11.1%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-16</td>
-<td class="ticker">Jared Young</td>
-<td>NYM @ PHI</td>
-<td>O0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+280</td>
-<td>EV Scanner</td>
-<td>EV 16.1%, LOW</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="tennis">
-<td>2026-07-16</td>
-<td class="ticker">Danka Kovinic</td>
-<td>Danka Kovinic v</td>
-<td>ML</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 43%, Edge +17.8%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="tennis">
-<td>2026-07-16</td>
-<td class="ticker">Ann Li</td>
-<td>Ann Li vs Alina</td>
-<td>ML</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-</td>
-<td>Tennis ML</td>
-<td>Model 70%, Edge +18.8%</td>
-<td class="" style="font-weight:700;">-</td>
-<td>-</td>
-<td class=""></td>
-<td></td>
-</tr></tbody>
+<tbody><tr><td colspan="12" style="text-align:center; padding:20px; color:#6e7681;">No picks today (All-Star break?). Check back when games resume.</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -596,704 +111,74 @@ tbody tr:hover { background:#161b22; }
 <div style="overflow-x:auto;">
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
-<tbody><tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Joey Meneses</td>
-<td>ATH @ CHW</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-230</td>
-<td>TB Lineup</td>
-<td>SLG 0.118</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>1</td>
-<td class="buy">$+13</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Drew Cavanaugh</td>
-<td>COL @ SF</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-300</td>
-<td>TB Lineup</td>
-<td>SLG 0.233</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Zack Short</td>
-<td>BOS @ NYM</td>
-<td>TB u1.5</td>
+<tbody><tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">Tampa Bay Rays @ Boston R</td>
+<td>Tampa Bay Rays </td>
+<td>NRFI</td>
 <td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-550</td>
-<td>TB Lineup</td>
-<td>SLG 0.191</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+5</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Austin Wells</td>
-<td>NYY @ WSH</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-300</td>
-<td>TB Lineup</td>
-<td>SLG 0.255</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>1</td>
-<td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Victor Robles</td>
-<td>SEA @ TB</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-325</td>
-<td>TB Lineup</td>
-<td>SLG 0.255</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+9</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Alan Roden</td>
-<td>LAA @ MIN</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-275</td>
-<td>TB Lineup</td>
-<td>SLG 0.273</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+11</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Jake Cronenworth</td>
-<td>TOR @ SD</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-300</td>
-<td>TB Lineup</td>
-<td>SLG 0.273</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Patrick Bailey</td>
-<td>CLE @ MIA</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-325</td>
-<td>TB Lineup</td>
-<td>SLG 0.274</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>1</td>
-<td class="buy">$+9</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Steven Kwan</td>
-<td>CLE @ MIA</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-250</td>
-<td>TB Lineup</td>
-<td>SLG 0.279</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Weston Wilson</td>
-<td>SEA @ TB</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-130</td>
-<td>TB Lineup</td>
-<td>SLG 0.283</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>4</td>
-<td class="sell">$-15</td>
-<td><span class="live-badge">LIVE</span></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Taylor Walls</td>
-<td>SEA @ TB</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-350</td>
-<td>TB Lineup</td>
-<td>SLG 0.285</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+9</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Sung-Mun Song</td>
-<td>TOR @ SD</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-350</td>
-<td>TB Lineup</td>
-<td>SLG 0.289</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+9</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Jared Triolo</td>
-<td>MIL @ PIT</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-</td>
-<td>TB Lineup</td>
-<td>SLG 0.293</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>4</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">James Outman</td>
-<td>PHI @ DET</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-550</td>
-<td>TB Lineup</td>
-<td>SLG 0.295</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+5</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Zach McKinstry</td>
-<td>PHI @ DET</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-325</td>
-<td>TB Lineup</td>
-<td>SLG 0.298</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>1</td>
-<td class="buy">$+9</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Billy Cook</td>
-<td>MIL @ PIT</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-</td>
-<td>TB Lineup</td>
-<td>SLG 0.206</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Andrés Chaparro</td>
-<td>NYY @ WSH</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-</td>
-<td>TB Lineup</td>
-<td>SLG 0.283</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Nasim Nuñez</td>
-<td>NYY @ WSH</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-</td>
-<td>TB Lineup</td>
-<td>SLG 0.292</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-A" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Jakob Marsee</td>
-<td>CLE @ MIA</td>
-<td>TB u1.5</td>
-<td><span class="tier-badge tier-A">A</span></td>
-<td>-</td>
-<td>TB Lineup</td>
-<td>SLG 0.297</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+10</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Buddy Kennedy</td>
-<td>SEA @ TB</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
 <td>-125</td>
-<td>Hits Under</td>
-<td></td>
+<td>NRFI</td>
+<td>NRFI 67%, Edge +11.1%</td>
 <td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Joey Meneses</td>
-<td>OAK @ CWS</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+140</td>
-<td>Hits Under</td>
-<td>BA 0.118</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Rece Hinds</td>
-<td>CLE @ MIA</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-135</td>
-<td>Hits Under</td>
-<td>BA 0.121</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+22</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Nate Eaton</td>
-<td>BOS @ NYM</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+100</td>
-<td>Hits Under</td>
-<td>BA 0.138</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Zack Short</td>
-<td>BOS @ NYM</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-175</td>
-<td>Hits Under</td>
-<td>BA 0.149</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+17</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Austin Wells</td>
-<td>NYY @ WSH</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-105</td>
-<td>Hits Under</td>
-<td>BA 0.151</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Henry Davis</td>
-<td>MIL @ PIT</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-105</td>
-<td>Hits Under</td>
-<td>BA 0.157</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Cal Raleigh</td>
-<td>SEA @ TB</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+100</td>
-<td>Hits Under</td>
-<td>BA 0.168</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Petey Halpin</td>
-<td>CLE @ MIA</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+125</td>
-<td>Hits Under</td>
-<td>BA 0.172</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Jimmy Crooks</td>
-<td>ATL @ STL</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-110</td>
-<td>Hits Under</td>
-<td>BA 0.172</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+27</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Kyle Teel</td>
-<td>OAK @ CWS</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+120</td>
-<td>Hits Under</td>
-<td>BA 0.180</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Patrick Bailey</td>
-<td>CLE @ MIA</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+110</td>
-<td>Hits Under</td>
-<td>BA 0.183</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Evan Carter</td>
-<td>HOU @ TEX</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+100</td>
-<td>Hits Under</td>
-<td>BA 0.186</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Jake Cronenworth</td>
-<td>TOR @ SD</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+105</td>
-<td>Hits Under</td>
-<td>BA 0.187</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Mitch Garver</td>
-<td>SEA @ TB</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-160</td>
-<td>Hits Under</td>
-<td>BA 0.190</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+19</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Jarren Duran</td>
-<td>BOS @ NYM</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+125</td>
-<td>Hits Under</td>
-<td>BA 0.193</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Eric Wagaman</td>
-<td>BOS @ NYM</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+105</td>
-<td>Hits Under</td>
-<td>BA 0.194</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+32</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Zach McKinstry</td>
-<td>PHI @ DET</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+100</td>
-<td>Hits Under</td>
-<td>BA 0.195</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Manny Machado</td>
-<td>TOR @ SD</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+135</td>
-<td>Hits Under</td>
-<td>BA 0.196</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>3</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Brice Matthews</td>
-<td>HOU @ TEX</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>-115</td>
-<td>Hits Under</td>
-<td>BA 0.197</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+26</td>
-<td></td>
-</tr>
-<tr class="tier-App" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Lawrence Butler</td>
-<td>OAK @ CWS</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-App">A++</span></td>
-<td>+100</td>
-<td>Hits Under</td>
-<td>BA 0.199</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+30</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Josh Rojas</td>
-<td>KC @ BAL</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+115</td>
-<td>Hits Under</td>
-<td>BA 0.200</td>
-<td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+34</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">J.T. Realmuto</td>
-<td>PHI @ DET</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+110</td>
-<td>Hits Under</td>
-<td>BA 0.200</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
+<td>2-3</td>
 <td class="sell">$-30</td>
 <td></td>
 </tr>
 <tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Marcell Ozuna</td>
-<td>MIL @ PIT</td>
-<td>H u0.5</td>
+<td>2026-07-17</td>
+<td class="ticker">Los Angeles Dodgers @ New</td>
+<td>Los Angeles Dod</td>
+<td>NRFI</td>
 <td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+120</td>
-<td>Hits Under</td>
-<td>BA 0.201</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Ezequiel Tovar</td>
-<td>COL @ SF</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+115</td>
-<td>Hits Under</td>
-<td>BA 0.202</td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 69%, Edge +13.6%</td>
 <td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+34</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
 <td></td>
 </tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Cedric Mullins</td>
-<td>SEA @ TB</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+125</td>
-<td>Hits Under</td>
-<td>BA 0.203</td>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">San Diego Padres @ Kansas</td>
+<td>San Diego Padre</td>
+<td>NRFI</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 63%, Edge +7.4%</td>
 <td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+38</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
 <td></td>
 </tr>
 <tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Josh Lowe</td>
-<td>LAA @ MIN</td>
-<td>H u0.5</td>
+<td>2026-07-17</td>
+<td class="ticker">Washington Nationals @ At</td>
+<td>Washington Nati</td>
+<td>NRFI</td>
 <td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+125</td>
-<td>Hits Under</td>
-<td>BA 0.207</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Sean Keys</td>
-<td>TOR @ SD</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+115</td>
-<td>Hits Under</td>
-<td>BA 0.207</td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 65%, Edge +9.1%</td>
 <td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+34</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
 <td></td>
 </tr>
 <tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Kahlil Watson</td>
-<td>CLE @ MIA</td>
-<td>H u0.5</td>
+<td>2026-07-17</td>
+<td class="ticker">San Francisco Giants @ Se</td>
+<td>San Francisco G</td>
+<td>NRFI</td>
 <td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-130</td>
-<td>Hits Under</td>
-<td>BA 0.208</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>2</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Weston Wilson</td>
-<td>SEA @ TB</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>-185</td>
-<td>Hits Under</td>
-<td>BA 0.208</td>
-<td class="sell" style="font-weight:700;">L</td>
-<td>1</td>
-<td class="sell">$-30</td>
-<td></td>
-</tr>
-<tr class="tier-Ap" data-sport="mlb">
-<td>2026-07-12</td>
-<td class="ticker">Colby Thomas</td>
-<td>OAK @ CWS</td>
-<td>H u0.5</td>
-<td><span class="tier-badge tier-Ap">A+</span></td>
-<td>+105</td>
-<td>Hits Under</td>
-<td>BA 0.208</td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 78%, Edge +22.2%</td>
 <td class="buy" style="font-weight:700;">W</td>
-<td>0</td>
-<td class="buy">$+32</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
 <td></td>
 </tr></tbody>
 </table>
@@ -1303,12 +188,82 @@ tbody tr:hover { background:#161b22; }
 
 <div id="tab-history" class="tab-content">
 <div class="section">
-<h2>Full History (1154 graded picks)</h2>
+<h2>Full History (1159 graded picks)</h2>
 <div class="disclaimer">Every graded pick across all scanners, newest first.</div>
 <div style="overflow-x:auto; max-height:600px; overflow-y:auto;">
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
-<tbody><tr class="tier-App" data-sport="mlb">
+<tbody><tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">Tampa Bay Rays @ Boston R</td>
+<td>Tampa Bay Rays </td>
+<td>NRFI</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 67%, Edge +11.1%</td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>2-3</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">Los Angeles Dodgers @ New</td>
+<td>Los Angeles Dod</td>
+<td>NRFI</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 69%, Edge +13.6%</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">San Diego Padres @ Kansas</td>
+<td>San Diego Padre</td>
+<td>NRFI</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 63%, Edge +7.4%</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">Washington Nationals @ At</td>
+<td>Washington Nati</td>
+<td>NRFI</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 65%, Edge +9.1%</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-17</td>
+<td class="ticker">San Francisco Giants @ Se</td>
+<td>San Francisco G</td>
+<td>NRFI</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-125</td>
+<td>NRFI</td>
+<td>NRFI 78%, Edge +22.2%</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>0-0</td>
+<td class="buy">$+24</td>
+<td></td>
+</tr>
+<tr class="tier-App" data-sport="mlb">
 <td>2026-07-12</td>
 <td class="ticker">Joey Meneses</td>
 <td>ATH @ CHW</td>
@@ -17485,11 +16440,11 @@ tbody tr:hover { background:#161b22; }
 <td class="buy" style="font-weight:700;">+70.9%</td>
 </tr><tr>
 <td class="ticker">NRFI <span style="color:#58a6ff;font-size:9px;">PAPER</span></td>
-<td>17</td>
-<td>14-3</td>
-<td>82.4%</td>
-<td class="buy" style="font-weight:700;">$+14.47</td>
-<td class="buy" style="font-weight:700;">+48.2%</td>
+<td>22</td>
+<td>18-4</td>
+<td>81.8%</td>
+<td class="buy" style="font-weight:700;">$+14.18</td>
+<td class="buy" style="font-weight:700;">+47.3%</td>
 </tr><tr>
 <td class="ticker">Runs Under <span style="color:#58a6ff;font-size:9px;">PAPER</span></td>
 <td>187</td>
@@ -17512,7 +16467,7 @@ tbody tr:hover { background:#161b22; }
 <td class="" style="font-weight:700;">$+0.00</td>
 <td class="" style="font-weight:700;">+0.0%</td>
 </tr><tr>
-<td class="ticker">EV Scanner</td>
+<td class="ticker">EV+Model (CONV-A+)</td>
 <td>0</td>
 <td>0-0</td>
 <td>0%</td>
@@ -17541,11 +16496,11 @@ tbody tr:hover { background:#161b22; }
 <td class="sell" style="font-weight:700;">-30.8%</td>
 </tr><tr style="border-top:2px solid #30363d; font-weight:700;">
 <td style="color:#f0f6fc;">TOTAL</td>
-<td>1154</td>
-<td>735-394</td>
-<td>65.1%</td>
-<td class="buy" style="font-weight:700;">$+0.27</td>
-<td class="buy" style="font-weight:700;">+0.9%</td>
+<td>1159</td>
+<td>739-395</td>
+<td>65.2%</td>
+<td class="buy" style="font-weight:700;">$+0.33</td>
+<td class="buy" style="font-weight:700;">+1.1%</td>
 </tr></tbody>
 </table>
 </div>
@@ -17606,7 +16561,7 @@ function filterSport(sport) {
   if (h && document.getElementById('tab-' + h)) switchTab(h);
 })();
 
-var PNL_DATA = [{"d":"2026-07-07","v":24.0,"w":1,"l":0},{"d":"2026-07-08","v":90.0,"w":4,"l":1},{"d":"2026-07-09","v":84.0,"w":1,"l":1},{"d":"2026-07-10","v":318.75,"w":71,"l":31},{"d":"2026-07-11","v":414.75,"w":4,"l":0},{"d":"2026-07-12","v":729.3,"w":121,"l":91}];
+var PNL_DATA = [{"d":"2026-07-07","v":24.0,"w":1,"l":0},{"d":"2026-07-08","v":90.0,"w":4,"l":1},{"d":"2026-07-09","v":84.0,"w":1,"l":1},{"d":"2026-07-10","v":318.75,"w":71,"l":31},{"d":"2026-07-11","v":414.75,"w":4,"l":0},{"d":"2026-07-12","v":729.3,"w":121,"l":91},{"d":"2026-07-17","v":795.3,"w":4,"l":1}];
 var pnlChartInit = false;
 
 function initPnlChart() {
