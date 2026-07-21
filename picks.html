@@ -60,23 +60,23 @@ tbody tr:hover { background:#161b22; }
 <body>
 <div class="container">
 <h1>Sports Edge</h1>
-<div class="subtitle">MLB + UFC + WNBA | Updated Jul 20, 2026 12:35 PM ET</div>
+<div class="subtitle">MLB + UFC + WNBA | Updated Jul 21, 2026 12:34 PM ET</div>
 
 <div class="stats-row">
 <div class="stats-bar">
 <h3>Today</h3>
-<div class="stat"><div class="stat-val">0</div><div class="stat-label">Picks</div></div>
+<div class="stat"><div class="stat-val">16</div><div class="stat-label">Picks</div></div>
 <div class="stat"><div class="stat-val">0</div><div class="stat-label">Live Bets</div></div>
 </div>
 <div class="stats-bar">
 <h3>All-Time Record</h3>
-<div class="stat"><div class="stat-val">1159</div><div class="stat-label">Graded</div></div>
-<div class="stat"><div class="stat-val">739-395</div><div class="stat-label">W-L</div></div>
+<div class="stat"><div class="stat-val">1171</div><div class="stat-label">Graded</div></div>
+<div class="stat"><div class="stat-val">747-399</div><div class="stat-label">W-L</div></div>
 <div class="stat"><div class="stat-val buy">65.2%</div><div class="stat-label">Win Rate</div></div>
 </div>
 <div class="stats-bar">
 <h3>Edge (All Scanners)</h3>
-<div class="stat"><div class="stat-val buy">$+0.33</div><div class="stat-label">EV/Bet</div></div>
+<div class="stat"><div class="stat-val buy">$+0.32</div><div class="stat-label">EV/Bet</div></div>
 <div class="stat"><div class="stat-val buy">+1.1%</div><div class="stat-label">ROI</div></div>
 </div>
 </div>
@@ -84,7 +84,7 @@ tbody tr:hover { background:#161b22; }
 <div class="tabs">
 <button class="tab-btn active" onclick="switchTab('today')">Today</button>
 <button class="tab-btn" onclick="switchTab('record')">Last 7 Days</button>
-<button class="tab-btn" onclick="switchTab('history')">Full History (1159)</button>
+<button class="tab-btn" onclick="switchTab('history')">Full History (1171)</button>
 <button class="tab-btn" onclick="switchTab('scanners')">Scanners</button>
 <button class="tab-btn" onclick="switchTab('pnl')">P&L Chart</button>
 </div>
@@ -92,14 +92,664 @@ tbody tr:hover { background:#161b22; }
 <div class="sport-filters"><span class="filter-label">Sport:</span><button class="sport-btn active" onclick="filterSport('all')">All</button><button class="sport-btn" onclick="filterSport('mlb')">MLB</button><button class="sport-btn" onclick="filterSport('tennis')">TENNIS</button><button class="sport-btn" onclick="filterSport('ufc')">UFC</button></div>
 
 <div id="tab-today" class="tab-content active">
-
+<div class="section"><h2>Pending Results (16)</h2><div class="disclaimer">Picks awaiting outcome. Enter a wager to see potential payout.</div><div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Wager</th><th>Payout</th></tr></thead><tbody><tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Wawrinka, Stan</td>
+<td>Wawrinka, Stan vs Bu</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 54%, Edge +20.4%</td>
+<td><input type="number" class="wager-input" id="wager-0" placeholder="$" min="0" step="1" oninput="calcPayout(0, 3.0000)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-0" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Bublik, Alexander</td>
+<td>Bublik, Alexander vs</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 78%, Edge +18.6%</td>
+<td><input type="number" class="wager-input" id="wager-1" placeholder="$" min="0" step="1" oninput="calcPayout(1, 1.6700)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-1" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Halys, Quentin</td>
+<td>Halys, Quentin vs Dj</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 58%, Edge +18.3%</td>
+<td><input type="number" class="wager-input" id="wager-2" placeholder="$" min="0" step="1" oninput="calcPayout(2, 2.5200)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-2" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">De Jong, Jesper</td>
+<td>De Jong, Jesper vs C</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 70%, Edge +14.5%</td>
+<td><input type="number" class="wager-input" id="wager-3" placeholder="$" min="0" step="1" oninput="calcPayout(3, 1.8100)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-3" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Molcan, Alex</td>
+<td>Molcan, Alex vs Ofne</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 68%, Edge +12.0%</td>
+<td><input type="number" class="wager-input" id="wager-4" placeholder="$" min="0" step="1" oninput="calcPayout(4, 1.7800)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-4" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Baez, Sebastian</td>
+<td>Baez, Sebastian vs K</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 51%, Edge +7.9%</td>
+<td><input type="number" class="wager-input" id="wager-5" placeholder="$" min="0" step="1" oninput="calcPayout(5, 2.3200)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-5" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Dzumhur, Damir</td>
+<td>Dzumhur, Damir vs Ga</td>
+<td>ML</td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 56%, Edge +6.9%</td>
+<td><input type="number" class="wager-input" id="wager-6" placeholder="$" min="0" step="1" oninput="calcPayout(6, 2.0400)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-6" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">DET @ CHC</td>
+<td>DET @ CHC</td>
+<td>u11.5</td>
+<td>-110</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 72%, Edge +20.1%, ExpTot</td>
+<td><input type="number" class="wager-input" id="wager-7" placeholder="$" min="0" step="1" oninput="calcPayout(7, 1.9091)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-7" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">WSH @ COL</td>
+<td>WSH @ COL</td>
+<td>o15.5</td>
+<td>+300</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 38%, Edge +13.2%, ExpTot</td>
+<td><input type="number" class="wager-input" id="wager-8" placeholder="$" min="0" step="1" oninput="calcPayout(8, 4.0000)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-8" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">CWS @ TEX</td>
+<td>CWS @ TEX</td>
+<td>o7.5</td>
+<td>-110</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 64%, Edge +11.9%, ExpTot</td>
+<td><input type="number" class="wager-input" id="wager-9" placeholder="$" min="0" step="1" oninput="calcPayout(9, 1.9091)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-9" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">MIA @ HOU</td>
+<td>MIA @ HOU</td>
+<td>o7.5</td>
+<td>-175</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 73%, Edge +9.7%, ExpTot </td>
+<td><input type="number" class="wager-input" id="wager-10" placeholder="$" min="0" step="1" oninput="calcPayout(10, 1.5714)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-10" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">CIN @ SEA</td>
+<td>CIN @ SEA</td>
+<td>u10.5</td>
+<td>-323</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 86%, Edge +9.7%, ExpTot </td>
+<td><input type="number" class="wager-input" id="wager-11" placeholder="$" min="0" step="1" oninput="calcPayout(11, 1.3096)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-11" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">STL @ LAA</td>
+<td>STL @ LAA</td>
+<td>u12.5</td>
+<td>-476</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 91%, Edge +8.0%, ExpTot </td>
+<td><input type="number" class="wager-input" id="wager-12" placeholder="$" min="0" step="1" oninput="calcPayout(12, 1.2101)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-12" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">Athletics @ ARI</td>
+<td>Athletics @ ARI</td>
+<td>o9.5</td>
+<td>+100</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 58%, Edge +7.6%, ExpTot </td>
+<td><input type="number" class="wager-input" id="wager-13" placeholder="$" min="0" step="1" oninput="calcPayout(13, 2.0000)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-13" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">STL @ LAA</td>
+<td>STL @ LAA</td>
+<td>o5.5</td>
+<td>-455</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 85%, Edge +3.4%, ExpTot </td>
+<td><input type="number" class="wager-input" id="wager-14" placeholder="$" min="0" step="1" oninput="calcPayout(14, 1.2198)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-14" style="color:#3fb950;font-weight:600;">-</td>
+</tr>
+<tr data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">STL @ LAA</td>
+<td>STL @ LAA</td>
+<td>u10.5</td>
+<td>-208</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 76%, Edge +8.2%, ExpTot </td>
+<td><input type="number" class="wager-input" id="wager-15" placeholder="$" min="0" step="1" oninput="calcPayout(15, 1.4808)" style="width:60px;background:#0d1117;border:1px solid #30363d;color:#f0f6fc;padding:3px 6px;border-radius:3px;font-size:12px;text-align:right;"></td>
+<td id="payout-15" style="color:#3fb950;font-weight:600;">-</td>
+</tr></tbody></table></div></div>
 <div class="section">
 <h2>Today's Picks</h2>
 <div class="disclaimer">Picks from all scanners. LIVE = real money wagered on Hard Rock Bet.</div>
 <div style="overflow-x:auto;">
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
-<tbody><tr><td colspan="12" style="text-align:center; padding:20px; color:#6e7681;">No picks today (All-Star break?). Check back when games resume.</td></tr></tbody>
+<tbody><tr class="tier-B" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">STL @ LAA</td>
+<td>STL @ LAA</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-455</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 85%, Edge +3.4%, ExpTot </td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Dzumhur, Damir</td>
+<td>Dzumhur, Damir </td>
+<td>ML</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 56%, Edge +6.9%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">Athletics @ ARI</td>
+<td>Athletics @ ARI</td>
+<td>o9.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>+100</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 58%, Edge +7.6%, ExpTot </td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Baez, Sebastian</td>
+<td>Baez, Sebastian</td>
+<td>ML</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 51%, Edge +7.9%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">STL @ LAA</td>
+<td>STL @ LAA</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-476</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 91%, Edge +8.0%, ExpTot </td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">STL @ LAA</td>
+<td>STL @ LAA</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-208</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 76%, Edge +8.2%, ExpTot </td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">MIA @ HOU</td>
+<td>MIA @ HOU</td>
+<td>o7.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-175</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 73%, Edge +9.7%, ExpTot </td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">CIN @ SEA</td>
+<td>CIN @ SEA</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-323</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 86%, Edge +9.7%, ExpTot </td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">CWS @ TEX</td>
+<td>CWS @ TEX</td>
+<td>o7.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-110</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 64%, Edge +11.9%, ExpTot</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Molcan, Alex</td>
+<td>Molcan, Alex vs</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 68%, Edge +12.0%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">WSH @ COL</td>
+<td>WSH @ COL</td>
+<td>o15.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>+300</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 38%, Edge +13.2%, ExpTot</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">De Jong, Jesper</td>
+<td>De Jong, Jesper</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 70%, Edge +14.5%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Halys, Quentin</td>
+<td>Halys, Quentin </td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 58%, Edge +18.3%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Bublik, Alexander</td>
+<td>Bublik, Alexand</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 78%, Edge +18.6%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-21</td>
+<td class="ticker">DET @ CHC</td>
+<td>DET @ CHC</td>
+<td>u11.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-110</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 72%, Edge +20.1%, ExpTot</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-21</td>
+<td class="ticker">Wawrinka, Stan</td>
+<td>Wawrinka, Stan </td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 54%, Edge +20.4%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">MIN @ CLE</td>
+<td>MIN @ CLE</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-303</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 78%, Edge +3.2%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>17</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">BAL @ BOS</td>
+<td>BAL @ BOS</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-417</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 84%, Edge +3.7%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>11</td>
+<td class="buy">$+7</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">LAD @ PHI</td>
+<td>LAD @ PHI</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-526</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 88%, Edge +3.8%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>17</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SD @ ATL</td>
+<td>SD @ ATL</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-417</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 86%, Edge +5.0%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>5</td>
+<td class="buy">$+7</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="tennis">
+<td>2026-07-20</td>
+<td class="ticker">Dzumhur, Damir</td>
+<td>Dzumhur, Damir </td>
+<td>ML</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 56%, Edge +5.1%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SD @ ATL</td>
+<td>SD @ ATL</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-556</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 90%, Edge +5.2%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>5</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">BAL @ BOS</td>
+<td>BAL @ BOS</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-233</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 77%, Edge +7.4%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>11</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">MIN @ CLE</td>
+<td>MIN @ CLE</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-323</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 84%, Edge +7.7%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>17</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">TB @ TOR</td>
+<td>TB @ TOR</td>
+<td>u8.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-164</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 70%, Edge +8.3%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>8</td>
+<td class="buy">$+18</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">LAD @ PHI</td>
+<td>LAD @ PHI</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-370</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 88%, Edge +9.5%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>17</td>
+<td class="buy">$+8</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">NYM @ MIL</td>
+<td>NYM @ MIL</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-278</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 83%, Edge +9.9%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>11</td>
+<td class="buy">$+11</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-20</td>
+<td class="ticker">Molcan, Alex</td>
+<td>Molcan, Alex vs</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 68%, Edge +10.7%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-20</td>
+<td class="ticker">Halys, Quentin</td>
+<td>Halys, Quentin </td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 58%, Edge +14.5%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-20</td>
+<td class="ticker">De Jong, Jesper</td>
+<td>De Jong, Jesper</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 70%, Edge +14.5%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-20</td>
+<td class="ticker">Ferreira Silva, Frederico</td>
+<td>Ferreira Silva,</td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 38%, Edge +18.0%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="tennis">
+<td>2026-07-20</td>
+<td class="ticker">Wawrinka, Stan</td>
+<td>Wawrinka, Stan </td>
+<td>ML</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-</td>
+<td>Tennis ML</td>
+<td>Model 54%, Edge +20.4%</td>
+<td class="" style="font-weight:700;">-</td>
+<td>-</td>
+<td class=""></td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">PIT @ NYY</td>
+<td>PIT @ NYY</td>
+<td>o7.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-120</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 75%, Edge +20.5%, ExpTot</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>13</td>
+<td class="buy">$+25</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SF @ KC</td>
+<td>SF @ KC</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-115</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 74%, Edge +20.5%, ExpTot</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>7</td>
+<td class="buy">$+26</td>
+<td></td>
+</tr></tbody>
 </table>
 </div>
 </div>
@@ -112,6 +762,174 @@ tbody tr:hover { background:#161b22; }
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
 <tbody><tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">PIT @ NYY</td>
+<td>PIT @ NYY</td>
+<td>o7.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-120</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 75%, Edge +20.5%, ExpTot</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>13</td>
+<td class="buy">$+25</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SF @ KC</td>
+<td>SF @ KC</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-115</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 74%, Edge +20.5%, ExpTot</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>7</td>
+<td class="buy">$+26</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">NYM @ MIL</td>
+<td>NYM @ MIL</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-278</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 83%, Edge +9.9%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>11</td>
+<td class="buy">$+11</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">LAD @ PHI</td>
+<td>LAD @ PHI</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-370</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 88%, Edge +9.5%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>17</td>
+<td class="buy">$+8</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">TB @ TOR</td>
+<td>TB @ TOR</td>
+<td>u8.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-164</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 70%, Edge +8.3%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>8</td>
+<td class="buy">$+18</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">MIN @ CLE</td>
+<td>MIN @ CLE</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-323</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 84%, Edge +7.7%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>17</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">BAL @ BOS</td>
+<td>BAL @ BOS</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-233</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 77%, Edge +7.4%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>11</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SD @ ATL</td>
+<td>SD @ ATL</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-556</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 90%, Edge +5.2%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>5</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SD @ ATL</td>
+<td>SD @ ATL</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-417</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 86%, Edge +5.0%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>5</td>
+<td class="buy">$+7</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">LAD @ PHI</td>
+<td>LAD @ PHI</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-526</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 88%, Edge +3.8%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>17</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">BAL @ BOS</td>
+<td>BAL @ BOS</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-417</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 84%, Edge +3.7%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>11</td>
+<td class="buy">$+7</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">MIN @ CLE</td>
+<td>MIN @ CLE</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-303</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 78%, Edge +3.2%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>17</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
 <td>2026-07-17</td>
 <td class="ticker">Tampa Bay Rays @ Boston R</td>
 <td>Tampa Bay Rays </td>
@@ -188,12 +1006,180 @@ tbody tr:hover { background:#161b22; }
 
 <div id="tab-history" class="tab-content">
 <div class="section">
-<h2>Full History (1159 graded picks)</h2>
+<h2>Full History (1171 graded picks)</h2>
 <div class="disclaimer">Every graded pick across all scanners, newest first.</div>
 <div style="overflow-x:auto; max-height:600px; overflow-y:auto;">
 <table>
 <thead><tr><th>Date</th><th>Player</th><th>Game</th><th>Market</th><th>Tier</th><th>Odds</th><th>Scanner</th><th>Signal</th><th>Result</th><th>Actual</th><th>P&L</th><th></th></tr></thead>
 <tbody><tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">PIT @ NYY</td>
+<td>PIT @ NYY</td>
+<td>o7.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-120</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 75%, Edge +20.5%, ExpTot</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>13</td>
+<td class="buy">$+25</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SF @ KC</td>
+<td>SF @ KC</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-115</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 74%, Edge +20.5%, ExpTot</td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>7</td>
+<td class="buy">$+26</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">NYM @ MIL</td>
+<td>NYM @ MIL</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-278</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 83%, Edge +9.9%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>11</td>
+<td class="buy">$+11</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">LAD @ PHI</td>
+<td>LAD @ PHI</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-370</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 88%, Edge +9.5%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>17</td>
+<td class="buy">$+8</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">TB @ TOR</td>
+<td>TB @ TOR</td>
+<td>u8.5</td>
+<td><span class="tier-badge tier-Ap">A+</span></td>
+<td>-164</td>
+<td>Stats Model (MODEL-A+)</td>
+<td>Model 70%, Edge +8.3%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>8</td>
+<td class="buy">$+18</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">MIN @ CLE</td>
+<td>MIN @ CLE</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-323</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 84%, Edge +7.7%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>17</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">BAL @ BOS</td>
+<td>BAL @ BOS</td>
+<td>u10.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-233</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 77%, Edge +7.4%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>11</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-A" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SD @ ATL</td>
+<td>SD @ ATL</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-A">A</span></td>
+<td>-556</td>
+<td>Stats Model (MODEL-A)</td>
+<td>Model 90%, Edge +5.2%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>5</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">SD @ ATL</td>
+<td>SD @ ATL</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-417</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 86%, Edge +5.0%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>5</td>
+<td class="buy">$+7</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">LAD @ PHI</td>
+<td>LAD @ PHI</td>
+<td>u12.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-526</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 88%, Edge +3.8%, ExpTot </td>
+<td class="sell" style="font-weight:700;">L</td>
+<td>17</td>
+<td class="sell">$-30</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">BAL @ BOS</td>
+<td>BAL @ BOS</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-417</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 84%, Edge +3.7%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>11</td>
+<td class="buy">$+7</td>
+<td></td>
+</tr>
+<tr class="tier-B" data-sport="mlb">
+<td>2026-07-20</td>
+<td class="ticker">MIN @ CLE</td>
+<td>MIN @ CLE</td>
+<td>o5.5</td>
+<td><span class="tier-badge tier-B">B</span></td>
+<td>-303</td>
+<td>Stats Model (MODEL-B)</td>
+<td>Model 78%, Edge +3.2%, ExpTot </td>
+<td class="buy" style="font-weight:700;">W</td>
+<td>17</td>
+<td class="buy">$+10</td>
+<td></td>
+</tr>
+<tr class="tier-Ap" data-sport="mlb">
 <td>2026-07-17</td>
 <td class="ticker">Tampa Bay Rays @ Boston R</td>
 <td>Tampa Bay Rays </td>
@@ -16481,6 +17467,13 @@ tbody tr:hover { background:#161b22; }
 <td class="" style="font-weight:700;">$+0.00</td>
 <td class="" style="font-weight:700;">+0.0%</td>
 </tr><tr>
+<td class="ticker">Stats Model (MODEL-A+)</td>
+<td>12</td>
+<td>8-4</td>
+<td>66.7%</td>
+<td class="" style="font-weight:700;">$+0.00</td>
+<td class="" style="font-weight:700;">+0.0%</td>
+</tr><tr>
 <td class="ticker">TB Lineup</td>
 <td>650</td>
 <td>457-183</td>
@@ -16496,10 +17489,10 @@ tbody tr:hover { background:#161b22; }
 <td class="sell" style="font-weight:700;">-30.8%</td>
 </tr><tr style="border-top:2px solid #30363d; font-weight:700;">
 <td style="color:#f0f6fc;">TOTAL</td>
-<td>1159</td>
-<td>739-395</td>
+<td>1171</td>
+<td>747-399</td>
 <td>65.2%</td>
-<td class="buy" style="font-weight:700;">$+0.33</td>
+<td class="buy" style="font-weight:700;">$+0.32</td>
 <td class="buy" style="font-weight:700;">+1.1%</td>
 </tr></tbody>
 </table>
